@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-labelledby="journey-title journey-desc">
+  <title id="journey-title">Map user journeys to local service admission</title>
+  <desc id="journey-desc">A trusted gateway assigns Essential priority to checkout and Deferrable priority to recommendations. A service evaluates local CPU and route p95, admits checkout while capacity allows, and sheds recommendations first when they compete for the constrained resource.</desc>
+  <defs>
+    <pattern id="journey-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".07" stroke-width=".7" />
+    </pattern>
+    <marker id="journey-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8" fill="none" stroke="#1F3A5F" stroke-width="1.1" />
+    </marker>
+  </defs>
+  <rect width="1200" height="560" fill="#FAF8F4" />
+  <rect width="1200" height="560" fill="url(#journey-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="12" letter-spacing="1.1" fill="#1F3A5F">
+    <text x="48" y="48">01 / FROM CUSTOMER JOURNEY TO LOCAL ADMISSION</text>
+    <text x="48" y="93" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="17" letter-spacing="0">Priority follows the task the request serves.</text>
+  </g>
+
+  <g stroke="#D8D2C8" stroke-width="1" fill="#FAF8F4">
+    <rect x="48" y="147" width="270" height="124" />
+    <rect x="48" y="303" width="270" height="124" />
+    <rect x="376" y="147" width="234" height="280" fill="#F2EFE8" />
+    <rect x="668" y="147" width="285" height="280" />
+    <rect x="1010" y="147" width="142" height="124" fill="#E7EDF5" />
+    <rect x="1010" y="303" width="142" height="124" fill="#E9E2D6" />
+  </g>
+
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M318 209H370" marker-end="url(#journey-arrow)" />
+    <path d="M318 365H370" marker-end="url(#journey-arrow)" />
+    <path d="M610 209H662" marker-end="url(#journey-arrow)" />
+    <path d="M610 365H662" marker-end="url(#journey-arrow)" />
+    <path d="M953 209H1004" marker-end="url(#journey-arrow)" />
+    <path d="M953 365H1004" marker-end="url(#journey-arrow)" />
+    <path d="M687 293H934" stroke-opacity=".45" stroke-dasharray="3 6" />
+  </g>
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".7" fill="#5A5A57">
+    <text x="66" y="175">USER JOURNEY</text>
+    <text x="394" y="175">TRUSTED CLASSIFIER</text>
+    <text x="687" y="175">SERVICE BOUNDARY</text>
+    <text x="1027" y="175">OUTCOME</text>
+  </g>
+
+  <g fill="#161616" font-family="Inter, 'Segoe UI', sans-serif">
+    <text x="66" y="211" font-size="20" font-weight="600">Existing cart → payment</text>
+    <text x="66" y="239" font-size="14" fill="#5A5A57">Validate, order, authorize, confirm</text>
+    <text x="66" y="367" font-size="20" font-weight="600">Recommendations</text>
+    <text x="66" y="395" font-size="14" fill="#5A5A57">Personalized, useful, deferrable</text>
+
+    <text x="394" y="224" font-size="19" font-weight="600">Essential</text>
+    <text x="394" y="249" font-size="13" fill="#5A5A57">Priority attached to request</text>
+    <text x="394" y="380" font-size="19" font-weight="600">Deferrable</text>
+    <text x="394" y="405" font-size="13" fill="#5A5A57">Priority attached to request</text>
+
+    <text x="687" y="221" font-size="19" font-weight="600">Local admission</text>
+    <text x="687" y="250" font-size="14" fill="#5A5A57">Observe service CPU</text>
+    <text x="687" y="274" font-size="14" fill="#5A5A57">and route-level p95</text>
+    <text x="687" y="330" font-size="12" fill="#1F3A5F" font-family="'IBM Plex Mono', ui-monospace, monospace">APPLY POLICY HERE</text>
+    <text x="687" y="365" font-size="14" fill="#5A5A57">Protect higher-priority work</text>
+    <text x="687" y="389" font-size="14" fill="#5A5A57">when capacity is constrained</text>
+
+    <text x="1027" y="214" font-size="17" font-weight="600">Admit</text>
+    <text x="1027" y="242" font-size="12" fill="#5A5A57">Checkout can</text>
+    <text x="1027" y="260" font-size="12" fill="#5A5A57">continue</text>
+    <text x="1027" y="368" font-size="17" font-weight="600">Degrade</text>
+    <text x="1027" y="396" font-size="12" fill="#5A5A57">Omit the panel</text>
+    <text x="1027" y="414" font-size="12" fill="#5A5A57">when needed</text>
+  </g>
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".4" fill="#1F3A5F">
+    <text x="48" y="491">DESIGN RULE</text>
+  </g>
+  <path d="M48 506H1152" stroke="#D8D2C8" stroke-width="1" />
+  <text x="48" y="535" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="15">Shed lower-priority work only when it competes for the constrained resource.</text>
+</svg>

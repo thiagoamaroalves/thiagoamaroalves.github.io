@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="signals-title signals-desc">
+  <title id="signals-title">Two distinct overload signals can protect the checkout journey</title>
+  <desc id="signals-desc">The left panel shows a global CPU pressure policy with illustrative 80 and 90 percent tiers. The right panel shows a route p95 breach while CPU is below two percent; after sufficient samples and two consecutive checks, lower-priority work sharing the constrained dependency can be shed.</desc>
+  <defs>
+    <pattern id="signals-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".07" stroke-width=".7" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="660" fill="#FAF8F4" />
+  <rect width="1200" height="660" fill="url(#signals-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing="1">
+    <text x="48" y="50" font-size="12">02 / TWO SIGNALS, TWO ENTRY POINTS</text>
+    <text x="48" y="92" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="17" letter-spacing="0">A global load signal and a route-level latency signal can trigger independently.</text>
+  </g>
+
+  <rect x="48" y="132" width="532" height="430" fill="#FAF8F4" stroke="#D8D2C8" />
+  <rect x="620" y="132" width="532" height="430" fill="#FAF8F4" stroke="#D8D2C8" />
+  <path d="M48 186H580M620 186H1152" stroke="#D8D2C8" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="76" y="166">01 / RESOURCE PRESSURE</text>
+    <text x="648" y="166">02 / ROUTE P95 BREACH</text>
+  </g>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="76" y="232" font-size="15" fill="#5A5A57">Observed baseline snapshot</text>
+    <text x="76" y="281" font-size="36" font-weight="600">CPU 89.5%</text>
+    <rect x="354" y="239" width="195" height="40" fill="#E7EDF5" stroke="#D8D2C8" />
+    <text x="370" y="264" font-size="12" fill="#1F3A5F">ROUTE P95 HEALTHY</text>
+  </g>
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" fill="#5A5A57">
+    <text x="76" y="326">ILLUSTRATIVE UTILIZATION TIERS</text>
+    <text x="76" y="356">0%</text>
+    <text x="517" y="356">100%</text>
+  </g>
+  <rect x="76" y="368" width="456" height="18" fill="#F2EFE8" stroke="#D8D2C8" />
+  <rect x="76" y="368" width="365" height="18" fill="#E9E2D6" />
+  <path d="M441 360V397M486 360V397" stroke="#1F3A5F" stroke-width="1.4" />
+  <path d="M484 357l6 6-6 6-6-6z" fill="#1F3A5F" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#1F3A5F" text-anchor="middle">
+    <text x="441" y="414">80%</text>
+    <text x="486" y="414">90%</text>
+  </g>
+  <path d="M76 430H552" stroke="#D8D2C8" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="76" y="461" font-size="15" font-weight="600">At 80%: limit Deferrable first</text>
+    <text x="76" y="489" font-size="15" font-weight="600">At 90%: limit Standard as well</text>
+    <text x="76" y="521" font-size="13" fill="#5A5A57">Keep Essential admitted as capacity allows.</text>
+  </g>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="648" y="232" font-size="15" fill="#5A5A57">Shared-dependency baseline</text>
+    <text x="648" y="281" font-size="36" font-weight="600">CPU &lt; 2%</text>
+    <rect x="926" y="239" width="199" height="40" fill="#E9E2D6" stroke="#D8D2C8" />
+    <text x="941" y="264" font-size="12" fill="#1F3A5F">ESSENTIAL P95 BREACHED</text>
+    <text x="648" y="333" font-size="16" font-weight="600">9.47 s</text>
+    <text x="726" y="333" font-size="14" fill="#5A5A57">observed p95</text>
+    <text x="900" y="333" font-size="16" font-weight="600">250 ms</text>
+    <text x="979" y="333" font-size="14" fill="#5A5A57">lab budget</text>
+  </g>
+  <path d="M648 354H1124" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" letter-spacing=".45" fill="#1F3A5F">
+    <text x="648" y="382">REQUIRE N SAMPLES + 2 ELIGIBLE BREACH CHECKS</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="648" y="423" font-size="15" font-weight="600">Protect the highest-priority affected route.</text>
+    <text x="648" y="453" font-size="14" fill="#5A5A57">Shed lower-priority work only if it shares the</text>
+    <text x="648" y="476" font-size="14" fill="#5A5A57">constrained dependency or resource.</text>
+    <text x="648" y="521" font-size="13" fill="#5A5A57">A route-local bottleneck needs a local response.</text>
+  </g>
+
+  <path d="M48 590H1152" stroke="#D8D2C8" />
+  <circle cx="54" cy="619" r="3" fill="#1F3A5F" />
+  <text x="68" y="624" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="14">The 80% and 90% tiers and the 250 ms budget are experiment inputs, not production defaults.</text>
+</svg>

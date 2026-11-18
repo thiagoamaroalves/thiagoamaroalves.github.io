@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590" role="img" aria-labelledby="window-title window-desc">
+  <title id="window-title">Why the p95 protection activated after about three minutes</title>
+  <desc id="window-desc">In the VM experiment, the first evaluation had 97 Essential samples, below N equals 100. The 120 second evaluation had 217 samples and recorded the first eligible breach. The 180 second evaluation had 354 samples and recorded the second breach, activating protection. The five-minute windows overlap.</desc>
+  <defs>
+    <pattern id="window-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".07" stroke-width=".7" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="590" fill="#FAF8F4" />
+  <rect width="1200" height="590" fill="url(#window-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing="1">
+    <text x="48" y="48" font-size="12">03 / SAMPLE SUFFICIENCY ADDS DETECTION TIME</text>
+    <text x="48" y="91" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" letter-spacing="0">Observed in this run only · rolling window 5 min · N = 100 · evaluation every 60 sec</text>
+  </g>
+
+  <g stroke="#D8D2C8" stroke-width="1">
+    <rect x="48" y="126" width="352" height="188" fill="#E9E2D6" />
+    <rect x="424" y="126" width="352" height="188" fill="#F2EFE8" />
+    <rect x="800" y="126" width="352" height="188" fill="#E7EDF5" />
+  </g>
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="159">T + 60 SEC</text>
+    <text x="448" y="159">T + 120 SEC</text>
+    <text x="824" y="159">T + 180 SEC</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="72" y="214" font-size="34" font-weight="600">97 samples</text>
+    <text x="72" y="252" font-size="16" font-weight="600">Below N = 100</text>
+    <text x="72" y="282" font-size="14" fill="#5A5A57">Not eligible; keep observing.</text>
+
+    <text x="448" y="214" font-size="34" font-weight="600">217 samples</text>
+    <text x="448" y="252" font-size="16" font-weight="600">First eligible breach</text>
+    <text x="448" y="282" font-size="14" fill="#5A5A57">One more check is required.</text>
+
+    <text x="824" y="214" font-size="34" font-weight="600">354 samples</text>
+    <text x="824" y="252" font-size="16" font-weight="600">Second consecutive breach</text>
+    <text x="824" y="282" font-size="14" fill="#5A5A57">Essential protection activates.</text>
+  </g>
+
+  <path d="M400 220H418M776 220H794" fill="none" stroke="#1F3A5F" stroke-width="1.4" />
+  <path d="M409 214l7 6-7 6M785 214l7 6-7 6" fill="none" stroke="#1F3A5F" stroke-width="1.2" />
+
+  <text x="48" y="360" fill="#1F3A5F" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8">SAMPLES INCLUDED IN EACH ROLLING WINDOW</text>
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#5A5A57">
+    <text x="193" y="394">0</text><text x="379" y="394">60s</text><text x="565" y="394">120s</text><text x="751" y="394">180s</text><text x="937" y="394">240s</text><text x="1123" y="394">300s</text>
+  </g>
+  <path d="M205 401H1145" stroke="#D8D2C8" stroke-width="1" />
+  <g stroke="#D8D2C8" stroke-width="1">
+    <path d="M205 396V407M393 396V407M581 396V407M769 396V407M957 396V407M1145 396V407" />
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#5A5A57">
+    <text x="48" y="438">At 60s</text><text x="48" y="472">At 120s</text><text x="48" y="506">At 180s</text>
+  </g>
+  <rect x="205" y="423" width="188" height="18" fill="#E9E2D6" stroke="#D8D2C8" />
+  <rect x="205" y="457" width="376" height="18" fill="#E9E2D6" stroke="#D8D2C8" />
+  <rect x="205" y="491" width="564" height="18" fill="#E7EDF5" stroke="#1F3A5F" />
+  <path d="M205 535H1145" stroke="#D8D2C8" />
+  <text x="48" y="563" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="14">The checks reuse much of the same data: the second confirms persistence; it does not create an independent sample set.</text>
+</svg>

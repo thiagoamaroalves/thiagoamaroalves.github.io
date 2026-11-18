@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590" role="img" aria-labelledby="window-title window-desc">
+  <title id="window-title">Por que a proteção por p95 foi ativada após cerca de três minutos</title>
+  <desc id="window-desc">No ensaio na VM, a primeira avaliação tinha 97 amostras Essenciais, abaixo de N igual a 100. A avaliação aos 120 segundos tinha 217 amostras e registrou a primeira violação elegível. Aos 180 segundos, 354 amostras permitiram registrar a segunda violação e ativar a proteção. As janelas de cinco minutos se sobrepõem.</desc>
+  <defs>
+    <pattern id="window-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".07" stroke-width=".7" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="590" fill="#FAF8F4" />
+  <rect width="1200" height="590" fill="url(#window-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing="1">
+    <text x="48" y="48" font-size="12">03 / AMOSTRAS SUFICIENTES DEFINEM O TEMPO DE DETECÇÃO</text>
+    <text x="48" y="91" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="16" letter-spacing="0">Observado somente neste ensaio · janela móvel de 5 min · N = 100 · avaliação a cada 60 s</text>
+  </g>
+
+  <g stroke="#D8D2C8" stroke-width="1">
+    <rect x="48" y="126" width="352" height="188" fill="#E9E2D6" />
+    <rect x="424" y="126" width="352" height="188" fill="#F2EFE8" />
+    <rect x="800" y="126" width="352" height="188" fill="#E7EDF5" />
+  </g>
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="159">T + 60 S</text>
+    <text x="448" y="159">T + 120 S</text>
+    <text x="824" y="159">T + 180 S</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="72" y="214" font-size="34" font-weight="600">97 amostras</text>
+    <text x="72" y="252" font-size="16" font-weight="600">Abaixo de N = 100</text>
+    <text x="72" y="282" font-size="14" fill="#5A5A57">Insuficiente; continue observando.</text>
+
+    <text x="448" y="214" font-size="34" font-weight="600">217 amostras</text>
+    <text x="448" y="252" font-size="16" font-weight="600">Primeira violação elegível</text>
+    <text x="448" y="282" font-size="14" fill="#5A5A57">É necessária mais uma avaliação.</text>
+
+    <text x="824" y="214" font-size="34" font-weight="600">354 amostras</text>
+    <text x="824" y="252" font-size="16" font-weight="600">Segunda violação consecutiva</text>
+    <text x="824" y="282" font-size="14" fill="#5A5A57">A proteção de Essencial é ativada.</text>
+  </g>
+
+  <path d="M400 220H418M776 220H794" fill="none" stroke="#1F3A5F" stroke-width="1.4" />
+  <path d="M409 214l7 6-7 6M785 214l7 6-7 6" fill="none" stroke="#1F3A5F" stroke-width="1.2" />
+
+  <text x="48" y="360" fill="#1F3A5F" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8">AMOSTRAS INCLUÍDAS EM CADA JANELA MÓVEL</text>
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#5A5A57">
+    <text x="193" y="394">0</text><text x="379" y="394">60s</text><text x="565" y="394">120s</text><text x="751" y="394">180s</text><text x="937" y="394">240s</text><text x="1123" y="394">300s</text>
+  </g>
+  <path d="M205 401H1145" stroke="#D8D2C8" stroke-width="1" />
+  <g stroke="#D8D2C8" stroke-width="1">
+    <path d="M205 396V407M393 396V407M581 396V407M769 396V407M957 396V407M1145 396V407" />
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#5A5A57">
+    <text x="48" y="438">Aos 60 s</text><text x="48" y="472">Aos 120 s</text><text x="48" y="506">Aos 180 s</text>
+  </g>
+  <rect x="205" y="423" width="188" height="18" fill="#E9E2D6" stroke="#D8D2C8" />
+  <rect x="205" y="457" width="376" height="18" fill="#E9E2D6" stroke="#D8D2C8" />
+  <rect x="205" y="491" width="564" height="18" fill="#E7EDF5" stroke="#1F3A5F" />
+  <path d="M205 535H1145" stroke="#D8D2C8" />
+  <text x="48" y="563" fill="#5A5A57" font-family="Inter, 'Segoe UI', sans-serif" font-size="14">As avaliações reutilizam grande parte dos mesmos dados: a segunda confirma persistência, não cria um conjunto independente de amostras.</text>
+</svg>
