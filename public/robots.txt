@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thiagoamaroalves.github.io/sitemap.xml

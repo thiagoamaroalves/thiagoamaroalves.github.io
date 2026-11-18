@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Built to Change',
+  description = 'Ideas and trade-offs for building software that evolves.',
+} = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://thiagoamaroalves.github.io');
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const pageTitle = title === 'Built to Change' ? title : `${title} — Built to Change`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Built to Change" href="/rss.xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner wrap">
+        <a class="wordmark" href="/" aria-label="Built to Change home">
+          <span class="mark" aria-hidden="true"><span></span><i></i></span>
+          <span>Built to Change</span>
+        </a>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <a href="/writing/">Writing</a>
+          <a href="/about/">About</a>
+          <a class="nav-github" href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-inner wrap">
+        <a class="footer-brand" href="/">Built to Change<span>.</span></a>
+        <p>Ideas and trade-offs for building software that evolves.</p>
+        <div class="footer-links">
+          <a href="/rss.xml">RSS</a>
+          <a href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </div>
+        <small>© {new Date().getFullYear()} · Written in English, wherever the work happens.</small>
+      </div>
+    </footer>
+  </body>
+</html>

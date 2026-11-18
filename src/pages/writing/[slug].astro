@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formatDate = new Intl.DateTimeFormat('en', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(post.data.pubDate);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post-layout wrap">
+    <div class="post-main">
+      <header class="post-header">
+        <div class="article-meta">
+          {post.data.category}<span class="meta-dot">•</span>{formatDate}<span class="meta-dot">•</span>{post.data.readingTime}
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="post-deck">{post.data.description}</p>
+      </header>
+      <div class="post-content"><Content /></div>
+      <div class="post-end">
+        <a class="read-link" href="/writing/">← Back to all writing</a>
+        <span>Built to Change</span>
+      </div>
+    </div>
+    <aside class="post-aside">
+      <p>Filed under<br /><a href={`/writing/#${post.data.category.toLowerCase()}`}>{post.data.category}</a></p>
+      <p>{post.data.tags.join(' · ')}</p>
+    </aside>
+  </article>
+</BaseLayout>
