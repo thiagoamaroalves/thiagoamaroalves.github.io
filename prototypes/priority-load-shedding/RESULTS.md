@@ -25,11 +25,16 @@ Can a gateway combine a service utilization threshold with route-specific p95 bu
 
 These are outputs of the prototype's explicit rules, not measured performance improvements. In particular, the model assumes that shedding lower-priority routes can help a higher-priority route's p95. A route-specific downstream bottleneck may not respond to that action.
 
+## Confirmed policy decision
+
+The author confirmed this behavior during prototype review: when the Essential route's p95 exceeds its budget, limit lower-priority routes to protect it even when overall utilization is below 80%. Route priority is the policy; p95 is a route-specific signal that can activate it independently of the utilization guardrail.
+
+This confirms the desired decision rule, not a measured latency improvement. The effect on real p95 still needs evidence from an actual workload.
+
 ## Questions to settle together
 
-1. Should a p95 breach on a critical route cause lower-priority routes to be shed even below the utilization threshold?
-2. When a route's own p95 is over budget, should the system limit that route, preserve it by shedding lower-priority traffic, or choose based on its priority?
-3. Should the second utilization threshold at 90% shed Standard traffic, or should escalation depend on a different signal?
-4. What observation window and minimum request count make a route p95 stable enough to drive admission decisions?
+1. When a route's own p95 is over budget, should the system limit that route, preserve it by shedding lower-priority traffic, or choose based on its priority?
+2. Should the second utilization threshold at 90% shed Standard traffic, or should escalation depend on a different signal?
+3. What observation window and minimum request count make a route p95 stable enough to drive admission decisions?
 
 The next version should change only after these rules match the service behavior we want to describe. No production conclusion is recorded yet.
