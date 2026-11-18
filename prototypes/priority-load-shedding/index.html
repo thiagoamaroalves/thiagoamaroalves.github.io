@@ -97,6 +97,8 @@
       .result-card { padding: 15px; border: 1px solid var(--line); background: var(--surface); }
       .result-card h3 { margin: 0 0 5px; font: 400 19px Georgia, 'Times New Roman', serif; }
       .result-card p { margin: 0; color: var(--muted); font-size: 12px; }
+      .recovery-state { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+      .recovery-log { min-height: 44px; margin: 12px 0 0; color: var(--muted); font-size: 12px; }
       .footnote { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
       .footnote a { color: var(--green); }
       .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -112,7 +114,7 @@
       @media (max-width: 560px) {
         .page { width: calc(100% - 24px); padding-top: 23px; }
         .panel { padding: 14px; }
-        .state-grid, .controls-grid, .results { grid-template-columns: 1fr; }
+        .state-grid, .controls-grid, .recovery-state, .results { grid-template-columns: 1fr; }
         .section-head { align-items: start; flex-direction: column; }
         .metric { padding: 11px 13px; }
         .metric-value { font-size: 23px; }
@@ -190,9 +192,30 @@
         </div>
       </section>
 
+      <section class="section" aria-labelledby="recovery-title">
+        <div class="section-head">
+          <div><p class="eyebrow">03 · Recovery rehearsal</p><h2 id="recovery-title">Let traffic back in gradually.</h2></div>
+          <p>Advance one simulated observation at a time.</p>
+        </div>
+        <div class="panel" aria-live="polite">
+          <div class="recovery-state">
+            <div class="metric"><span class="metric-label">Recovery state</span><strong class="metric-value" id="recovery-mode">Restricted</strong><span class="metric-detail" id="recovery-mode-detail">Lower-priority route starts at 0%.</span></div>
+            <div class="metric"><span class="metric-label">New traffic admitted</span><strong class="metric-value" id="recovery-share">0%</strong><span class="metric-detail" id="recovery-share-detail">Last stable level: 0%.</span></div>
+            <div class="metric"><span class="metric-label">Next check</span><strong class="metric-value" id="recovery-delay">x</strong><span class="metric-detail" id="recovery-delay-detail">Backoff grows after failed probes.</span></div>
+          </div>
+          <p class="decision-summary" id="recovery-summary">The route is restricted. Record observations after each scheduled wait to explore recovery.</p>
+          <div class="freeplay-actions">
+            <button class="button" data-recovery-action="healthy">Record healthy observation</button>
+            <button class="button secondary" data-recovery-action="failed">Record failed observation</button>
+            <button class="button secondary" data-recovery-action="reset">Reset recovery</button>
+          </div>
+          <p class="recovery-log" id="recovery-log">A healthy observation means p95 is within budget; if load triggered shedding, utilization is below 70%. The model assumes enough samples for each observation.</p>
+        </div>
+      </section>
+
       <section class="section" aria-labelledby="walk-title">
         <div class="section-head">
-          <div><p class="eyebrow">03 · Guided scenarios</p><h2 id="walk-title">Walk through the edge cases.</h2></div>
+          <div><p class="eyebrow">04 · Guided scenarios</p><h2 id="walk-title">Walk through the edge cases.</h2></div>
           <p>Each walkthrough starts from known conditions.</p>
         </div>
         <div class="walk-tabs" role="tablist" aria-label="Choose a scenario">
@@ -214,7 +237,7 @@
 
       <section class="section" aria-labelledby="observations-title">
         <div class="section-head">
-          <div><p class="eyebrow">04 · What the model predicts</p><h2 id="observations-title">Starting observations.</h2></div>
+          <div><p class="eyebrow">05 · What the model predicts</p><h2 id="observations-title">Starting observations.</h2></div>
           <p>These are simulated outcomes, not production measurements.</p>
         </div>
         <div class="results">
@@ -339,7 +362,105 @@
         return { initialState, transition, decide };
       })();
 
+      // Recovery rehearsal uses symbolic delays and illustrative traffic shares.
+      const recoveryModel = (() => {
+        const shares = [0, 5, 10, 25, 50, 100];
+        const retryDelays = ['x', '2x', '4x', '8x'];
+
+        function initialState() {
+          return {
+            mode: 'restricted',
+            admittedShare: 0,
+            stableShare: 0,
+            healthyChecks: 0,
+            consecutiveFailures: 0,
+            nextDelay: 'x',
+            note: 'The route is restricted. The first recovery check is scheduled after x.',
+          };
+        }
+
+        function transition(state, outcome) {
+          if (state.mode === 'restored') return state;
+          const next = { ...state };
+
+          if (outcome === 'failed') {
+            next.healthyChecks = 0;
+            next.admittedShare = next.stableShare;
+            next.consecutiveFailures += 1;
+            if (next.consecutiveFailures >= 4) {
+              next.mode = 'breaker';
+              next.nextDelay = 'y';
+              next.note = `Recovery failed four times in a row. The circuit breaker stays open; the next limited probe is due after y.`;
+            } else {
+              next.mode = next.stableShare > 0 ? 'half-open' : 'restricted';
+              next.nextDelay = retryDelays[next.consecutiveFailures];
+              next.note = `The probe failed. Rolled back to the last stable ${next.stableShare}% share; the next attempt waits ${next.nextDelay}.`;
+            }
+            return next;
+          }
+
+          next.healthyChecks += 1;
+          next.consecutiveFailures = 0;
+          if (next.mode === 'restricted' || next.mode === 'breaker') {
+            if (next.healthyChecks < 2) {
+              next.note = `Healthy observation ${next.healthyChecks} of 2. Keep the route restricted until the second consecutive healthy observation.`;
+              return next;
+            }
+            const wasBreaker = next.mode === 'breaker';
+            const nextShareIndex = shares.indexOf(next.stableShare) + 1;
+            next.mode = 'half-open';
+            next.admittedShare = wasBreaker ? shares[Math.min(nextShareIndex, shares.length - 1)] : 5;
+            next.healthyChecks = 0;
+            next.nextDelay = wasBreaker ? 'y' : 'x';
+            next.note = wasBreaker
+              ? `Two healthy breaker probes: enter half-open and test the next traffic tier at ${next.admittedShare}%.`
+              : 'Two consecutive healthy observations: enter half-open and admit a 5% probe of new traffic.';
+            return next;
+          }
+
+          if (next.healthyChecks < 2) {
+            next.note = `Healthy observation ${next.healthyChecks} of 2 at ${next.admittedShare}%. Hold this probe share until the next healthy observation.`;
+            return next;
+          }
+
+          next.stableShare = next.admittedShare;
+          next.healthyChecks = 0;
+          next.consecutiveFailures = 0;
+          if (next.stableShare === 100) {
+            next.mode = 'restored';
+            next.nextDelay = '—';
+            next.note = 'The full route share stayed healthy through two observations. Normal admission is restored.';
+            return next;
+          }
+
+          const currentIndex = shares.indexOf(next.stableShare);
+          next.admittedShare = shares[currentIndex + 1];
+          next.nextDelay = 'x';
+          next.note = `Two healthy observations at ${next.stableShare}%. Increase the probe share to ${next.admittedShare}%; the last stable level is ${next.stableShare}%.`;
+          return next;
+        }
+
+        function describe(state) {
+          const labels = {
+            restricted: 'Restricted',
+            'half-open': 'Half-open',
+            breaker: 'Circuit open',
+            restored: 'Restored',
+          };
+          const details = {
+            restricted: 'Waiting for two healthy observations.',
+            'half-open': 'Limited new traffic is being probed.',
+            breaker: 'Only a limited probe is allowed after each y interval.',
+            restored: 'Normal traffic admission is restored.',
+          };
+          return { label: labels[state.mode], detail: details[state.mode] };
+        }
+
+        return { initialState, transition, describe };
+      })();
+
       let state = model.initialState();
+      let recoveryState = recoveryModel.initialState();
       let selectedScenario = 'load';
       let scenarioStepIndex = 0;
 
@@ -436,7 +557,27 @@
         }
 
         byId('last-action').textContent = state.lastAction;
+        renderRecovery();
         renderScenario();
+      }
+
+      function renderRecovery() {
+        const description = recoveryModel.describe(recoveryState);
+        byId('recovery-mode').textContent = description.label;
+        byId('recovery-mode-detail').textContent = description.detail;
+        byId('recovery-share').textContent = `${recoveryState.admittedShare}%`;
+        byId('recovery-share-detail').textContent = `Last stable level: ${recoveryState.stableShare}%. Healthy checks: ${recoveryState.healthyChecks} of 2.`;
+        byId('recovery-delay').textContent = recoveryState.nextDelay;
+        byId('recovery-delay-detail').textContent = recoveryState.mode === 'breaker'
+          ? 'Circuit-breaker probes repeat every y.'
+          : 'Next scheduled recovery check.';
+        const summary = byId('recovery-summary');
+        summary.textContent = recoveryState.note;
+        summary.className = `decision-summary${recoveryState.mode === 'breaker' ? ' alert' : recoveryState.mode === 'half-open' ? ' warn' : ''}`;
+        document.querySelectorAll('[data-recovery-action]').forEach((button) => {
+          button.disabled = recoveryState.mode === 'restored' && button.dataset.recoveryAction !== 'reset';
+        });
+        byId('recovery-log').textContent = 'Each button records the outcome after the displayed wait; the model does not infer it from the sliders. A healthy observation means p95 is within budget and, if load triggered shedding, utilization is below 70%. Enough samples are assumed. Four failures, x/y waits, and traffic shares are illustrative.';
       }
 
       function renderScenario() {
@@ -488,6 +629,13 @@
         }
       });
       document.body.addEventListener('click', (event) => {
+        const recoveryButton = event.target.closest('[data-recovery-action]');
+        if (recoveryButton) {
+          recoveryState = recoveryButton.dataset.recoveryAction === 'reset'
+            ? recoveryModel.initialState()
+            : recoveryModel.transition(recoveryState, recoveryButton.dataset.recoveryAction);
+          renderRecovery();
+        }
         const button = event.target.closest('button[data-action]');
         if (button) {
           const action = button.dataset.action;
