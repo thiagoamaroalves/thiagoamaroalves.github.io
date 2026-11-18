@@ -18,7 +18,14 @@ const anchorFor = (category: string) => category.toLowerCase();
     <p>Essays on the decisions, practices, and tools that shape software over time. Written in English; organized by the questions they explore.</p>
   </header>
   <section class="archive wrap">
-    {groups.map((group) => {
+    {posts.length === 0 ? (
+      <div class="empty-state">
+        <span class="note-index">First entry</span>
+        <h2>The first post is taking shape.</h2>
+        <p>Architecture, engineering practice, programming, and AI are all open directions. The first essay will start with a question worth exploring.</p>
+        <a class="read-link" href="/about/">About the notebook <span aria-hidden="true">→</span></a>
+      </div>
+    ) : groups.map((group) => {
       const groupPosts = posts.filter((post) => post.data.category === group);
       if (!groupPosts.length) return null;
       return (

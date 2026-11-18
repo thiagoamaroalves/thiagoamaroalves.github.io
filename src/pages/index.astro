@@ -51,7 +51,7 @@ const formatDate = (date: Date) =>
           <text x="242" y="194" class="tiny">PRESERVE</text>
         </svg>
       </div>
-      <div class="blueprint-bottom"><span>Architecture is a living hypothesis</span><b>01 / 04</b></div>
+      <div class="blueprint-bottom"><span>A space for questions that change the work</span><b>FIRST / 01</b></div>
     </div>
   </section>
 
@@ -59,10 +59,10 @@ const formatDate = (date: Date) =>
     <div class="ticker-inner wrap">
       <span class="ticker-label">Explore by theme</span>
       <div class="topic-pills">
-        <a class="topic-pill" href="/writing/#architecture">Architecture</a>
-        <a class="topic-pill" href="/writing/#engineering">Engineering</a>
-        <a class="topic-pill" href="/writing/#programming">Programming</a>
-        <a class="topic-pill" href="/writing/#ai">Applied AI</a>
+        <span class="topic-pill">Architecture</span>
+        <span class="topic-pill">Engineering</span>
+        <span class="topic-pill">Programming</span>
+        <span class="topic-pill">Applied AI</span>
       </div>
     </div>
   </section>
@@ -75,7 +75,7 @@ const formatDate = (date: Date) =>
       </div>
       <a href="/writing/">All writing <span aria-hidden="true">↗</span></a>
     </div>
-    {featured && (
+    {featured ? (
       <div class="featured-grid">
         <article class="featured-main">
           <div class="article-meta">
@@ -93,6 +93,13 @@ const formatDate = (date: Date) =>
           </div>
           <div class="side-caption">No silver bullets. Just clearer decisions, smaller feedback loops, and ideas tested against the work.</div>
         </aside>
+      </div>
+    ) : (
+      <div class="empty-state">
+        <span class="note-index">First entry</span>
+        <h3>Let’s shape the first essay together.</h3>
+        <p>Bring a question from your work or learning. We’ll build the argument, examples, and takeaway around it.</p>
+        <a class="read-link" href="/about/">What this notebook is for <span aria-hidden="true">→</span></a>
       </div>
     )}
   </section>
