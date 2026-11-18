@@ -1,0 +1,51 @@
+---
+import type { Post, Language } from '../utils/routes';
+import { categoryLabel, formatDate, postPath } from '../utils/routes';
+import WalCommitDiagram from './WalCommitDiagram.astro';
+
+interface Props {
+  post?: Post;
+  language: Language;
+}
+
+const { post, language } = Astro.props;
+const labels = language === 'pt'
+  ? { section: 'Artigo em destaque', figure: 'Fluxo de commit · PostgreSQL WAL', featured: 'Seleção editorial', emptyTitle: 'Nenhum artigo em destaque', emptyCopy: 'Quando um artigo publicado for selecionado, ele aparecerá aqui com seus metadados originais.', read: 'Ler artigo', noTags: 'Sem tags' }
+  : { section: 'Featured article', figure: 'Commit flow · PostgreSQL WAL', featured: 'Editorial selection', emptyTitle: 'No featured article yet', emptyCopy: 'A published article will appear here once it has been selected for the editorial feature.', read: 'Read article', noTags: 'No tags' };
+---
+
+<section class="section featured-section wrap" aria-labelledby="featured-heading">
+  <div class="section-heading section-heading-compact">
+    <div>
+      <p class="section-kicker">{labels.section}</p>
+      <h2 id="featured-heading">{post ? post.data.title : labels.emptyTitle}</h2>
+    </div>
+    {post && <a href={postPath(post)}> {labels.read} <span aria-hidden="true">↗</span></a>}
+  </div>
+  <div class="featured-panel">
+    <figure class="featured-figure">
+      <WalCommitDiagram language={language} />
+      <figcaption><span class="diagram-pin" aria-hidden="true"></span>{labels.figure}</figcaption>
+    </figure>
+    <div class="featured-copy">
+      {post ? (
+        <>
+          <div class="article-meta"><span>{categoryLabel(post.data.category, language)}</span><span>{formatDate(post.data.pubDate, language)}</span><span>{post.data.readingTime}</span></div>
+          <h3><a href={postPath(post)}>{post.data.title}</a></h3>
+          <p class="featured-summary">{post.data.description}</p>
+          <div class="tag-list" aria-label={language === 'pt' ? 'Tags do artigo' : 'Article tags'}>
+            {post.data.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+          <a class="inline-link" href={postPath(post)}>{labels.read}<span aria-hidden="true">↗</span></a>
+        </>
+      ) : (
+        <>
+          <p class="featured-placeholder-label">{labels.featured}</p>
+          <h3>{labels.emptyTitle}</h3>
+          <p class="featured-summary">{labels.emptyCopy}</p>
+          <span class="tag-list tag-list-placeholder"><span>WAL</span><span>PostgreSQL</span><span>Commit</span></span>
+        </>
+      )}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleRow from './ArticleRow.astro';
+import { topics, topicHref } from '../data/topics';
+import { categoryLabel, type Language } from '../utils/routes';
+
+interface Props {
+  language: Language;
+  slug: string;
+}
+
+const { language, slug } = Astro.props;
+const topic = topics.find((item) => (language === 'pt' ? item.slug : item.englishSlug) === slug);
+if (!topic) throw new Error(`Unknown topic: ${slug}`);
+const allPosts = await getCollection('posts');
+const allNotes = await getCollection('notes');
+const terms = topic.tags.map((tag) => tag.toLowerCase());
+const matches = (entry: (typeof allPosts)[number] | (typeof allNotes)[number]) =>
+  entry.data.language === language && (
+    entry.data.category === topic.category ||
+    entry.data.tags.some((tag) => terms.includes(tag.toLowerCase()))
+  );
+const entries = [...allPosts.filter(matches), ...allNotes.filter(matches)]
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const copy = topic.copy[language];
+const path = topicHref(topic, language);
+const portuguesePath = topicHref(topic, 'pt');
+const englishPath = topicHref(topic, 'en');
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  language={language}
+  canonicalPath={path}
+  portuguesePath={portuguesePath}
+  englishPath={englishPath}
+  alternates={{ pt: portuguesePath, en: englishPath }}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <div class="topic-page-heading">
+      <h1>{copy.title}</h1>
+      <span class="topic-icon" aria-hidden="true">
+        {topic.icon === 'architecture' && <svg viewBox="0 0 32 32"><path d="M5 10h8v8H5zM19 5h8v8h-8zM19 19h8v8h-8zM13 14h6M23 13v6" /></svg>}
+        {topic.icon === 'database' && <svg viewBox="0 0 32 32"><ellipse cx="16" cy="7" rx="10" ry="4" /><path d="M6 7v18c0 2.2 4.5 4 10 4s10-1.8 10-4V7M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4M6 24c0 2.2 4.5 4 10 4s10-1.8 10-4" /></svg>}
+        {topic.icon === 'distributed' && <svg viewBox="0 0 32 32"><circle cx="7" cy="16" r="3" /><circle cx="25" cy="7" r="3" /><circle cx="25" cy="25" r="3" /><path d="m10 15 12-7M10 17l12 7M25 10v12" /></svg>}
+        {topic.icon === 'performance' && <svg viewBox="0 0 32 32"><path d="M5 25V7M5 25h23M10 21l5-6 4 3 7-9" /><path d="M21 9h5v5" /></svg>}
+      </span>
+    </div>
+    <p>{copy.description}</p>
+  </header>
+  <section class="archive wrap" aria-label={copy.title}>
+    {entries.length ? (
+      <div class="article-list">
+        {entries.map((entry) => <ArticleRow entry={entry} language={language} />)}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>{language === 'pt' ? 'Ainda não há publicações sobre este tópico' : 'No publications on this topic yet'}</h2>
+        <p>{language === 'pt' ? `Esta página reúne publicações marcadas como ${categoryLabel(topic.category, language)} ou com tags relacionadas.` : `This page gathers publications categorized as ${topic.category} or tagged with related terms.`}</p>
+      </div>
+    )}
+  </section>
+</BaseLayout>

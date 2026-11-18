@@ -1,0 +1,53 @@
+---
+interface Props {
+  language?: 'pt' | 'en';
+}
+
+const { language = 'pt' } = Astro.props;
+const labels = language === 'pt'
+  ? { title: 'Ilustração do fluxo de commit com o PostgreSQL Write-Ahead Log', description: 'A transação registra as alterações no write-ahead log. Após a persistência do registro, o servidor confirma o commit; as páginas de dados podem ser gravadas depois.', transaction: 'TRANSAÇÃO', commit: 'COMMIT', wal: 'WAL', durable: 'REGISTRO DURÁVEL', acknowledge: 'CONFIRMAÇÃO', pages: 'PÁGINAS DE DADOS', note: 'O log é persistido antes das páginas.' }
+  : { title: 'Illustration of a PostgreSQL Write-Ahead Log commit flow', description: 'The transaction records its changes in the write-ahead log. After the record is durable, the server acknowledges the commit; data pages can be written later.', transaction: 'TRANSACTION', commit: 'COMMIT', wal: 'WAL', durable: 'DURABLE RECORD', acknowledge: 'ACKNOWLEDGEMENT', pages: 'DATA PAGES', note: 'The log is persisted before data pages.' };
+---
+
+<svg class="wal-diagram" viewBox="0 0 560 360" role="img" aria-labelledby="wal-title wal-description">
+  <title id="wal-title">{labels.title}</title>
+  <desc id="wal-description">{labels.description}</desc>
+  <defs>
+    <pattern id="wal-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#1F3A5F" stroke-opacity=".09" stroke-width=".7" />
+    </pattern>
+    <marker id="wal-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0L8 4L0 8" fill="none" stroke="#1F3A5F" stroke-width="1.1" />
+    </marker>
+  </defs>
+  <rect width="560" height="360" fill="url(#wal-grid)" />
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.35" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M90 178H180" marker-end="url(#wal-arrow)" />
+    <path d="M284 178H374" marker-end="url(#wal-arrow)" />
+    <path d="M374 202H284" stroke-dasharray="4 6" marker-end="url(#wal-arrow)" />
+    <path d="M180 202H90" stroke-dasharray="4 6" marker-end="url(#wal-arrow)" />
+    <rect x="33" y="142" width="58" height="96" fill="#FAF8F4" />
+    <path d="M46 160h32M46 172h24M46 184h28M46 212h25" stroke-opacity=".7" />
+    <path d="M180 128h104v100H180z" fill="#F2EFE8" />
+    <path d="M196 147h72M196 162h55M196 177h63M196 192h46M196 212h72" stroke-opacity=".62" />
+    <path d="M374 142h58v96h-58z" fill="#FAF8F4" />
+    <path d="M388 161h30M388 177h24M388 193h31" stroke-opacity=".7" />
+    <path d="M469 145l31-18 31 18v57l-31 18-31-18z" fill="#F2EFE8" />
+    <path d="M469 145l31 19 31-19M500 164v56M469 202l31-18 31 18" />
+    <path d="M232 228v45M500 220v53" stroke-dasharray="3 5" stroke-opacity=".65" />
+    <path d="M194 276h76M464 276h72" stroke-opacity=".5" />
+  </g>
+  <g fill="#161616" font-family="'IBM Plex Mono', monospace" font-size="9" text-anchor="middle" letter-spacing=".7">
+    <text x="62" y="258">{labels.transaction}</text>
+    <text x="232" y="248">{labels.wal} / {labels.commit}</text>
+    <text x="403" y="258">{labels.acknowledge}</text>
+    <text x="500" y="250">{labels.pages}</text>
+  </g>
+  <g fill="#1F3A5F" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing=".4">
+    <text x="193" y="116">LSN → DISK</text>
+    <text x="202" y="299">{labels.note}</text>
+  </g>
+  <g fill="#1F3A5F">
+    <circle cx="232" cy="178" r="3" /><circle cx="403" cy="178" r="3" />
+  </g>
+</svg>

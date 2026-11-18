@@ -1,0 +1,26 @@
+---
+import type { Note, Post, Language } from '../utils/routes';
+import { categoryLabel, formatDate, notePath, postPath } from '../utils/routes';
+
+interface Props {
+  entry: Post | Note;
+  language: Language;
+  legacy?: boolean;
+}
+
+const { entry, language, legacy = false } = Astro.props;
+const isPost = entry.collection === 'posts';
+const href = isPost ? postPath(entry as Post, legacy) : notePath(entry as Note);
+---
+
+<article class="article-row">
+  <span class="row-category">{categoryLabel(entry.data.category, language)}</span>
+  <div class="row-content">
+    <h3><a href={href}>{entry.data.title}</a></h3>
+    <p>{entry.data.description}</p>
+  </div>
+  <div class="row-meta">
+    <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate, language)}</time>
+    <span>{entry.data.readingTime}</span>
+  </div>
+</article>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Language } from '../utils/routes';
+
+interface Props {
+  language: Language;
+  legacy?: boolean;
+}
+
+const { language, legacy = false } = Astro.props;
+const copy = language === 'pt'
+  ? {
+      title: 'Sobre o autor', eyebrow: 'Engineering Notes', heading: 'Pensar com cuidado também faz parte de construir.',
+      intro: 'Este é um espaço independente para observar as decisões por trás da arquitetura de software, dos dados e dos sistemas distribuídos.',
+      body: 'Os textos partem de trade-offs concretos: o que uma escolha facilita, o que torna mais difícil e como o contexto muda a resposta. A intenção é registrar raciocínio técnico de forma clara, sem transformar decisões locais em regras universais.',
+      secondHeading: 'Uma publicação em construção',
+      second: 'Artigos e notas serão publicados à medida que estiverem prontos para leitura. O conteúdo continua em Markdown no repositório e não há traduções automáticas de textos técnicos.',
+      github: 'Perfil no GitHub', label: 'Autor', description: 'Engenharia de software, arquitetura, dados e sistemas distribuídos.', start: 'Voltar à página inicial',
+      meta: 'Sobre Thiago Alves e Engineering Notes.',
+    }
+  : {
+      title: 'About the author', eyebrow: 'Engineering Notes', heading: 'Careful thinking is part of building.',
+      intro: 'This is an independent space for looking at the decisions behind software architecture, data, and distributed systems.',
+      body: 'The writing starts with concrete trade-offs: what a choice makes easier, what it makes harder, and how context changes the answer. The aim is to explain technical reasoning clearly without turning local decisions into universal rules.',
+      secondHeading: 'A publication in progress',
+      second: 'Articles and notes will be published as they are ready to read. Content remains in Markdown in the repository, and technical writing is not translated automatically.',
+      github: 'GitHub profile', label: 'Author', description: 'Software engineering, architecture, data, and distributed systems.', start: 'Back to home',
+      meta: 'About Thiago Alves and Engineering Notes.',
+    };
+const path = language === 'pt' ? '/sobre/' : '/en/about/';
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.meta}
+  language={language}
+  canonicalPath={path}
+  portuguesePath="/sobre/"
+  englishPath="/en/about/"
+  alternates={{ pt: '/sobre/', en: '/en/about/' }}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.heading}</h1>
+    <p>{copy.intro}</p>
+  </header>
+  <section class="about-layout wrap">
+    <div class="prose">
+      <p>{copy.body}</p>
+      <h2>{copy.secondHeading}</h2>
+      <p>{copy.second}</p>
+      <p><a href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">{copy.github}</a></p>
+      <p><a href={language === 'pt' ? '/' : '/en/'}>{copy.start}</a></p>
+    </div>
+    <aside class="profile-card">
+      <span class="author-monogram" aria-hidden="true">TA</span>
+      <p class="section-kicker">{copy.label}</p>
+      <h2>Thiago Alves</h2>
+      <p>{copy.description}</p>
+      <a href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">@thiagoamaroalves ↗</a>
+    </aside>
+  </section>
+</BaseLayout>

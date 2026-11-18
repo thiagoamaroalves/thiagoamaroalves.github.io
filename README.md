@@ -1,22 +1,57 @@
-# Built to Change
+# Thiago Alves — Engineering Notes
 
-Ideas and trade-offs for building software that evolves.
-
-An English language technical blog about software architecture, engineering practice, programming, and practical AI. Articles are written in Markdown and rendered by Astro as a static site.
+An independent technical publication about software architecture, databases, distributed systems, and performance. The site is built with Astro and published as a static site on GitHub Pages. Portuguese is the default presentation language; English pages live under `/en/`.
 
 ## Develop locally
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
 Create a production build with `npm run build` and preview it with `npm run preview`.
 
-## Write an article
+## Publish an article
 
-Add a Markdown file in `src/content/posts/` using a lowercase kebab case filename. Include `title`, `description`, `pubDate`, `category`, `tags`, `readingTime`, and `featured` fields in its frontmatter. Supported categories are Architecture, Engineering, Programming, and AI.
+Add a Markdown file under `src/content/posts/` with a lowercase kebab case filename. Include `title`, `description`, `pubDate`, `language`, `category`, `tags`, and `readingTime`. `featured` is optional and defaults to `false`.
 
-## Publish
+Supported post languages are `pt` and `en`. The collection keeps `en` as the schema default for older Markdown entries, so new content should always set `language` explicitly. Supported categories are Architecture, Databases, Distributed Systems, Performance, Engineering, Programming, and AI.
 
-The public site is `https://thiagoamaroalves.github.io`. Pushes to `main` build and deploy the site using the workflow in `.github/workflows/deploy.yml` and GitHub Pages. GitHub Pages requires this personal account's repository to be public on the free plan.
+Example frontmatter:
+
+```yaml
+---
+title: A reviewed article title
+description: A concise summary of the article.
+pubDate: 2026-11-18
+language: pt
+category: Architecture
+tags:
+  - architecture
+readingTime: 7 min
+featured: false
+---
+```
+
+Only files in `src/content/posts/` are published as articles. Keep private or unfinished writing elsewhere, such as `drafts/`.
+
+## Publish a note
+
+Add a Markdown file under `src/content/notes/`. Notes use the same metadata and language rules as articles. Their categories are Databases, Architecture, Benchmark, Distributed Systems, and Performance. The notes collection can remain empty; the site shows a real empty state until a note is published.
+
+## Language and URL decisions
+
+- Portuguese is served at `/`, `/artigos/`, `/notas/`, and `/sobre/`.
+- English is served at `/en/`, `/en/writing/`, `/en/notes/`, and `/en/about/`.
+- Existing English `/writing/`, `/about/`, and `/writing/:slug/` URLs remain available as canonical aliases to their `/en/` pages. Existing article URLs are preserved when English posts are present.
+- English posts without a reviewed Portuguese counterpart remain English. The language switch sends readers to the Portuguese home page and does not label a translation as available.
+- To associate reviewed translations, set the same `translationKey` on both language entries. Only associated pairs receive article-level `hreflang` links.
+- UI copy is localized in Astro components. Published Markdown is never translated automatically.
+- Topic pages and search results are generated from published collections. Search filters the current language's already-rendered entries in the browser.
+- `/rss.xml` is the Portuguese feed and `/en/rss.xml` is the English feed. `sitemap.xml` lists canonical routes.
+
+These decisions keep Markdown publishing static, preserve the prior English routes, and avoid treating a missing translation as existing content.
+
+## Deployment
+
+The public site is `https://thiagoamaroalves.github.io`. The `site` value in `astro.config.mjs` stays at the domain root, so links and assets work on this GitHub Pages user site. Pushes to `main` build and deploy through `.github/workflows/deploy.yml`.

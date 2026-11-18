@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleRow from './ArticleRow.astro';
+import { type Language } from '../utils/routes';
+
+interface Props { language: Language }
+
+const { language } = Astro.props;
+const posts = await getCollection('posts');
+const notes = await getCollection('notes');
+const entries = [...posts, ...notes]
+  .filter((entry) => entry.data.language === language)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const path = language === 'pt' ? '/buscar/' : '/en/search/';
+const copy = language === 'pt'
+  ? { title: 'Buscar', eyebrow: 'Pesquisa no arquivo', intro: 'Pesquise títulos, descrições, categorias e tags de artigos e notas publicados.', field: 'Termo de busca', placeholder: 'Ex.: consistência, PostgreSQL, latência', submit: 'Buscar', empty: 'Nenhuma publicação corresponde a esta busca.', noContent: 'Ainda não há publicações neste idioma.', count: 'resultados' }
+  : { title: 'Search', eyebrow: 'Search the archive', intro: 'Search titles, descriptions, categories, and tags of published articles and notes.', field: 'Search term', placeholder: 'e.g. consistency, PostgreSQL, latency', submit: 'Search', empty: 'No publication matches this search.', noContent: 'There are no publications in this language yet.', count: 'results' };
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.intro}
+  language={language}
+  canonicalPath={path}
+  portuguesePath="/buscar/"
+  englishPath="/en/search/"
+  alternates={{ pt: '/buscar/', en: '/en/search/' }}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.title}</h1>
+    <p>{copy.intro}</p>
+    <form id="site-search-form" class="search-form" action={path} method="get" role="search">
+      <label class="visually-hidden" for="site-search">{copy.field}</label>
+      <input id="site-search" type="search" name="q" placeholder={copy.placeholder} autocomplete="off" />
+      <button type="submit">{copy.submit}</button>
+    </form>
+  </header>
+  <section class="archive wrap" aria-label={copy.title}>
+    <p class="search-result-count" id="search-count" role="status" aria-live="polite"></p>
+    <div class="article-list" id="search-results">
+      {entries.map((entry) => (
+        <div class="search-entry" data-search-entry data-search={`${entry.data.title} ${entry.data.description} ${entry.data.category} ${entry.data.tags.join(' ')}`}>
+          <ArticleRow entry={entry} language={language} />
+        </div>
+      ))}
+    </div>
+    <div class="empty-state" id="search-empty" hidden>
+      <h2>{entries.length > 0 ? copy.empty : copy.noContent}</h2>
+    </div>
+  </section>
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#site-search-form');
+    const input = document.querySelector<HTMLInputElement>('#site-search');
+    const entries = Array.from(document.querySelectorAll<HTMLElement>('[data-search-entry]'));
+    const emptyState = document.querySelector<HTMLElement>('#search-empty');
+    const count = document.querySelector<HTMLElement>('#search-count');
+    const countLabel = document.body.dataset.language === 'pt' ? 'resultados' : 'results';
+
+    if (form && input && emptyState && count) {
+      const queryFromUrl = new URLSearchParams(window.location.search).get('q') ?? '';
+      input.value = queryFromUrl;
+
+      const updateResults = () => {
+        const query = input.value.trim().toLocaleLowerCase();
+        let visible = 0;
+        for (const entry of entries) {
+          const text = (entry.dataset.search ?? '').toLocaleLowerCase();
+          const matches = !query || text.includes(query);
+          entry.hidden = !matches;
+          if (matches) visible += 1;
+        }
+        emptyState.hidden = visible > 0;
+        count.textContent = `${visible} ${countLabel}`;
+      };
+
+      input.addEventListener('input', updateResults);
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const url = new URL(window.location.href);
+        if (input.value.trim()) url.searchParams.set('q', input.value.trim());
+        else url.searchParams.delete('q');
+        window.history.replaceState({}, '', url);
+        updateResults();
+      });
+      updateResults();
+    }
+  </script>
+</BaseLayout>

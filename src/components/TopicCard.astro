@@ -1,0 +1,28 @@
+---
+import type { Language } from '../utils/routes';
+import type { Topic } from '../data/topics';
+import { topicHref } from '../data/topics';
+
+interface Props {
+  topic: Topic;
+  language: Language;
+}
+
+const { topic, language } = Astro.props;
+const copy = topic.copy[language];
+---
+
+<a class="topic-card" href={topicHref(topic, language)}>
+  <span class="topic-icon" aria-hidden="true">
+    {topic.icon === 'architecture' && <svg viewBox="0 0 32 32"><path d="M5 10h8v8H5zM19 5h8v8h-8zM19 19h8v8h-8zM13 14h6M23 13v6" /></svg>}
+    {topic.icon === 'database' && <svg viewBox="0 0 32 32"><ellipse cx="16" cy="7" rx="10" ry="4" /><path d="M6 7v18c0 2.2 4.5 4 10 4s10-1.8 10-4V7M6 16c0 2.2 4.5 4 10 4s10-1.8 10-4M6 24c0 2.2 4.5 4 10 4s10-1.8 10-4" /></svg>}
+    {topic.icon === 'distributed' && <svg viewBox="0 0 32 32"><circle cx="7" cy="16" r="3" /><circle cx="25" cy="7" r="3" /><circle cx="25" cy="25" r="3" /><path d="m10 15 12-7M10 17l12 7M25 10v12" /></svg>}
+    {topic.icon === 'performance' && <svg viewBox="0 0 32 32"><path d="M5 25V7M5 25h23M10 21l5-6 4 3 7-9" /><path d="M21 9h5v5" /></svg>}
+  </span>
+  <span class="topic-card-copy">
+    <span class="topic-eyebrow">{copy.eyebrow}</span>
+    <strong>{copy.title}</strong>
+    <span class="topic-description">{copy.description}</span>
+  </span>
+  <span class="topic-link-mark" aria-hidden="true">↗</span>
+</a>

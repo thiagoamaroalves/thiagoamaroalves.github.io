@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleRow from './ArticleRow.astro';
+import { categoryLabel, type Language } from '../utils/routes';
+
+interface Props {
+  language: Language;
+  legacy?: boolean;
+}
+
+const { language, legacy = false } = Astro.props;
+const posts = (await getCollection('posts'))
+  .filter((post) => post.data.language === language)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const categories = [...new Set(posts.map((post) => post.data.category))];
+const path = language === 'pt' ? '/artigos/' : '/en/writing/';
+const copy = language === 'pt'
+  ? { title: 'Artigos', eyebrow: 'Arquivo editorial', intro: 'Ensaios e artigos sobre arquitetura de software, bancos de dados, sistemas distribuídos e performance.', emptyTitle: 'Ainda não há artigos publicados', empty: 'Quando houver artigos revisados para publicação, eles aparecerão neste arquivo. Rascunhos permanecem privados.', home: 'Voltar ao início', group: 'Tópico' }
+  : { title: 'Articles', eyebrow: 'Editorial archive', intro: 'Essays and articles on software architecture, databases, distributed systems, and performance.', emptyTitle: 'No articles have been published yet', empty: 'Reviewed articles will appear in this archive once they are ready for publication. Drafts remain private.', home: 'Back to home', group: 'Topic' };
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.intro}
+  language={language}
+  canonicalPath={path}
+  portuguesePath="/artigos/"
+  englishPath="/en/writing/"
+  alternates={{ pt: '/artigos/', en: '/en/writing/' }}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.title}</h1>
+    <p>{copy.intro}</p>
+  </header>
+  <section class="archive wrap" aria-label={copy.title}>
+    {posts.length === 0 ? (
+      <div class="empty-state">
+        <h2>{copy.emptyTitle}</h2>
+        <p>{copy.empty}</p>
+        <a class="inline-link" href={language === 'pt' ? '/' : '/en/'}>{copy.home}<span aria-hidden="true">↗</span></a>
+      </div>
+    ) : categories.map((category) => {
+      const groupPosts = posts.filter((post) => post.data.category === category);
+      return (
+        <div class="archive-group" id={category.toLowerCase().replaceAll(' ', '-')}>
+          <div class="section-heading">
+            <div><p class="section-kicker">{String(groupPosts.length).padStart(2, '0')} — {copy.group}</p><h2>{categoryLabel(category, language)}</h2></div>
+          </div>
+          <div class="article-list">
+            {groupPosts.map((post) => <ArticleRow entry={post} language={language} legacy={legacy} />)}
+          </div>
+        </div>
+      );
+    })}
+  </section>
+</BaseLayout>

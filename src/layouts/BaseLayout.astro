@@ -4,61 +4,115 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  language?: 'pt' | 'en';
+  canonicalPath?: string;
+  portuguesePath?: string;
+  englishPath?: string;
+  alternates?: { pt: string; en: string };
+  languageFallback?: boolean;
 }
 
 const {
-  title = 'Built to Change',
-  description = 'Ideas and trade-offs for building software that evolves.',
+  title,
+  description = 'Artigos, experimentos e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos.',
+  language = 'pt',
+  canonicalPath = Astro.url.pathname,
+  portuguesePath,
+  englishPath,
+  alternates,
+  languageFallback = false,
 } = Astro.props;
 const siteUrl = Astro.site ?? new URL('https://thiagoamaroalves.github.io');
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
-const pageTitle = title === 'Built to Change' ? title : `${title} — Built to Change`;
+const canonicalUrl = new URL(canonicalPath, siteUrl);
+const pageTitle = title ? `${title} — Thiago Alves` : 'Thiago Alves — Engineering Notes';
+const homePath = language === 'pt' ? '/' : '/en/';
+const ptHref = portuguesePath ?? (language === 'pt' ? Astro.url.pathname : '/');
+const enHref = englishPath ?? (language === 'en' ? Astro.url.pathname : '/en/');
+const nav = language === 'pt'
+  ? [
+      { label: 'Artigos', href: '/artigos/' },
+      { label: 'Notas', href: '/notas/' },
+      { label: 'Tópicos', href: '/#topicos' },
+      { label: 'Sobre', href: '/sobre/' },
+    ]
+  : [
+      { label: 'Articles', href: '/en/writing/' },
+      { label: 'Notes', href: '/en/notes/' },
+      { label: 'Topics', href: '/en/#topics' },
+      { label: 'About', href: '/en/about/' },
+    ];
+const searchHref = language === 'pt' ? '/buscar/' : '/en/search/';
+const rssHref = language === 'pt' ? '/rss.xml' : '/en/rss.xml';
+const langLabel = language === 'pt' ? 'Idioma' : 'Language';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={language === 'pt' ? 'pt-BR' : 'en'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f5f4ee" />
+    <meta name="theme-color" content="#FAF8F4" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title="Built to Change" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title={language === 'pt' ? 'Thiago Alves — Português' : 'Thiago Alves — English'} href={rssHref} />
     <link rel="canonical" href={canonicalUrl} />
+    {alternates && <link rel="alternate" hreflang="pt-BR" href={new URL(alternates.pt, siteUrl)} />}
+    {alternates && <link rel="alternate" hreflang="en" href={new URL(alternates.en, siteUrl)} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={new URL(alternates.pt, siteUrl)} />}
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={language === 'pt' ? 'pt_BR' : 'en_US'} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{pageTitle}</title>
   </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+  <body data-language={language}>
+    <a class="skip-link" href="#main">{language === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}</a>
     <header class="site-header">
       <div class="header-inner wrap">
-        <a class="wordmark" href="/" aria-label="Built to Change home">
-          <span class="mark" aria-hidden="true"><span></span><i></i></span>
-          <span>Built to Change</span>
+        <a class="wordmark" href={homePath} aria-label={language === 'pt' ? 'Página inicial de Thiago Alves' : 'Thiago Alves home page'}>
+          <span class="wordmark-name">Thiago Alves</span>
+          <span class="wordmark-signature">Engineering Notes</span>
         </a>
-        <nav class="primary-nav" aria-label="Main navigation">
-          <a href="/writing/">Writing</a>
-          <a href="/about/">About</a>
-          <a class="nav-github" href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">
-            GitHub <span aria-hidden="true">↗</span>
-          </a>
+        <nav class="primary-nav" aria-label={language === 'pt' ? 'Navegação principal' : 'Main navigation'}>
+          {nav.map((item) => <a href={item.href}>{item.label}</a>)}
         </nav>
+        <div class="header-tools">
+          <a class="search-link" href={searchHref} aria-label={language === 'pt' ? 'Buscar no site' : 'Search the site'}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4" /><path d="m15.5 15.5 4.2 4.2" /></svg>
+            <span>{language === 'pt' ? 'Buscar' : 'Search'}</span>
+          </a>
+          <nav class="language-switch" aria-label={langLabel}>
+            {language === 'pt' ? <span aria-current="page">PT</span> : <a href={ptHref} aria-label={languageFallback ? 'Português; este conteúdo não tem tradução revisada' : 'Português'} title={languageFallback ? 'Este conteúdo não tem tradução revisada; abrir a página inicial em português' : undefined}>PT</a>}
+            <span class="language-divider" aria-hidden="true">/</span>
+            {language === 'en' ? <span aria-current="page">EN</span> : <a href={enHref} aria-label={languageFallback ? 'English; this content has no reviewed translation' : 'English'} title={languageFallback ? 'This content has no reviewed translation; open the English home page' : undefined}>EN</a>}
+          </nav>
+          <details class="mobile-navigation">
+            <summary>Menu</summary>
+            <nav aria-label={language === 'pt' ? 'Navegação móvel' : 'Mobile navigation'}>
+              {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+            </nav>
+          </details>
+        </div>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="footer-inner wrap">
-        <a class="footer-brand" href="/">Built to Change<span>.</span></a>
-        <p>Ideas and trade-offs for building software that evolves.</p>
-        <div class="footer-links">
-          <a href="/rss.xml">RSS</a>
-          <a href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <div class="footer-brand-block">
+          <a class="footer-brand" href={homePath}>Thiago Alves</a>
+          <span class="wordmark-signature">Engineering Notes</span>
         </div>
-        <small>© {new Date().getFullYear()} · Written in English, wherever the work happens.</small>
+        <p>{language === 'pt' ? 'Uma publicação independente sobre engenharia de software, arquitetura e sistemas.' : 'An independent publication on software engineering, architecture, and systems.'}</p>
+        <nav class="footer-links" aria-label={language === 'pt' ? 'Links externos e feeds' : 'External links and feeds'}>
+          <a href="https://github.com/thiagoamaroalves" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a href={rssHref}>RSS</a>
+        </nav>
+        <small>© {new Date().getFullYear()} Thiago Alves</small>
       </div>
     </footer>
   </body>

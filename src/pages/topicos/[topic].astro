@@ -1,0 +1,12 @@
+---
+import TopicArchive from '../../components/TopicArchive.astro';
+import { topics } from '../../data/topics';
+
+export function getStaticPaths() {
+  return topics.map((topic) => ({ params: { topic: topic.slug } }));
+}
+
+const { topic } = Astro.params;
+---
+
+<TopicArchive language="pt" slug={topic!} />

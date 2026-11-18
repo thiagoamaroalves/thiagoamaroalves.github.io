@@ -1,0 +1,173 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArchitectureDiagram from './ArchitectureDiagram.astro';
+import ArticleRow from './ArticleRow.astro';
+import FeaturedArticle from './FeaturedArticle.astro';
+import TopicCard from './TopicCard.astro';
+import { topics } from '../data/topics';
+import { localeHome, type Language } from '../utils/routes';
+
+interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+const allPosts = (await getCollection('posts')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allNotes = (await getCollection('notes')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = allPosts.filter((post) => post.data.language === language);
+const notes = allNotes.filter((note) => note.data.language === language);
+const featured = posts.find((post) => post.data.featured);
+const recent = posts.filter((post) => post.id !== featured?.id).slice(0, 3);
+const homePath = localeHome(language);
+const copy = language === 'pt'
+  ? {
+      description: 'Artigos, experimentos e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos. Uma perspectiva prática sobre as decisões por trás dos sistemas.',
+      eyebrow: 'Arquitetura · Dados · Sistemas distribuídos',
+      titleStart: 'Entendendo sistemas.',
+      titleEmphasis: 'Questionando trade-offs.',
+      explore: 'Explorar artigos',
+      about: 'Sobre o autor',
+      diagram: 'Diagrama técnico · aplicação, serviço e armazenamento',
+      diagramIndex: 'Estrutura / 01',
+      recentKicker: 'Artigos recentes',
+      recentTitle: 'Leituras para pensar sistemas.',
+      allArticles: 'Todos os artigos',
+      noRecentTitle: 'Ainda não há artigos publicados',
+      noRecentCopy: 'Os artigos aparecerão aqui quando forem publicados. Nenhum rascunho é exibido nesta página.',
+      notesKicker: 'Notas em andamento',
+      notesTitle: 'Observações do trabalho técnico.',
+      notesIntro: 'Notas curtas sobre bancos de dados, decisões de arquitetura, experimentos de benchmark e conceitos de sistemas distribuídos.',
+      notesEmpty: 'As notas ainda não foram publicadas',
+      notesEmptyCopy: 'Esta seção está preparada para observações e experimentos. Ela será preenchida apenas quando houver notas revisadas para publicar.',
+      allNotes: 'Todas as notas',
+      authorKicker: 'Sobre o autor',
+      authorTitle: 'Thiago Alves',
+      authorCopy: 'Um espaço independente para pensar sobre arquitetura de software, dados e sistemas distribuídos a partir dos trade-offs do trabalho real.',
+      authorLink: 'Conheça o autor',
+      topicsKicker: 'Explore por tópico',
+      topicsTitle: 'Quatro lentes para entender sistemas.',
+      topicsId: 'topicos',
+    }
+  : {
+      description: 'Articles, experiments, and notes on software architecture, databases, and distributed systems. A practical perspective on the decisions behind systems.',
+      eyebrow: 'Architecture · Data · Distributed systems',
+      titleStart: 'Understanding systems.',
+      titleEmphasis: 'Questioning trade-offs.',
+      explore: 'Explore articles',
+      about: 'About the author',
+      diagram: 'Technical diagram · application, service, and storage',
+      diagramIndex: 'Structure / 01',
+      recentKicker: 'Recent articles',
+      recentTitle: 'Reading for systems thinkers.',
+      allArticles: 'All articles',
+      noRecentTitle: 'No articles have been published yet',
+      noRecentCopy: 'Published articles will appear here. Drafts are not shown on this page.',
+      notesKicker: 'Notes in progress',
+      notesTitle: 'Observations from technical work.',
+      notesIntro: 'Short notes on databases, architecture decisions, benchmark experiments, and distributed systems concepts.',
+      notesEmpty: 'No notes have been published yet',
+      notesEmptyCopy: 'This section is ready for observations and experiments. It will include notes once they are reviewed for publication.',
+      allNotes: 'All notes',
+      authorKicker: 'About the author',
+      authorTitle: 'Thiago Alves',
+      authorCopy: 'An independent space to think about software architecture, data, and distributed systems through the trade-offs of real work.',
+      authorLink: 'About the author',
+      topicsKicker: 'Explore by topic',
+      topicsTitle: 'Four lenses for understanding systems.',
+      topicsId: 'topics',
+    };
+---
+
+<BaseLayout
+  title={language === 'pt' ? undefined : 'Engineering Notes'}
+  description={copy.description}
+  language={language}
+  canonicalPath={homePath}
+  portuguesePath="/"
+  englishPath="/en/"
+  alternates={{ pt: '/', en: '/en/' }}
+>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.titleStart}<br /><em>{copy.titleEmphasis}</em></h1>
+      <p class="hero-copy">{copy.description}</p>
+      <div class="hero-actions">
+        <a class="button" href={language === 'pt' ? '/artigos/' : '/en/writing/'}>{copy.explore}</a>
+        <a class="text-link" href={language === 'pt' ? '/sobre/' : '/en/about/'}>{copy.about}</a>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <ArchitectureDiagram language={language} />
+      <figcaption><span>{copy.diagram}</span><span>{copy.diagramIndex}</span></figcaption>
+    </figure>
+  </section>
+
+  <FeaturedArticle post={featured} language={language} />
+
+  <section class="section wrap" aria-labelledby="recent-heading">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">{copy.recentKicker}</p>
+        <h2 id="recent-heading">{copy.recentTitle}</h2>
+      </div>
+      <a href={language === 'pt' ? '/artigos/' : '/en/writing/'}>{copy.allArticles}</a>
+    </div>
+    {recent.length > 0 ? (
+      <div class="article-list">
+        {recent.map((post) => <ArticleRow entry={post} language={language} />)}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h3>{copy.noRecentTitle}</h3>
+        <p>{copy.noRecentCopy}</p>
+      </div>
+    )}
+  </section>
+
+  <section class="section notes-section wrap" aria-labelledby="notes-heading">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">{copy.notesKicker}</p>
+        <h2 id="notes-heading">{copy.notesTitle}</h2>
+      </div>
+      <a href={language === 'pt' ? '/notas/' : '/en/notes/'}>{copy.allNotes}</a>
+    </div>
+    <p class="section-intro">{copy.notesIntro}</p>
+    {notes.length > 0 ? (
+      <div class="article-list">
+        {notes.slice(0, 3).map((note) => <ArticleRow entry={note} language={language} />)}
+      </div>
+    ) : (
+      <div class="notes-empty">
+        <span class="notes-empty-mark" aria-hidden="true">N</span>
+        <div><h3>{copy.notesEmpty}</h3><p>{copy.notesEmptyCopy}</p></div>
+      </div>
+    )}
+  </section>
+
+  <section class="section wrap" aria-labelledby="author-heading">
+    <div class="about-strip">
+      <span class="author-monogram" aria-hidden="true">TA</span>
+      <div>
+        <p class="section-kicker">{copy.authorKicker}</p>
+        <h2 id="author-heading">{copy.authorTitle}</h2>
+        <p>{copy.authorCopy}</p>
+      </div>
+      <a class="inline-link" href={language === 'pt' ? '/sobre/' : '/en/about/'}>{copy.authorLink}<span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="section wrap" id={copy.topicsId} aria-labelledby="topics-heading">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">{copy.topicsKicker}</p>
+        <h2 id="topics-heading">{copy.topicsTitle}</h2>
+      </div>
+    </div>
+    <div class="topic-grid">
+      {topics.map((topic) => <TopicCard topic={topic} language={language} />)}
+    </div>
+  </section>
+</BaseLayout>

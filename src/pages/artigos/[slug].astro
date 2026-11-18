@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleReadingPage from '../../components/ArticleReadingPage.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.filter((post) => post.data.language === 'pt').map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<ArticleReadingPage entry={entry} />

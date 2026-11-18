@@ -8,11 +8,35 @@ const posts = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    category: z.enum(['Architecture', 'Engineering', 'Programming', 'AI']),
+    language: z.enum(['pt', 'en']).default('en'),
+    category: z.enum([
+      'Architecture',
+      'Databases',
+      'Distributed Systems',
+      'Performance',
+      'Engineering',
+      'Programming',
+      'AI',
+    ]),
     tags: z.array(z.string()),
     readingTime: z.string(),
     featured: z.boolean().default(false),
+    translationKey: z.string().optional(),
   }),
 });
 
-export const collections = { posts };
+const notes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/notes' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    language: z.enum(['pt', 'en']).default('en'),
+    category: z.enum(['Databases', 'Architecture', 'Benchmark', 'Distributed Systems', 'Performance']),
+    tags: z.array(z.string()).default([]),
+    readingTime: z.string(),
+    translationKey: z.string().optional(),
+  }),
+});
+
+export const collections = { posts, notes };

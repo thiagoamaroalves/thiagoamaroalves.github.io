@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleReadingPage from '../../../components/ArticleReadingPage.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.filter((note) => note.data.language === 'en').map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<ArticleReadingPage entry={entry} />

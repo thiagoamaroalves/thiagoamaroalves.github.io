@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleRow from './ArticleRow.astro';
+import { type Language } from '../utils/routes';
+
+interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+const notes = (await getCollection('notes'))
+  .filter((note) => note.data.language === language)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const copy = language === 'pt'
+  ? { title: 'Notas em andamento', eyebrow: 'Caderno de trabalho', intro: 'Observações curtas sobre bancos de dados, decisões de arquitetura, experimentos de benchmark e conceitos de sistemas distribuídos.', emptyTitle: 'Ainda não há notas publicadas', empty: 'Esta coleção está pronta para receber notas revisadas. Nenhum conteúdo de rascunho é exibido aqui.' }
+  : { title: 'Notes in progress', eyebrow: 'Working notebook', intro: 'Short observations on databases, architecture decisions, benchmark experiments, and distributed systems concepts.', emptyTitle: 'No notes have been published yet', empty: 'This collection is ready for reviewed notes. Draft content is not shown here.' };
+const path = language === 'pt' ? '/notas/' : '/en/notes/';
+---
+
+<BaseLayout
+  title={copy.title}
+  description={copy.intro}
+  language={language}
+  canonicalPath={path}
+  portuguesePath="/notas/"
+  englishPath="/en/notes/"
+  alternates={{ pt: '/notas/', en: '/en/notes/' }}
+>
+  <header class="page-intro wrap">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.title}</h1>
+    <p>{copy.intro}</p>
+  </header>
+  <section class="archive wrap" aria-label={copy.title}>
+    {notes.length ? (
+      <div class="article-list">
+        {notes.map((note) => <ArticleRow entry={note} language={language} />)}
+      </div>
+    ) : (
+      <div class="empty-state"><h2>{copy.emptyTitle}</h2><p>{copy.empty}</p></div>
+    )}
+  </section>
+</BaseLayout>
