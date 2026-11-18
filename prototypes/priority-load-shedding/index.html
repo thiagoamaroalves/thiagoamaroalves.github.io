@@ -78,6 +78,7 @@
       .route-control-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
       .route-control input[type='range'] { width: 100%; margin: 11px 0 7px; }
       .route-control label { display: block; color: var(--muted); font-size: 10px; }
+      .route-control select { width: 100%; margin-top: 5px; padding: 7px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
       .route-control output { color: var(--ink); font: 12px var(--mono); }
       .button-row { display: flex; gap: 7px; margin-top: 9px; }
       .button { padding: 8px 10px; border: 1px solid var(--green); background: var(--green); color: white; font-size: 11px; font-weight: 650; }
@@ -142,7 +143,7 @@
         <div class="panel" aria-live="polite">
           <div class="state-grid">
             <div class="metric"><span class="metric-label">Service utilization</span><strong class="metric-value" id="metric-load">—</strong><span class="metric-detail" id="metric-load-detail">—</span></div>
-            <div class="metric"><span class="metric-label">P95 budgets exceeded</span><strong class="metric-value" id="metric-breaches">—</strong><span class="metric-detail">Measured separately for each route</span></div>
+            <div class="metric"><span class="metric-label">Actionable p95 breaches</span><strong class="metric-value" id="metric-breaches">—</strong><span class="metric-detail">Only readings with sufficient samples count</span></div>
             <div class="metric"><span class="metric-label">Routes limited</span><strong class="metric-value" id="metric-shed">—</strong><span class="metric-detail" id="metric-shed-detail">—</span></div>
           </div>
           <p class="decision-summary" id="decision-summary">—</p>
@@ -184,6 +185,7 @@
             </div>
           </div>
           <div class="route-controls" id="route-controls" aria-label="Route p95 controls"></div>
+          <p class="assumption">The minimum sample count <code>N</code> is intentionally unspecified. Set each route's sample status to explore how insufficient data affects the decision. A p95 breach here represents two consecutive evaluations; elapsed windows are not simulated.</p>
           <div class="freeplay-actions">
             <button class="button secondary" data-action="adjust-load" data-value="-5">Load −5 points</button>
             <button class="button secondary" data-action="adjust-load" data-value="5">Load +5 points</button>
@@ -257,9 +259,9 @@
       // Portable policy model: pure state transitions and a pure admission decision.
       const model = (() => {
         const routeDefaults = [
-          { id: 'essential', name: 'Essential', kind: 'Critical', rank: 0, p95: 180, budget: 250 },
-          { id: 'standard', name: 'Standard', kind: 'Interactive', rank: 1, p95: 270, budget: 400 },
-          { id: 'deferrable', name: 'Deferrable', kind: 'Best effort', rank: 2, p95: 620, budget: 900 },
+          { id: 'essential', name: 'Essential', kind: 'Critical', rank: 0, p95: 180, budget: 250, sampleStatus: 'sufficient' },
+          { id: 'standard', name: 'Standard', kind: 'Interactive', rank: 1, p95: 270, budget: 400, sampleStatus: 'sufficient' },
+          { id: 'deferrable', name: 'Deferrable', kind: 'Best effort', rank: 2, p95: 620, budget: 900, sampleStatus: 'sufficient' },
         ];
 
         function initialState() {
@@ -301,6 +303,11 @@
               ? { ...route, budget: Math.max(50, Math.min(2000, action.value)) }
               : route);
           }
+          if (action.type === 'SET_SAMPLE_STATUS') {
+            next.routes = next.routes.map((route) => route.id === action.routeId
+              ? { ...route, sampleStatus: action.value }
+              : route);
+          }
           if (action.type === 'SET_NOTE') next.lastAction = action.value;
           return next;
         }
@@ -315,7 +322,9 @@
           };
           const loadTriggered = state.loadPct >= state.loadThresholdPct;
           const severeLoadTriggered = state.loadPct >= state.severeThresholdPct;
-          const breachedRoutes = state.routes.filter((route) => route.p95 > route.budget);
+          const overBudgetRoutes = state.routes.filter((route) => route.p95 > route.budget);
+          const breachedRoutes = overBudgetRoutes.filter((route) => route.sampleStatus === 'sufficient');
+          const insufficientBreaches = overBudgetRoutes.filter((route) => route.sampleStatus === 'insufficient');
 
           if (loadTriggered) {
             const deferrable = state.routes.find((route) => route.id === 'deferrable');
@@ -345,10 +354,15 @@
           } else if (breachedRoutes.length) {
             signals.push(`P95 warning only: ${breachedRoutes.map((route) => route.name).join(', ')} is over budget; the selected policy does not shed on latency.`);
           }
+          if (insufficientBreaches.length) {
+            signals.push(`P95 is over budget for ${insufficientBreaches.map((route) => route.name).join(', ')}, but sample status is insufficient; these readings do not trigger p95 shedding.`);
+          }
 
           const routes = state.routes.map((route) => ({
             ...route,
-            breached: route.p95 > route.budget,
+            overBudget: route.p95 > route.budget,
+            breached: route.p95 > route.budget && route.sampleStatus === 'sufficient',
+            insufficientSamples: route.sampleStatus === 'insufficient',
             limited: limited.has(route.id),
             reasons: limited.get(route.id) ?? [],
           }));
@@ -356,7 +370,7 @@
           const summary = signals.length
             ? `${signals.join(' ')} ${limitedCount ? `${limitedCount} route${limitedCount === 1 ? '' : 's'} limited by priority.` : 'No route was limited.'}`
             : 'No trigger fired. All routes remain admitted.';
-          return { routes, signals, summary, loadTriggered, severeLoadTriggered, breachedCount: breachedRoutes.length, limitedCount };
+          return { routes, signals, summary, loadTriggered, severeLoadTriggered, breachedCount: breachedRoutes.length, insufficientBreachCount: insufficientBreaches.length, limitedCount };
         }
 
         return { initialState, transition, decide };
@@ -512,6 +526,11 @@
             <input id="p95-${route.id}" type="range" min="0" max="1500" step="10" value="${route.p95}" data-p95-route="${route.id}" />
             <label for="budget-${route.id}">Route budget (ms)</label>
             <input id="budget-${route.id}" type="number" min="50" max="2000" step="10" value="${route.budget}" data-budget-route="${route.id}" style="width:100%;margin-top:5px;padding:7px;border:1px solid var(--line);background:var(--surface);" />
+            <label for="sample-status-${route.id}" style="margin-top:9px;">Five-minute sample status</label>
+            <select id="sample-status-${route.id}" data-sample-status="${route.id}">
+              <option value="sufficient">Assume minimum N is met</option>
+              <option value="insufficient">Insufficient samples</option>
+            </select>
             <div class="button-row"><button class="button secondary" data-action="adjust-p95" data-route="${route.id}" data-value="-50">−50 ms</button><button class="button secondary" data-action="adjust-p95" data-route="${route.id}" data-value="50">+50 ms</button></div>
           </section>`).join('');
       }
@@ -540,20 +559,21 @@
         byId('metric-shed-detail').textContent = decision.limitedCount === 0 ? 'No route is currently limited' : 'Limited by one or more active signals';
         const summary = byId('decision-summary');
         summary.textContent = decision.summary;
-        summary.className = `decision-summary${decision.limitedCount ? ' warn' : decision.breachedCount ? ' alert' : ''}`;
+        summary.className = `decision-summary${decision.limitedCount ? ' warn' : decision.breachedCount || decision.insufficientBreachCount ? ' alert' : ''}`;
 
         byId('route-state').innerHTML = decision.routes.map((route) => `
           <article class="route-row">
             <div><span class="route-name">${route.name}</span><span class="route-meta">${route.kind}</span><span class="priority ${route.rank === 2 ? 'low' : ''}">${route.rank === 0 ? 'Priority 1 · Protect' : route.rank === 1 ? 'Priority 2' : 'Priority 3 · First to shed'}</span></div>
-            <div class="route-p95"><span class="p95-reading">p95 ${route.p95} ms</span><span class="p95-budget">Budget ${route.budget} ms · ${route.breached ? 'over budget' : 'within budget'}</span></div>
+            <div class="route-p95"><span class="p95-reading">p95 ${route.p95} ms</span><span class="p95-budget">Budget ${route.budget} ms · ${route.insufficientSamples ? `insufficient samples${route.overBudget ? '; reading over budget but not actionable' : ''}` : route.overBudget ? 'over budget' : 'within budget'}</span></div>
             <span class="route-status ${route.limited ? 'shed' : ''}">${route.limited ? 'Limited' : 'Admitted'}</span>
-            <span class="route-meta">${route.limited ? route.reasons.join(' ') : route.breached ? 'Latency warning; route is still admitted.' : 'No active limiting reason.'}</span>
+            <span class="route-meta">${route.limited ? route.reasons.join(' ') : route.insufficientSamples ? 'p95 policy is inactive for this route until the minimum sample count N is met.' : route.breached ? 'Latency warning; route is still admitted.' : 'No active limiting reason.'}</span>
           </article>`).join('');
 
         for (const route of state.routes) {
           byId(`p95-${route.id}`).value = route.p95;
           byId(`p95-value-${route.id}`).textContent = `${route.p95} ms`;
           byId(`budget-${route.id}`).value = route.budget;
+          byId(`sample-status-${route.id}`).value = route.sampleStatus;
         }
 
         byId('last-action').textContent = state.lastAction;
@@ -626,6 +646,14 @@
           const route = state.routes.find((item) => item.id === event.target.dataset.budgetRoute);
           const value = clamp(event.target.value, 50, 2000);
           dispatch({ type: 'SET_BUDGET', routeId: route.id, value, note: `${route.name} p95 budget changed to ${value} ms.` });
+        }
+        if (event.target.matches('[data-sample-status]')) {
+          const route = state.routes.find((item) => item.id === event.target.dataset.sampleStatus);
+          const sampleStatus = event.target.value;
+          const note = sampleStatus === 'sufficient'
+            ? `${route.name}: the sample gate assumes minimum N is met.`
+            : `${route.name}: p95 is not actionable because samples are insufficient.`;
+          dispatch({ type: 'SET_SAMPLE_STATUS', routeId: route.id, value: sampleStatus, note });
         }
       });
       document.body.addEventListener('click', (event) => {
