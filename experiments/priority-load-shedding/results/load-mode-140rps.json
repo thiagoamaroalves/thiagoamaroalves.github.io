@@ -1,0 +1,33 @@
+{
+  "target": "http://127.0.0.1:8080",
+  "configured_rate_per_second": 140.0,
+  "duration_seconds": 60.0,
+  "weights": "essential:10,standard:30,deferrable:60",
+  "max_workers": 512,
+  "seed": 7,
+  "completed_responses": 8400,
+  "client_schedule_drops": 0,
+  "routes": {
+    "essential": {
+      "responses": 825,
+      "served": 825,
+      "shed_429": 0,
+      "other_errors": 0,
+      "p95_served_ms": 13.34
+    },
+    "standard": {
+      "responses": 2619,
+      "served": 2137,
+      "shed_429": 482,
+      "other_errors": 0,
+      "p95_served_ms": 20.46
+    },
+    "deferrable": {
+      "responses": 4956,
+      "served": 2478,
+      "shed_429": 2478,
+      "other_errors": 0,
+      "p95_served_ms": 29.41
+    }
+  }
+}

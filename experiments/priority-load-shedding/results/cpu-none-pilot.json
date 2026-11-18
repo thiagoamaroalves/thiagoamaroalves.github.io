@@ -1,0 +1,33 @@
+{
+  "target": "http://192.168.15.43:8080",
+  "configured_rate_per_second": 140.0,
+  "duration_seconds": 60.0,
+  "weights": "essential:10,standard:30,deferrable:60",
+  "max_workers": 256,
+  "seed": 7,
+  "completed_responses": 5563,
+  "client_schedule_drops": 2837,
+  "routes": {
+    "essential": {
+      "responses": 546,
+      "served": 546,
+      "shed_429": 0,
+      "other_errors": 0,
+      "p95_served_ms": 45.18
+    },
+    "standard": {
+      "responses": 1764,
+      "served": 1764,
+      "shed_429": 0,
+      "other_errors": 0,
+      "p95_served_ms": 49.98
+    },
+    "deferrable": {
+      "responses": 3253,
+      "served": 3253,
+      "shed_429": 0,
+      "other_errors": 0,
+      "p95_served_ms": 54.4
+    }
+  }
+}
