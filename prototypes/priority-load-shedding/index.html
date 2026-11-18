@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <title>Priority Under Pressure — Prototype</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f5f4ee;
+        --surface: #fffefa;
+        --ink: #182521;
+        --muted: #58655f;
+        --line: #d8d8cd;
+        --green: #173d36;
+        --green-soft: #e8f0e7;
+        --orange: #bd5d3f;
+        --orange-soft: #fff0e8;
+        --red: #a23f35;
+        --red-soft: #fae9e6;
+        --blue: #dce8f3;
+        --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+        --sans: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--sans); }
+      button, input, select { font: inherit; }
+      button, select, input[type='range'] { accent-color: var(--green); }
+      button { cursor: pointer; }
+      button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #c76e4f; outline-offset: 3px; }
+      .page { width: min(1120px, calc(100% - 36px)); margin: 0 auto; padding: 34px 0 60px; }
+      .eyebrow, .label, .tag, .priority, .metric-label, .route-meta { font-family: var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+      .eyebrow { color: var(--green); font-size: 11px; font-weight: 700; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { max-width: 790px; margin: 14px 0 12px; font: 400 clamp(40px, 7vw, 74px)/.98 Georgia, 'Times New Roman', serif; letter-spacing: -.065em; }
+      h1 em { color: var(--green); font-style: italic; }
+      h2 { margin-bottom: 6px; font: 400 29px/1.12 Georgia, 'Times New Roman', serif; letter-spacing: -.04em; }
+      h3 { margin-bottom: 3px; font-size: 16px; }
+      .intro { max-width: 740px; color: var(--muted); font-size: 16px; }
+      .question { display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px; margin: 27px 0 34px; padding: 19px 21px; border-left: 3px solid var(--orange); background: #ebe9df; }
+      .question p { margin: 0; }
+      .question .label { display: block; margin-bottom: 5px; color: var(--green); font-size: 9px; font-weight: 700; }
+      .assumption { color: var(--muted); font-size: 12px; }
+      .section { margin-top: 34px; }
+      .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 15px; }
+      .section-head p { margin: 0; color: var(--muted); font-size: 12px; }
+      .panel { padding: 22px; border: 1px solid var(--line); background: var(--surface); }
+      .state-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+      .metric { padding: 14px 15px; border: 1px solid var(--line); background: #faf9f3; }
+      .metric-label { color: var(--muted); font-size: 9px; }
+      .metric-value { display: block; margin-top: 3px; font: 400 27px/1.1 Georgia, 'Times New Roman', serif; }
+      .metric-detail { color: var(--muted); font-size: 11px; }
+      .decision-summary { margin: 0 0 16px; padding: 11px 13px; border-left: 3px solid var(--green); background: var(--green-soft); font-size: 13px; }
+      .decision-summary.warn { border-color: var(--orange); background: var(--orange-soft); }
+      .decision-summary.alert { border-color: var(--red); background: var(--red-soft); }
+      .route-list { display: grid; gap: 9px; }
+      .route-row { display: grid; grid-template-columns: minmax(130px, 1.1fr) minmax(190px, 1.35fr) minmax(130px, .85fr) minmax(120px, .8fr); align-items: center; gap: 14px; padding: 13px; border: 1px solid var(--line); }
+      .route-name { font-weight: 700; }
+      .route-meta { display: block; color: var(--muted); font-size: 9px; }
+      .priority { display: inline-block; margin-top: 4px; color: var(--green); font-size: 9px; }
+      .priority.low { color: var(--orange); }
+      .p95-reading { font: 16px var(--mono); }
+      .p95-budget { display: block; color: var(--muted); font-size: 10px; }
+      .route-status { justify-self: start; padding: 5px 9px; border-radius: 99px; background: var(--green-soft); color: #174f3f; font: 10px var(--mono); text-transform: uppercase; }
+      .route-status.shed { background: var(--red-soft); color: var(--red); }
+      .route-reason { grid-column: 1 / -1; margin: -4px 0 0; color: var(--muted); font-size: 11px; }
+      .controls-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .control { padding: 16px; border: 1px solid var(--line); background: #faf9f3; }
+      .control label { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 650; }
+      .control output { color: var(--green); font-family: var(--mono); }
+      .control input[type='range'] { width: 100%; margin: 14px 0 5px; }
+      .control select { width: 100%; margin-top: 10px; padding: 9px 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+      .control small { display: block; color: var(--muted); font-size: 10px; }
+      .route-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+      .route-control { padding: 15px; border: 1px solid var(--line); background: var(--surface); }
+      .route-control-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+      .route-control input[type='range'] { width: 100%; margin: 11px 0 7px; }
+      .route-control label { display: block; color: var(--muted); font-size: 10px; }
+      .route-control output { color: var(--ink); font: 12px var(--mono); }
+      .button-row { display: flex; gap: 7px; margin-top: 9px; }
+      .button { padding: 8px 10px; border: 1px solid var(--green); background: var(--green); color: white; font-size: 11px; font-weight: 650; }
+      .button:hover { background: #24594f; }
+      .button.secondary { border-color: var(--line); background: var(--surface); color: var(--ink); }
+      .button.secondary:hover { border-color: var(--green); color: var(--green); }
+      .freeplay-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+      .walk-tabs { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 8px; }
+      .tab { padding: 9px 12px; border: 1px solid var(--line); background: transparent; color: var(--muted); white-space: nowrap; font-size: 11px; font-weight: 650; }
+      .tab[aria-selected='true'] { border-color: var(--green); background: var(--green); color: white; }
+      .walk-panel { min-height: 157px; }
+      .walk-panel p { max-width: 760px; color: var(--muted); font-size: 13px; }
+      .walk-step { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; margin-top: 17px; padding-top: 14px; border-top: 1px solid var(--line); }
+      .walk-step-label { color: var(--muted); font: 10px var(--mono); }
+      .walk-note { margin: 12px 0 0; color: var(--green); font-size: 12px; }
+      .results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .result-card { padding: 15px; border: 1px solid var(--line); background: var(--surface); }
+      .result-card h3 { margin: 0 0 5px; font: 400 19px Georgia, 'Times New Roman', serif; }
+      .result-card p { margin: 0; color: var(--muted); font-size: 12px; }
+      .footnote { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+      .footnote a { color: var(--green); }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+      @media (max-width: 760px) {
+        .question { grid-template-columns: 1fr; gap: 13px; }
+        .route-row { grid-template-columns: 1fr auto; gap: 9px 14px; }
+        .route-p95 { grid-column: 1; }
+        .route-status { grid-column: 2; grid-row: 1 / span 2; }
+        .route-reason { grid-column: 1 / -1; }
+        .route-controls { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 560px) {
+        .page { width: calc(100% - 24px); padding-top: 23px; }
+        .panel { padding: 14px; }
+        .state-grid, .controls-grid, .results { grid-template-columns: 1fr; }
+        .section-head { align-items: start; flex-direction: column; }
+        .metric { padding: 11px 13px; }
+        .metric-value { font-size: 23px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <p class="eyebrow">Prototype · Priority-aware load shedding</p>
+        <h1>Priority under <em>pressure.</em></h1>
+        <p class="intro">A small, interactive model for exploring when an API should limit routes during high resource use or a route-specific p95 breach.</p>
+      </header>
+
+      <section class="question" aria-label="Prototype question and assumptions">
+        <p><span class="label">Question to explore</span>Can a service protect its most important routes by shedding lower-priority traffic when utilization is high or a route's p95 latency exceeds its budget?</p>
+        <p class="assumption"><span class="label">Model assumptions</span>Route names, p95 budgets, and latency values are illustrative. The 80% load trigger comes from the scenario described. Nothing here measures a real service.</p>
+      </section>
+
+      <section class="section" aria-labelledby="state-title">
+        <div class="section-head">
+          <div><p class="eyebrow">01 · Current state</p><h2 id="state-title">What would the gateway admit?</h2></div>
+          <p>Every control below updates this decision immediately.</p>
+        </div>
+        <div class="panel" aria-live="polite">
+          <div class="state-grid">
+            <div class="metric"><span class="metric-label">Service utilization</span><strong class="metric-value" id="metric-load">—</strong><span class="metric-detail" id="metric-load-detail">—</span></div>
+            <div class="metric"><span class="metric-label">P95 budgets exceeded</span><strong class="metric-value" id="metric-breaches">—</strong><span class="metric-detail">Measured separately for each route</span></div>
+            <div class="metric"><span class="metric-label">Routes limited</span><strong class="metric-value" id="metric-shed">—</strong><span class="metric-detail" id="metric-shed-detail">—</span></div>
+          </div>
+          <p class="decision-summary" id="decision-summary">—</p>
+          <div class="route-list" id="route-state" aria-label="Route admission decisions"></div>
+          <p class="walk-note" id="last-action">—</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="freeplay-title">
+        <div class="section-head">
+          <div><p class="eyebrow">02 · Free play</p><h2 id="freeplay-title">Change the conditions.</h2></div>
+          <p>Try one signal at a time, then combine them.</p>
+        </div>
+        <div class="panel">
+          <div class="controls-grid">
+            <div class="control">
+              <label for="load-control">Current service load <output id="load-output">65%</output></label>
+              <input id="load-control" type="range" min="0" max="100" step="1" value="65" />
+              <small>Measured as a percentage of the service's modeled maximum.</small>
+            </div>
+            <div class="control">
+              <label for="load-threshold">First load threshold <output id="threshold-output">80%</output></label>
+              <input id="load-threshold" type="range" min="50" max="95" step="1" value="80" />
+              <small>At this point, the lowest-priority route is limited.</small>
+            </div>
+            <div class="control">
+              <label for="severe-threshold">Higher-load threshold <output id="severe-output">90%</output></label>
+              <input id="severe-threshold" type="range" min="55" max="100" step="1" value="90" />
+              <small>At this point, the next-lowest priority is also limited.</small>
+            </div>
+            <div class="control">
+              <label for="latency-policy">When a route's p95 breaches its budget</label>
+              <select id="latency-policy">
+                <option value="protect">Protect it; limit lower-priority routes</option>
+                <option value="local">Limit only the route that breached</option>
+                <option value="off">Treat p95 as a warning only</option>
+              </select>
+              <small>This choice lets you compare three responses to the same latency signal.</small>
+            </div>
+          </div>
+          <div class="route-controls" id="route-controls" aria-label="Route p95 controls"></div>
+          <div class="freeplay-actions">
+            <button class="button secondary" data-action="adjust-load" data-value="-5">Load −5 points</button>
+            <button class="button secondary" data-action="adjust-load" data-value="5">Load +5 points</button>
+            <button class="button secondary" data-action="reset">Reset to baseline</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="walk-title">
+        <div class="section-head">
+          <div><p class="eyebrow">03 · Guided scenarios</p><h2 id="walk-title">Walk through the edge cases.</h2></div>
+          <p>Each walkthrough starts from known conditions.</p>
+        </div>
+        <div class="walk-tabs" role="tablist" aria-label="Choose a scenario">
+          <button class="tab" role="tab" aria-selected="true" data-scenario="load">Load trigger</button>
+          <button class="tab" role="tab" aria-selected="false" data-scenario="latency">P95 before 80%</button>
+          <button class="tab" role="tab" aria-selected="false" data-scenario="local">Route-local problem</button>
+          <button class="tab" role="tab" aria-selected="false" data-scenario="combined">Both signals</button>
+        </div>
+        <div class="panel walk-panel" role="tabpanel" aria-live="polite">
+          <h3 id="scenario-title">—</h3>
+          <p id="scenario-description">—</p>
+          <div class="walk-step">
+            <span class="walk-step-label" id="scenario-progress">—</span>
+            <button class="button" id="scenario-step">—</button>
+          </div>
+          <p class="walk-note" id="scenario-note"></p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="observations-title">
+        <div class="section-head">
+          <div><p class="eyebrow">04 · What the model predicts</p><h2 id="observations-title">Starting observations.</h2></div>
+          <p>These are simulated outcomes, not production measurements.</p>
+        </div>
+        <div class="results">
+          <article class="result-card"><h3>80% load, p95 healthy</h3><p>The deferrable route is limited first; essential and standard routes remain admitted.</p></article>
+          <article class="result-card"><h3>65% load, essential p95 over budget</h3><p>With the protection policy selected, lower-priority routes are limited even though utilization is below 80%.</p></article>
+          <article class="result-card"><h3>65% load, deferrable p95 over budget</h3><p>The deferrable route is limited on its own; healthy higher-priority routes remain admitted.</p></article>
+          <article class="result-card"><h3>95% load</h3><p>Both the deferrable and standard routes are limited; the essential route remains admitted.</p></article>
+        </div>
+      </section>
+
+      <footer class="footnote">
+        <strong>Prototype only.</strong> This single file keeps state in memory and uses made-up inputs to test a decision rule. It does not emulate a server, establish a safe production threshold, or prove that shedding one route improves another route's latency. See <a href="RESULTS.md">the model notes</a> for assumptions and open questions.
+      </footer>
+    </main>
+
+    <script>
+      // Portable policy model: pure state transitions and a pure admission decision.
+      const model = (() => {
+        const routeDefaults = [
+          { id: 'essential', name: 'Essential', kind: 'Critical', rank: 0, p95: 180, budget: 250 },
+          { id: 'standard', name: 'Standard', kind: 'Interactive', rank: 1, p95: 270, budget: 400 },
+          { id: 'deferrable', name: 'Deferrable', kind: 'Best effort', rank: 2, p95: 620, budget: 900 },
+        ];
+
+        function initialState() {
+          return {
+            loadPct: 65,
+            loadThresholdPct: 80,
+            severeThresholdPct: 90,
+            latencyPolicy: 'protect',
+            routes: routeDefaults.map((route) => ({ ...route })),
+            lastAction: 'Baseline: all routes are within their p95 budgets and service load is below 80%.',
+          };
+        }
+
+        function transition(state, action) {
+          if (action.type === 'RESET') return initialState();
+          const next = {
+            ...state,
+            routes: state.routes.map((route) => ({ ...route })),
+            lastAction: action.note ?? state.lastAction,
+          };
+
+          if (action.type === 'SET_LOAD') next.loadPct = Math.max(0, Math.min(100, action.value));
+          if (action.type === 'ADJUST_LOAD') next.loadPct = Math.max(0, Math.min(100, state.loadPct + action.value));
+          if (action.type === 'SET_LOAD_THRESHOLD') {
+            next.loadThresholdPct = action.value;
+            next.severeThresholdPct = Math.max(next.severeThresholdPct, action.value + 1);
+          }
+          if (action.type === 'SET_SEVERE_THRESHOLD') next.severeThresholdPct = Math.max(state.loadThresholdPct + 1, action.value);
+          if (action.type === 'SET_LATENCY_POLICY') next.latencyPolicy = action.value;
+          if (action.type === 'SET_P95' || action.type === 'ADJUST_P95') {
+            next.routes = next.routes.map((route) => {
+              if (route.id !== action.routeId) return route;
+              const p95 = action.type === 'SET_P95' ? action.value : route.p95 + action.value;
+              return { ...route, p95: Math.max(0, Math.min(1500, p95)) };
+            });
+          }
+          if (action.type === 'SET_BUDGET') {
+            next.routes = next.routes.map((route) => route.id === action.routeId
+              ? { ...route, budget: Math.max(50, Math.min(2000, action.value)) }
+              : route);
+          }
+          if (action.type === 'SET_NOTE') next.lastAction = action.value;
+          return next;
+        }
+
+        function decide(state) {
+          const limited = new Map();
+          const signals = [];
+          const addReason = (routeId, reason) => {
+            const reasons = limited.get(routeId) ?? [];
+            if (!reasons.includes(reason)) reasons.push(reason);
+            limited.set(routeId, reasons);
+          };
+          const loadTriggered = state.loadPct >= state.loadThresholdPct;
+          const severeLoadTriggered = state.loadPct >= state.severeThresholdPct;
+          const breachedRoutes = state.routes.filter((route) => route.p95 > route.budget);
+
+          if (loadTriggered) {
+            const deferrable = state.routes.find((route) => route.id === 'deferrable');
+            if (deferrable) addReason(deferrable.id, `Load is at or above ${state.loadThresholdPct}%.`);
+            signals.push(`Load threshold reached (${state.loadPct}% ≥ ${state.loadThresholdPct}%).`);
+          }
+          if (severeLoadTriggered) {
+            const standard = state.routes.find((route) => route.id === 'standard');
+            if (standard) addReason(standard.id, `Load reached the higher threshold of ${state.severeThresholdPct}%.`);
+            signals.push(`Higher load threshold reached (${state.loadPct}% ≥ ${state.severeThresholdPct}%).`);
+          }
+
+          if (breachedRoutes.length && state.latencyPolicy !== 'off') {
+            const breachedNames = breachedRoutes.map((route) => route.name).join(', ');
+            signals.push(`P95 over budget: ${breachedNames}.`);
+            if (state.latencyPolicy === 'local') {
+              for (const route of breachedRoutes) addReason(route.id, `This route's p95 (${route.p95} ms) is over its ${route.budget} ms budget.`);
+            } else {
+              const protectedRoute = [...breachedRoutes].sort((a, b) => a.rank - b.rank)[0];
+              const lowerPriorityRoutes = state.routes.filter((route) => route.rank > protectedRoute.rank);
+              if (lowerPriorityRoutes.length) {
+                for (const route of lowerPriorityRoutes) addReason(route.id, `Limited to protect the higher-priority ${protectedRoute.name} route with a p95 breach.`);
+              } else {
+                addReason(protectedRoute.id, `This lowest-priority route's p95 (${protectedRoute.p95} ms) is over its ${protectedRoute.budget} ms budget.`);
+              }
+            }
+          } else if (breachedRoutes.length) {
+            signals.push(`P95 warning only: ${breachedRoutes.map((route) => route.name).join(', ')} is over budget; the selected policy does not shed on latency.`);
+          }
+
+          const routes = state.routes.map((route) => ({
+            ...route,
+            breached: route.p95 > route.budget,
+            limited: limited.has(route.id),
+            reasons: limited.get(route.id) ?? [],
+          }));
+          const limitedCount = routes.filter((route) => route.limited).length;
+          const summary = signals.length
+            ? `${signals.join(' ')} ${limitedCount ? `${limitedCount} route${limitedCount === 1 ? '' : 's'} limited by priority.` : 'No route was limited.'}`
+            : 'No trigger fired. All routes remain admitted.';
+          return { routes, signals, summary, loadTriggered, severeLoadTriggered, breachedCount: breachedRoutes.length, limitedCount };
+        }
+
+        return { initialState, transition, decide };
+      })();
+
+      let state = model.initialState();
+      let selectedScenario = 'load';
+      let scenarioStepIndex = 0;
+
+      const scenarios = {
+        load: {
+          title: 'The service approaches its load guardrail',
+          description: 'Watch the lowest-priority route leave first, then see the next tier limited only after the higher threshold is crossed.',
+          steps: [
+            { label: 'Restore the healthy baseline', action: { type: 'RESET' }, note: 'Baseline restored: 65% load, all p95 values within budget.' },
+            { label: 'Raise load to 85%', action: { type: 'SET_LOAD', value: 85 }, note: 'At 85%, the first load threshold limits Deferrable; Essential and Standard remain admitted.' },
+            { label: 'Raise load to 95%', action: { type: 'SET_LOAD', value: 95 }, note: 'At 95%, the higher threshold also limits Standard; Essential remains admitted.' },
+          ],
+        },
+        latency: {
+          title: 'A critical route breaches p95 below 80% load',
+          description: 'The service is only at 65% load. With the protection policy selected, a route-level p95 breach still limits lower-priority traffic to protect Essential.',
+          steps: [
+            { label: 'Restore the healthy baseline', action: { type: 'RESET' }, note: 'Baseline restored: no load trigger and no p95 breach.' },
+            { label: 'Raise Essential p95 to 300 ms', action: { type: 'SET_P95', routeId: 'essential', value: 300 }, note: 'Essential is over its 250 ms budget. The selected policy protects it by limiting lower-priority routes, despite 65% load.' },
+          ],
+        },
+        local: {
+          title: 'A p95 problem belongs to the deferrable route',
+          description: 'Compare route-local response with cross-route protection. A breach on the lowest-priority route can be handled without limiting healthy routes.',
+          steps: [
+            { label: 'Restore the healthy baseline', action: { type: 'RESET' }, note: 'Baseline restored.' },
+            { label: 'Raise Deferrable p95 to 1100 ms', action: { type: 'SET_P95', routeId: 'deferrable', value: 1100 }, note: 'Only Deferrable is over its budget. The protection policy limits this route itself and leaves the higher-priority routes admitted.' },
+          ],
+        },
+        combined: {
+          title: 'Load pressure and p95 degradation happen together',
+          description: 'This scenario combines the 80% guardrail with a Standard p95 breach. Notice which route is limited by each signal and how the reasons accumulate.',
+          steps: [
+            { label: 'Restore the healthy baseline', action: { type: 'RESET' }, note: 'Baseline restored.' },
+            { label: 'Raise load to 85%', action: { type: 'SET_LOAD', value: 85 }, note: 'The load trigger limits Deferrable.' },
+            { label: 'Raise Standard p95 to 520 ms', action: { type: 'SET_P95', routeId: 'standard', value: 520 }, note: 'Standard is over budget. The protection policy continues to limit Deferrable to protect Standard; Essential remains admitted.' },
+          ],
+        },
+      };
+
+      const byId = (id) => document.getElementById(id);
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, Number(value)));
+
+      function initializeRouteControls() {
+        byId('route-controls').innerHTML = state.routes.map((route) => `
+          <section class="route-control" aria-label="${route.name} route p95 control">
+            <div class="route-control-head"><div><h3>${route.name}</h3><span class="route-meta">${route.kind}</span></div><span class="priority ${route.rank === 2 ? 'low' : ''}">P${route.rank + 1}</span></div>
+            <label for="p95-${route.id}">Observed p95 <output id="p95-value-${route.id}">${route.p95} ms</output></label>
+            <input id="p95-${route.id}" type="range" min="0" max="1500" step="10" value="${route.p95}" data-p95-route="${route.id}" />
+            <label for="budget-${route.id}">Route budget (ms)</label>
+            <input id="budget-${route.id}" type="number" min="50" max="2000" step="10" value="${route.budget}" data-budget-route="${route.id}" style="width:100%;margin-top:5px;padding:7px;border:1px solid var(--line);background:var(--surface);" />
+            <div class="button-row"><button class="button secondary" data-action="adjust-p95" data-route="${route.id}" data-value="-50">−50 ms</button><button class="button secondary" data-action="adjust-p95" data-route="${route.id}" data-value="50">+50 ms</button></div>
+          </section>`).join('');
+      }
+
+      function dispatch(action) {
+        state = model.transition(state, action);
+        render();
+      }
+
+      function render() {
+        const decision = model.decide(state);
+        byId('load-control').value = state.loadPct;
+        byId('load-output').textContent = `${state.loadPct}%`;
+        byId('load-threshold').value = state.loadThresholdPct;
+        byId('threshold-output').textContent = `${state.loadThresholdPct}%`;
+        byId('severe-threshold').min = String(state.loadThresholdPct + 1);
+        byId('severe-threshold').value = state.severeThresholdPct;
+        byId('severe-output').textContent = `${state.severeThresholdPct}%`;
+        byId('latency-policy').value = state.latencyPolicy;
+        byId('metric-load').textContent = `${state.loadPct}%`;
+        byId('metric-load-detail').textContent = decision.severeLoadTriggered
+          ? `Higher threshold: ${state.severeThresholdPct}%`
+          : decision.loadTriggered ? `First threshold: ${state.loadThresholdPct}%` : `First threshold: ${state.loadThresholdPct}%`;
+        byId('metric-breaches').textContent = String(decision.breachedCount);
+        byId('metric-shed').textContent = String(decision.limitedCount);
+        byId('metric-shed-detail').textContent = decision.limitedCount === 0 ? 'No route is currently limited' : 'Limited by one or more active signals';
+        const summary = byId('decision-summary');
+        summary.textContent = decision.summary;
+        summary.className = `decision-summary${decision.limitedCount ? ' warn' : decision.breachedCount ? ' alert' : ''}`;
+
+        byId('route-state').innerHTML = decision.routes.map((route) => `
+          <article class="route-row">
+            <div><span class="route-name">${route.name}</span><span class="route-meta">${route.kind}</span><span class="priority ${route.rank === 2 ? 'low' : ''}">${route.rank === 0 ? 'Priority 1 · Protect' : route.rank === 1 ? 'Priority 2' : 'Priority 3 · First to shed'}</span></div>
+            <div class="route-p95"><span class="p95-reading">p95 ${route.p95} ms</span><span class="p95-budget">Budget ${route.budget} ms · ${route.breached ? 'over budget' : 'within budget'}</span></div>
+            <span class="route-status ${route.limited ? 'shed' : ''}">${route.limited ? 'Limited' : 'Admitted'}</span>
+            <span class="route-meta">${route.limited ? route.reasons.join(' ') : route.breached ? 'Latency warning; route is still admitted.' : 'No active limiting reason.'}</span>
+          </article>`).join('');
+
+        for (const route of state.routes) {
+          byId(`p95-${route.id}`).value = route.p95;
+          byId(`p95-value-${route.id}`).textContent = `${route.p95} ms`;
+          byId(`budget-${route.id}`).value = route.budget;
+        }
+
+        byId('last-action').textContent = state.lastAction;
+        renderScenario();
+      }
+
+      function renderScenario() {
+        const scenario = scenarios[selectedScenario];
+        byId('scenario-title').textContent = scenario.title;
+        byId('scenario-description').textContent = scenario.description;
+        const button = byId('scenario-step');
+        const done = scenarioStepIndex >= scenario.steps.length;
+        byId('scenario-progress').textContent = done
+          ? `Complete · ${scenario.steps.length} steps`
+          : `Step ${scenarioStepIndex + 1} of ${scenario.steps.length}`;
+        button.textContent = done ? 'Scenario complete' : scenario.steps[scenarioStepIndex].label;
+        button.disabled = done;
+        button.setAttribute('aria-label', done ? 'Scenario complete' : `Run step ${scenarioStepIndex + 1}: ${scenario.steps[scenarioStepIndex].label}`);
+      }
+
+      function startScenario(id) {
+        selectedScenario = id;
+        scenarioStepIndex = 0;
+        state = model.initialState();
+        state = model.transition(state, { type: 'SET_NOTE', value: `Walkthrough ready: ${scenarios[id].title}.` });
+        document.querySelectorAll('[data-scenario]').forEach((tab) => {
+          const active = tab.dataset.scenario === id;
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+        });
+        render();
+        byId('scenario-note').textContent = 'The walkthrough reset the model to the same healthy baseline.';
+      }
+
+      byId('load-control').addEventListener('input', (event) => dispatch({ type: 'SET_LOAD', value: Number(event.target.value), note: `Service utilization changed to ${event.target.value}%.` }));
+      byId('load-threshold').addEventListener('input', (event) => dispatch({ type: 'SET_LOAD_THRESHOLD', value: Number(event.target.value), note: `First load threshold changed to ${event.target.value}%.` }));
+      byId('severe-threshold').addEventListener('input', (event) => dispatch({ type: 'SET_SEVERE_THRESHOLD', value: Number(event.target.value), note: `Higher load threshold changed to ${event.target.value}%.` }));
+      byId('latency-policy').addEventListener('change', (event) => {
+        const labels = { protect: 'Protect the highest-priority breached route', local: 'Limit only routes that breach their own p95 budget', off: 'Use p95 as a warning only' };
+        dispatch({ type: 'SET_LATENCY_POLICY', value: event.target.value, note: `Latency policy: ${labels[event.target.value]}.` });
+      });
+      byId('route-controls').addEventListener('input', (event) => {
+        if (event.target.matches('[data-p95-route]')) {
+          const route = state.routes.find((item) => item.id === event.target.dataset.p95Route);
+          dispatch({ type: 'SET_P95', routeId: event.target.dataset.p95Route, value: Number(event.target.value), note: `${route.name} p95 changed to ${event.target.value} ms.` });
+        }
+      });
+      byId('route-controls').addEventListener('change', (event) => {
+        if (event.target.matches('[data-budget-route]')) {
+          const route = state.routes.find((item) => item.id === event.target.dataset.budgetRoute);
+          const value = clamp(event.target.value, 50, 2000);
+          dispatch({ type: 'SET_BUDGET', routeId: route.id, value, note: `${route.name} p95 budget changed to ${value} ms.` });
+        }
+      });
+      document.body.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-action]');
+        if (button) {
+          const action = button.dataset.action;
+          if (action === 'adjust-load') dispatch({ type: 'ADJUST_LOAD', value: Number(button.dataset.value), note: `Service utilization changed by ${button.dataset.value} percentage points.` });
+          if (action === 'adjust-p95') {
+            const route = state.routes.find((item) => item.id === button.dataset.route);
+            dispatch({ type: 'ADJUST_P95', routeId: route.id, value: Number(button.dataset.value), note: `${route.name} p95 changed by ${button.dataset.value} ms.` });
+          }
+          if (action === 'reset') {
+            state = model.transition(state, { type: 'RESET' });
+            byId('scenario-note').textContent = '';
+            render();
+          }
+        }
+        const tab = event.target.closest('[data-scenario]');
+        if (tab) startScenario(tab.dataset.scenario);
+        if (event.target.id === 'scenario-step') {
+          const scenario = scenarios[selectedScenario];
+          const step = scenario.steps[scenarioStepIndex];
+          if (step) {
+            state = model.transition(state, step.action);
+            state = model.transition(state, { type: 'SET_NOTE', value: step.note });
+            scenarioStepIndex += 1;
+            render();
+            byId('scenario-note').textContent = step.note;
+          }
+        }
+      });
+
+      initializeRouteControls();
+      startScenario('load');
+    </script>
+  </body>
+</html>
