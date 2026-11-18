@@ -1,0 +1,2362 @@
+[
+  {
+    "elapsed_seconds": 0.0,
+    "resource_cpu_pct": 1.68,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": null,
+        "classified": null,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": null,
+        "classified": null,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": null,
+        "classified": null,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 1.0,
+    "resource_cpu_pct": 94.75,
+    "in_flight": 2,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 23,
+        "classified": 23,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 54,
+        "classified": 54,
+        "unclassified": null,
+        "shed": 14,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 82,
+        "classified": 82,
+        "unclassified": null,
+        "shed": 35,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 2.05,
+    "resource_cpu_pct": 57.78,
+    "in_flight": 9,
+    "shared_dependency": {
+      "busy": 7,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 35,
+        "classified": 35,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 108,
+        "classified": 108,
+        "unclassified": null,
+        "shed": 33,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 197,
+        "classified": 197,
+        "unclassified": null,
+        "shed": 85,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 3.06,
+    "resource_cpu_pct": 33.58,
+    "in_flight": 14,
+    "shared_dependency": {
+      "busy": 13,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 60,
+        "classified": 60,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 166,
+        "classified": 166,
+        "unclassified": null,
+        "shed": 33,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 302,
+        "classified": 302,
+        "unclassified": null,
+        "shed": 140,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 4.07,
+    "resource_cpu_pct": 45.57,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 77,
+        "classified": 77,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 229,
+        "classified": 229,
+        "unclassified": null,
+        "shed": 54,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 403,
+        "classified": 403,
+        "unclassified": null,
+        "shed": 183,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 5.08,
+    "resource_cpu_pct": 71.69,
+    "in_flight": 20,
+    "shared_dependency": {
+      "busy": 20,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 96,
+        "classified": 96,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 301,
+        "classified": 301,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 495,
+        "classified": 495,
+        "unclassified": null,
+        "shed": 221,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 6.13,
+    "resource_cpu_pct": 80.26,
+    "in_flight": 8,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 113,
+        "classified": 113,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 357,
+        "classified": 357,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 604,
+        "classified": 604,
+        "unclassified": null,
+        "shed": 285,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 7.14,
+    "resource_cpu_pct": 76.51,
+    "in_flight": 9,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 139,
+        "classified": 139,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 413,
+        "classified": 413,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 710,
+        "classified": 710,
+        "unclassified": null,
+        "shed": 340,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 8.19,
+    "resource_cpu_pct": 80.73,
+    "in_flight": 32,
+    "shared_dependency": {
+      "busy": 24,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 147,
+        "classified": 147,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 476,
+        "classified": 476,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 821,
+        "classified": 821,
+        "unclassified": null,
+        "shed": 375,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 9.19,
+    "resource_cpu_pct": 46.91,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 7,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 171,
+        "classified": 171,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 519,
+        "classified": 519,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 943,
+        "classified": 943,
+        "unclassified": null,
+        "shed": 472,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 10.19,
+    "resource_cpu_pct": 88.64,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 190,
+        "classified": 190,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 570,
+        "classified": 570,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1053,
+        "classified": 1053,
+        "unclassified": null,
+        "shed": 520,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 11.19,
+    "resource_cpu_pct": 86.66,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 211,
+        "classified": 211,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 627,
+        "classified": 627,
+        "unclassified": null,
+        "shed": 74,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1155,
+        "classified": 1155,
+        "unclassified": null,
+        "shed": 573,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 12.24,
+    "resource_cpu_pct": 29.61,
+    "in_flight": 5,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 221,
+        "classified": 221,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 678,
+        "classified": 678,
+        "unclassified": null,
+        "shed": 90,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1274,
+        "classified": 1274,
+        "unclassified": null,
+        "shed": 630,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 13.25,
+    "resource_cpu_pct": 23.49,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 237,
+        "classified": 237,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 757,
+        "classified": 757,
+        "unclassified": null,
+        "shed": 115,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1368,
+        "classified": 1368,
+        "unclassified": null,
+        "shed": 676,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 14.3,
+    "resource_cpu_pct": 71.62,
+    "in_flight": 18,
+    "shared_dependency": {
+      "busy": 14,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 257,
+        "classified": 257,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 813,
+        "classified": 813,
+        "unclassified": null,
+        "shed": 115,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1474,
+        "classified": 1474,
+        "unclassified": null,
+        "shed": 711,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 15.44,
+    "resource_cpu_pct": 89.92,
+    "in_flight": 5,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 277,
+        "classified": 277,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 872,
+        "classified": 872,
+        "unclassified": null,
+        "shed": 136,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1583,
+        "classified": 1583,
+        "unclassified": null,
+        "shed": 753,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 16.44,
+    "resource_cpu_pct": 29.69,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 4,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 300,
+        "classified": 300,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 939,
+        "classified": 939,
+        "unclassified": null,
+        "shed": 159,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1698,
+        "classified": 1698,
+        "unclassified": null,
+        "shed": 821,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 17.47,
+    "resource_cpu_pct": 75.38,
+    "in_flight": 10,
+    "shared_dependency": {
+      "busy": 9,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 315,
+        "classified": 315,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1003,
+        "classified": 1003,
+        "unclassified": null,
+        "shed": 159,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1800,
+        "classified": 1800,
+        "unclassified": null,
+        "shed": 866,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 18.52,
+    "resource_cpu_pct": 75.28,
+    "in_flight": 19,
+    "shared_dependency": {
+      "busy": 19,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 338,
+        "classified": 338,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1051,
+        "classified": 1051,
+        "unclassified": null,
+        "shed": 159,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 1915,
+        "classified": 1915,
+        "unclassified": null,
+        "shed": 904,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 19.57,
+    "resource_cpu_pct": 76.02,
+    "in_flight": 22,
+    "shared_dependency": {
+      "busy": 22,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 356,
+        "classified": 356,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1107,
+        "classified": 1107,
+        "unclassified": null,
+        "shed": 159,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2030,
+        "classified": 2030,
+        "unclassified": null,
+        "shed": 960,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 20.77,
+    "resource_cpu_pct": 88.68,
+    "in_flight": 5,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 366,
+        "classified": 366,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1167,
+        "classified": 1167,
+        "unclassified": null,
+        "shed": 181,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2149,
+        "classified": 2149,
+        "unclassified": null,
+        "shed": 1012,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 21.9,
+    "resource_cpu_pct": 95.67,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 394,
+        "classified": 394,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1228,
+        "classified": 1228,
+        "unclassified": null,
+        "shed": 184,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2277,
+        "classified": 2277,
+        "unclassified": null,
+        "shed": 1063,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 23.01,
+    "resource_cpu_pct": 90.98,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 417,
+        "classified": 417,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1292,
+        "classified": 1292,
+        "unclassified": null,
+        "shed": 204,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2391,
+        "classified": 2391,
+        "unclassified": null,
+        "shed": 1108,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 24.01,
+    "resource_cpu_pct": 56.78,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 437,
+        "classified": 437,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1354,
+        "classified": 1354,
+        "unclassified": null,
+        "shed": 220,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2509,
+        "classified": 2509,
+        "unclassified": null,
+        "shed": 1178,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 25.01,
+    "resource_cpu_pct": 67.09,
+    "in_flight": 11,
+    "shared_dependency": {
+      "busy": 11,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 459,
+        "classified": 459,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1418,
+        "classified": 1418,
+        "unclassified": null,
+        "shed": 220,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2603,
+        "classified": 2603,
+        "unclassified": null,
+        "shed": 1214,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 26.01,
+    "resource_cpu_pct": 87.68,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 467,
+        "classified": 467,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1475,
+        "classified": 1475,
+        "unclassified": null,
+        "shed": 220,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2719,
+        "classified": 2719,
+        "unclassified": null,
+        "shed": 1281,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 27.01,
+    "resource_cpu_pct": 71.59,
+    "in_flight": 9,
+    "shared_dependency": {
+      "busy": 8,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 486,
+        "classified": 486,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1536,
+        "classified": 1536,
+        "unclassified": null,
+        "shed": 220,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2819,
+        "classified": 2819,
+        "unclassified": null,
+        "shed": 1329,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 28.16,
+    "resource_cpu_pct": 76.65,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 497,
+        "classified": 497,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1585,
+        "classified": 1585,
+        "unclassified": null,
+        "shed": 220,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 2939,
+        "classified": 2939,
+        "unclassified": null,
+        "shed": 1374,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 29.18,
+    "resource_cpu_pct": 72.09,
+    "in_flight": 20,
+    "shared_dependency": {
+      "busy": 20,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 523,
+        "classified": 523,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1647,
+        "classified": 1647,
+        "unclassified": null,
+        "shed": 241,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3058,
+        "classified": 3058,
+        "unclassified": null,
+        "shed": 1403,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 30.23,
+    "resource_cpu_pct": 80.29,
+    "in_flight": 10,
+    "shared_dependency": {
+      "busy": 10,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 536,
+        "classified": 536,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1717,
+        "classified": 1717,
+        "unclassified": null,
+        "shed": 241,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3158,
+        "classified": 3158,
+        "unclassified": null,
+        "shed": 1452,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 31.25,
+    "resource_cpu_pct": 89.83,
+    "in_flight": 2,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 548,
+        "classified": 548,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1775,
+        "classified": 1775,
+        "unclassified": null,
+        "shed": 241,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3278,
+        "classified": 3278,
+        "unclassified": null,
+        "shed": 1528,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 32.32,
+    "resource_cpu_pct": 67.69,
+    "in_flight": 10,
+    "shared_dependency": {
+      "busy": 9,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 570,
+        "classified": 570,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1837,
+        "classified": 1837,
+        "unclassified": null,
+        "shed": 241,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3377,
+        "classified": 3377,
+        "unclassified": null,
+        "shed": 1574,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 33.46,
+    "resource_cpu_pct": 87.03,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 585,
+        "classified": 585,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1896,
+        "classified": 1896,
+        "unclassified": null,
+        "shed": 262,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3495,
+        "classified": 3495,
+        "unclassified": null,
+        "shed": 1621,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 34.46,
+    "resource_cpu_pct": 56.35,
+    "in_flight": 14,
+    "shared_dependency": {
+      "busy": 14,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 601,
+        "classified": 601,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 1959,
+        "classified": 1959,
+        "unclassified": null,
+        "shed": 262,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3622,
+        "classified": 3622,
+        "unclassified": null,
+        "shed": 1710,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 35.47,
+    "resource_cpu_pct": 35.5,
+    "in_flight": 11,
+    "shared_dependency": {
+      "busy": 10,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 620,
+        "classified": 620,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2014,
+        "classified": 2014,
+        "unclassified": null,
+        "shed": 277,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3728,
+        "classified": 3728,
+        "unclassified": null,
+        "shed": 1762,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 36.55,
+    "resource_cpu_pct": 72.67,
+    "in_flight": 9,
+    "shared_dependency": {
+      "busy": 8,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 637,
+        "classified": 637,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2066,
+        "classified": 2066,
+        "unclassified": null,
+        "shed": 277,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3840,
+        "classified": 3840,
+        "unclassified": null,
+        "shed": 1808,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 37.55,
+    "resource_cpu_pct": 90.36,
+    "in_flight": 2,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 651,
+        "classified": 651,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2140,
+        "classified": 2140,
+        "unclassified": null,
+        "shed": 316,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 3946,
+        "classified": 3946,
+        "unclassified": null,
+        "shed": 1864,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 38.55,
+    "resource_cpu_pct": 87.8,
+    "in_flight": 2,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 667,
+        "classified": 667,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2194,
+        "classified": 2194,
+        "unclassified": null,
+        "shed": 329,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4057,
+        "classified": 4057,
+        "unclassified": null,
+        "shed": 1923,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 39.56,
+    "resource_cpu_pct": 85.33,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 685,
+        "classified": 685,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2246,
+        "classified": 2246,
+        "unclassified": null,
+        "shed": 329,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4167,
+        "classified": 4167,
+        "unclassified": null,
+        "shed": 1977,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 40.63,
+    "resource_cpu_pct": 56.87,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 710,
+        "classified": 710,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2299,
+        "classified": 2299,
+        "unclassified": null,
+        "shed": 329,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4270,
+        "classified": 4270,
+        "unclassified": null,
+        "shed": 2017,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 41.78,
+    "resource_cpu_pct": 84.06,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 725,
+        "classified": 725,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2363,
+        "classified": 2363,
+        "unclassified": null,
+        "shed": 349,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4384,
+        "classified": 4384,
+        "unclassified": null,
+        "shed": 2058,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 42.8,
+    "resource_cpu_pct": 45.03,
+    "in_flight": 8,
+    "shared_dependency": {
+      "busy": 7,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 752,
+        "classified": 752,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2415,
+        "classified": 2415,
+        "unclassified": null,
+        "shed": 349,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4513,
+        "classified": 4513,
+        "unclassified": null,
+        "shed": 2154,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 43.87,
+    "resource_cpu_pct": 76.26,
+    "in_flight": 16,
+    "shared_dependency": {
+      "busy": 16,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 772,
+        "classified": 772,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2466,
+        "classified": 2466,
+        "unclassified": null,
+        "shed": 349,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4626,
+        "classified": 4626,
+        "unclassified": null,
+        "shed": 2190,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 44.89,
+    "resource_cpu_pct": 78.92,
+    "in_flight": 24,
+    "shared_dependency": {
+      "busy": 23,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 792,
+        "classified": 792,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2518,
+        "classified": 2518,
+        "unclassified": null,
+        "shed": 364,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4745,
+        "classified": 4745,
+        "unclassified": null,
+        "shed": 2245,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 45.89,
+    "resource_cpu_pct": 37.09,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 7,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 808,
+        "classified": 808,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2571,
+        "classified": 2571,
+        "unclassified": null,
+        "shed": 389,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4860,
+        "classified": 4860,
+        "unclassified": null,
+        "shed": 2329,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 46.89,
+    "resource_cpu_pct": 91.37,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 825,
+        "classified": 825,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2628,
+        "classified": 2628,
+        "unclassified": null,
+        "shed": 406,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 4967,
+        "classified": 4967,
+        "unclassified": null,
+        "shed": 2372,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 47.9,
+    "resource_cpu_pct": 22.97,
+    "in_flight": 15,
+    "shared_dependency": {
+      "busy": 15,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 847,
+        "classified": 847,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2680,
+        "classified": 2680,
+        "unclassified": null,
+        "shed": 423,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5073,
+        "classified": 5073,
+        "unclassified": null,
+        "shed": 2422,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 48.96,
+    "resource_cpu_pct": 75.94,
+    "in_flight": 15,
+    "shared_dependency": {
+      "busy": 14,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 866,
+        "classified": 866,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2729,
+        "classified": 2729,
+        "unclassified": null,
+        "shed": 435,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5185,
+        "classified": 5185,
+        "unclassified": null,
+        "shed": 2457,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 49.96,
+    "resource_cpu_pct": 82.53,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 7,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 885,
+        "classified": 885,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2783,
+        "classified": 2783,
+        "unclassified": null,
+        "shed": 450,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5304,
+        "classified": 5304,
+        "unclassified": null,
+        "shed": 2514,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 50.96,
+    "resource_cpu_pct": 88.7,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 899,
+        "classified": 899,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2825,
+        "classified": 2825,
+        "unclassified": null,
+        "shed": 450,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5428,
+        "classified": 5428,
+        "unclassified": null,
+        "shed": 2576,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 51.97,
+    "resource_cpu_pct": 48.3,
+    "in_flight": 7,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 920,
+        "classified": 920,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2880,
+        "classified": 2880,
+        "unclassified": null,
+        "shed": 450,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5532,
+        "classified": 5532,
+        "unclassified": null,
+        "shed": 2635,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 53.08,
+    "resource_cpu_pct": 84.08,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 4,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 941,
+        "classified": 941,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2925,
+        "classified": 2925,
+        "unclassified": null,
+        "shed": 450,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5646,
+        "classified": 5646,
+        "unclassified": null,
+        "shed": 2672,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 54.15,
+    "resource_cpu_pct": 93.15,
+    "in_flight": 3,
+    "shared_dependency": {
+      "busy": 3,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 962,
+        "classified": 962,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 2983,
+        "classified": 2983,
+        "unclassified": null,
+        "shed": 459,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5768,
+        "classified": 5768,
+        "unclassified": null,
+        "shed": 2719,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 55.15,
+    "resource_cpu_pct": 73.9,
+    "in_flight": 11,
+    "shared_dependency": {
+      "busy": 10,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 976,
+        "classified": 976,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3036,
+        "classified": 3036,
+        "unclassified": null,
+        "shed": 483,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 5894,
+        "classified": 5894,
+        "unclassified": null,
+        "shed": 2772,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 56.16,
+    "resource_cpu_pct": 64.21,
+    "in_flight": 18,
+    "shared_dependency": {
+      "busy": 18,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 986,
+        "classified": 986,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3092,
+        "classified": 3092,
+        "unclassified": null,
+        "shed": 483,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 6008,
+        "classified": 6008,
+        "unclassified": null,
+        "shed": 2819,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 57.16,
+    "resource_cpu_pct": 82.12,
+    "in_flight": 6,
+    "shared_dependency": {
+      "busy": 6,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 1002,
+        "classified": 1002,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3153,
+        "classified": 3153,
+        "unclassified": null,
+        "shed": 502,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 6112,
+        "classified": 6112,
+        "unclassified": null,
+        "shed": 2884,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 58.17,
+    "resource_cpu_pct": 70.66,
+    "in_flight": 13,
+    "shared_dependency": {
+      "busy": 12,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 1025,
+        "classified": 1025,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3202,
+        "classified": 3202,
+        "unclassified": null,
+        "shed": 502,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 6221,
+        "classified": 6221,
+        "unclassified": null,
+        "shed": 2926,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 59.18,
+    "resource_cpu_pct": 76.82,
+    "in_flight": 23,
+    "shared_dependency": {
+      "busy": 22,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 1035,
+        "classified": 1035,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3257,
+        "classified": 3257,
+        "unclassified": null,
+        "shed": 502,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 6338,
+        "classified": 6338,
+        "unclassified": null,
+        "shed": 2976,
+        "p95_ms": null,
+        "sample_count": 0,
+        "protected_by_p95": false
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 60.22,
+    "resource_cpu_pct": 71.39,
+    "in_flight": 4,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 64,
+      "work_ms": 40.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 1053,
+        "classified": 1053,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 155.60426500087488,
+        "sample_count": 1036,
+        "protected_by_p95": false
+      },
+      "standard": {
+        "attempted": 3313,
+        "classified": 3313,
+        "unclassified": null,
+        "shed": 514,
+        "p95_ms": 171.6113160000532,
+        "sample_count": 2767,
+        "protected_by_p95": false
+      },
+      "deferrable": {
+        "attempted": 6433,
+        "classified": 6433,
+        "unclassified": null,
+        "shed": 3031,
+        "p95_ms": 210.475703001066,
+        "sample_count": 3383,
+        "protected_by_p95": false
+      }
+    }
+  }
+]

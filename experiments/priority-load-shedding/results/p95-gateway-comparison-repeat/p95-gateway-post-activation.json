@@ -1,0 +1,55 @@
+{
+  "target": "http://127.0.0.1:8081",
+  "configured_rate_per_second": 23.0,
+  "duration_seconds": 60.0,
+  "weights": "essential:10,standard:30,deferrable:60",
+  "max_workers": 2048,
+  "seed": 7,
+  "completed_responses": 1380,
+  "client_schedule_drops": 0,
+  "routes": {
+    "essential": {
+      "responses": 144,
+      "served": 144,
+      "shed_429": 0,
+      "other_errors": 0,
+      "latency_budget_ms": 250,
+      "within_budget_successes": 144,
+      "late_successes": 0,
+      "within_budget_rate_pct": 100.0,
+      "p95_served_ms": 102.83,
+      "other_error_reasons": []
+    },
+    "standard": {
+      "responses": 450,
+      "served": 0,
+      "shed_429": 450,
+      "other_errors": 0,
+      "latency_budget_ms": 400,
+      "within_budget_successes": 0,
+      "late_successes": 0,
+      "within_budget_rate_pct": 0.0,
+      "p95_served_ms": null,
+      "other_error_reasons": []
+    },
+    "deferrable": {
+      "responses": 786,
+      "served": 0,
+      "shed_429": 786,
+      "other_errors": 0,
+      "latency_budget_ms": 900,
+      "within_budget_successes": 0,
+      "late_successes": 0,
+      "within_budget_rate_pct": 0.0,
+      "p95_served_ms": null,
+      "other_error_reasons": []
+    }
+  },
+  "service_monitor": {
+    "samples": 61,
+    "max_service_cpu_pct": 2.22,
+    "max_in_flight": 2,
+    "essential_protection_activated_seconds": 0.0,
+    "samples_file": "p95-gateway-post-activation-monitor.json"
+  }
+}

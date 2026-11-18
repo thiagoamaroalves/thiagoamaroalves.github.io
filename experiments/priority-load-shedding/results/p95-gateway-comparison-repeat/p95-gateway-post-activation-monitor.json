@@ -1,0 +1,2442 @@
+[
+  {
+    "elapsed_seconds": 0.0,
+    "resource_cpu_pct": 0.81,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 665,
+        "classified": 665,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2188,
+        "classified": 2188,
+        "unclassified": null,
+        "shed": 1308,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4047,
+        "classified": 4047,
+        "unclassified": null,
+        "shed": 2458,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 1.0,
+    "resource_cpu_pct": 1.81,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 670,
+        "classified": 670,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2194,
+        "classified": 2194,
+        "unclassified": null,
+        "shed": 1314,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4057,
+        "classified": 4057,
+        "unclassified": null,
+        "shed": 2468,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 2.0,
+    "resource_cpu_pct": 1.49,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 673,
+        "classified": 673,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2203,
+        "classified": 2203,
+        "unclassified": null,
+        "shed": 1323,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4068,
+        "classified": 4068,
+        "unclassified": null,
+        "shed": 2479,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 3.01,
+    "resource_cpu_pct": 1.86,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 674,
+        "classified": 674,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2208,
+        "classified": 2208,
+        "unclassified": null,
+        "shed": 1328,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4085,
+        "classified": 4085,
+        "unclassified": null,
+        "shed": 2496,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 4.01,
+    "resource_cpu_pct": 1.84,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 678,
+        "classified": 678,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2215,
+        "classified": 2215,
+        "unclassified": null,
+        "shed": 1335,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4097,
+        "classified": 4097,
+        "unclassified": null,
+        "shed": 2508,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 5.01,
+    "resource_cpu_pct": 1.73,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 679,
+        "classified": 679,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2223,
+        "classified": 2223,
+        "unclassified": null,
+        "shed": 1343,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4111,
+        "classified": 4111,
+        "unclassified": null,
+        "shed": 2522,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 6.01,
+    "resource_cpu_pct": 1.91,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 685,
+        "classified": 685,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2232,
+        "classified": 2232,
+        "unclassified": null,
+        "shed": 1352,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4119,
+        "classified": 4119,
+        "unclassified": null,
+        "shed": 2530,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 7.01,
+    "resource_cpu_pct": 1.85,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 688,
+        "classified": 688,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2242,
+        "classified": 2242,
+        "unclassified": null,
+        "shed": 1362,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4129,
+        "classified": 4129,
+        "unclassified": null,
+        "shed": 2540,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 8.01,
+    "resource_cpu_pct": 1.85,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 690,
+        "classified": 690,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2250,
+        "classified": 2250,
+        "unclassified": null,
+        "shed": 1370,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4142,
+        "classified": 4142,
+        "unclassified": null,
+        "shed": 2553,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 9.01,
+    "resource_cpu_pct": 1.8,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 691,
+        "classified": 691,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2256,
+        "classified": 2256,
+        "unclassified": null,
+        "shed": 1376,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4158,
+        "classified": 4158,
+        "unclassified": null,
+        "shed": 2569,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 10.02,
+    "resource_cpu_pct": 1.81,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 692,
+        "classified": 692,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2265,
+        "classified": 2265,
+        "unclassified": null,
+        "shed": 1385,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4171,
+        "classified": 4171,
+        "unclassified": null,
+        "shed": 2582,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 11.02,
+    "resource_cpu_pct": 1.64,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 692,
+        "classified": 692,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2272,
+        "classified": 2272,
+        "unclassified": null,
+        "shed": 1392,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4187,
+        "classified": 4187,
+        "unclassified": null,
+        "shed": 2598,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 12.02,
+    "resource_cpu_pct": 1.84,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 694,
+        "classified": 694,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2278,
+        "classified": 2278,
+        "unclassified": null,
+        "shed": 1398,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4202,
+        "classified": 4202,
+        "unclassified": null,
+        "shed": 2613,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 13.02,
+    "resource_cpu_pct": 1.66,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 696,
+        "classified": 696,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2282,
+        "classified": 2282,
+        "unclassified": null,
+        "shed": 1402,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4219,
+        "classified": 4219,
+        "unclassified": null,
+        "shed": 2630,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 14.02,
+    "resource_cpu_pct": 1.48,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 697,
+        "classified": 697,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2290,
+        "classified": 2290,
+        "unclassified": null,
+        "shed": 1410,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4233,
+        "classified": 4233,
+        "unclassified": null,
+        "shed": 2644,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 15.02,
+    "resource_cpu_pct": 1.94,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 700,
+        "classified": 700,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2297,
+        "classified": 2297,
+        "unclassified": null,
+        "shed": 1417,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4246,
+        "classified": 4246,
+        "unclassified": null,
+        "shed": 2657,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 16.03,
+    "resource_cpu_pct": 2.12,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 705,
+        "classified": 705,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2303,
+        "classified": 2303,
+        "unclassified": null,
+        "shed": 1423,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4258,
+        "classified": 4258,
+        "unclassified": null,
+        "shed": 2669,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 17.03,
+    "resource_cpu_pct": 2.13,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 708,
+        "classified": 708,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2313,
+        "classified": 2313,
+        "unclassified": null,
+        "shed": 1433,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4269,
+        "classified": 4269,
+        "unclassified": null,
+        "shed": 2680,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 18.03,
+    "resource_cpu_pct": 2.11,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 711,
+        "classified": 711,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2322,
+        "classified": 2322,
+        "unclassified": null,
+        "shed": 1442,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4280,
+        "classified": 4280,
+        "unclassified": null,
+        "shed": 2691,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 19.03,
+    "resource_cpu_pct": 1.97,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 716,
+        "classified": 716,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2332,
+        "classified": 2332,
+        "unclassified": null,
+        "shed": 1452,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4288,
+        "classified": 4288,
+        "unclassified": null,
+        "shed": 2699,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 20.03,
+    "resource_cpu_pct": 1.91,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 717,
+        "classified": 717,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2336,
+        "classified": 2336,
+        "unclassified": null,
+        "shed": 1456,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4306,
+        "classified": 4306,
+        "unclassified": null,
+        "shed": 2717,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 21.03,
+    "resource_cpu_pct": 1.79,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 720,
+        "classified": 720,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2340,
+        "classified": 2340,
+        "unclassified": null,
+        "shed": 1460,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4322,
+        "classified": 4322,
+        "unclassified": null,
+        "shed": 2733,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 22.04,
+    "resource_cpu_pct": 1.84,
+    "in_flight": 2,
+    "shared_dependency": {
+      "busy": 2,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 724,
+        "classified": 724,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2347,
+        "classified": 2347,
+        "unclassified": null,
+        "shed": 1467,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4334,
+        "classified": 4334,
+        "unclassified": null,
+        "shed": 2745,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 23.04,
+    "resource_cpu_pct": 1.88,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 725,
+        "classified": 725,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2354,
+        "classified": 2354,
+        "unclassified": null,
+        "shed": 1474,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4349,
+        "classified": 4349,
+        "unclassified": null,
+        "shed": 2760,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 24.04,
+    "resource_cpu_pct": 1.89,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 728,
+        "classified": 728,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2361,
+        "classified": 2361,
+        "unclassified": null,
+        "shed": 1481,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4362,
+        "classified": 4362,
+        "unclassified": null,
+        "shed": 2773,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 25.04,
+    "resource_cpu_pct": 1.43,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 729,
+        "classified": 729,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2373,
+        "classified": 2373,
+        "unclassified": null,
+        "shed": 1493,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4372,
+        "classified": 4372,
+        "unclassified": null,
+        "shed": 2783,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 26.04,
+    "resource_cpu_pct": 1.91,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 731,
+        "classified": 731,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2378,
+        "classified": 2378,
+        "unclassified": null,
+        "shed": 1498,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4388,
+        "classified": 4388,
+        "unclassified": null,
+        "shed": 2799,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 27.05,
+    "resource_cpu_pct": 2.07,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 733,
+        "classified": 733,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2389,
+        "classified": 2389,
+        "unclassified": null,
+        "shed": 1509,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4398,
+        "classified": 4398,
+        "unclassified": null,
+        "shed": 2809,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 28.05,
+    "resource_cpu_pct": 2.15,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 736,
+        "classified": 736,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2397,
+        "classified": 2397,
+        "unclassified": null,
+        "shed": 1517,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4410,
+        "classified": 4410,
+        "unclassified": null,
+        "shed": 2821,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 29.05,
+    "resource_cpu_pct": 1.97,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 738,
+        "classified": 738,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2402,
+        "classified": 2402,
+        "unclassified": null,
+        "shed": 1522,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4426,
+        "classified": 4426,
+        "unclassified": null,
+        "shed": 2837,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 30.05,
+    "resource_cpu_pct": 1.95,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 740,
+        "classified": 740,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2411,
+        "classified": 2411,
+        "unclassified": null,
+        "shed": 1531,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4438,
+        "classified": 4438,
+        "unclassified": null,
+        "shed": 2849,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 31.05,
+    "resource_cpu_pct": 1.76,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 742,
+        "classified": 742,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2419,
+        "classified": 2419,
+        "unclassified": null,
+        "shed": 1539,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4451,
+        "classified": 4451,
+        "unclassified": null,
+        "shed": 2862,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 32.05,
+    "resource_cpu_pct": 2.22,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 744,
+        "classified": 744,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2428,
+        "classified": 2428,
+        "unclassified": null,
+        "shed": 1548,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4463,
+        "classified": 4463,
+        "unclassified": null,
+        "shed": 2874,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 33.06,
+    "resource_cpu_pct": 1.88,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 747,
+        "classified": 747,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2439,
+        "classified": 2439,
+        "unclassified": null,
+        "shed": 1559,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4472,
+        "classified": 4472,
+        "unclassified": null,
+        "shed": 2883,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 34.06,
+    "resource_cpu_pct": 1.93,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 751,
+        "classified": 751,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2447,
+        "classified": 2447,
+        "unclassified": null,
+        "shed": 1567,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4483,
+        "classified": 4483,
+        "unclassified": null,
+        "shed": 2894,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 35.06,
+    "resource_cpu_pct": 2.03,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 753,
+        "classified": 753,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2453,
+        "classified": 2453,
+        "unclassified": null,
+        "shed": 1573,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4498,
+        "classified": 4498,
+        "unclassified": null,
+        "shed": 2909,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 36.06,
+    "resource_cpu_pct": 1.62,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 758,
+        "classified": 758,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2460,
+        "classified": 2460,
+        "unclassified": null,
+        "shed": 1580,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4509,
+        "classified": 4509,
+        "unclassified": null,
+        "shed": 2920,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 37.06,
+    "resource_cpu_pct": 1.46,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 758,
+        "classified": 758,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2470,
+        "classified": 2470,
+        "unclassified": null,
+        "shed": 1590,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4522,
+        "classified": 4522,
+        "unclassified": null,
+        "shed": 2933,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 38.06,
+    "resource_cpu_pct": 1.94,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 759,
+        "classified": 759,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2478,
+        "classified": 2478,
+        "unclassified": null,
+        "shed": 1598,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4536,
+        "classified": 4536,
+        "unclassified": null,
+        "shed": 2947,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 39.07,
+    "resource_cpu_pct": 2.2,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 762,
+        "classified": 762,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2490,
+        "classified": 2490,
+        "unclassified": null,
+        "shed": 1610,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4544,
+        "classified": 4544,
+        "unclassified": null,
+        "shed": 2955,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 40.07,
+    "resource_cpu_pct": 1.82,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 764,
+        "classified": 764,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2498,
+        "classified": 2498,
+        "unclassified": null,
+        "shed": 1618,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4557,
+        "classified": 4557,
+        "unclassified": null,
+        "shed": 2968,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 41.07,
+    "resource_cpu_pct": 1.84,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 766,
+        "classified": 766,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2505,
+        "classified": 2505,
+        "unclassified": null,
+        "shed": 1625,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4571,
+        "classified": 4571,
+        "unclassified": null,
+        "shed": 2982,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 42.07,
+    "resource_cpu_pct": 1.83,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 768,
+        "classified": 768,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2513,
+        "classified": 2513,
+        "unclassified": null,
+        "shed": 1633,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4584,
+        "classified": 4584,
+        "unclassified": null,
+        "shed": 2995,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 43.07,
+    "resource_cpu_pct": 1.87,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 770,
+        "classified": 770,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2519,
+        "classified": 2519,
+        "unclassified": null,
+        "shed": 1639,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4600,
+        "classified": 4600,
+        "unclassified": null,
+        "shed": 3011,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 44.07,
+    "resource_cpu_pct": 2.06,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 773,
+        "classified": 773,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2523,
+        "classified": 2523,
+        "unclassified": null,
+        "shed": 1643,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4616,
+        "classified": 4616,
+        "unclassified": null,
+        "shed": 3027,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 45.07,
+    "resource_cpu_pct": 2.07,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 775,
+        "classified": 775,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2533,
+        "classified": 2533,
+        "unclassified": null,
+        "shed": 1653,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4627,
+        "classified": 4627,
+        "unclassified": null,
+        "shed": 3038,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 46.08,
+    "resource_cpu_pct": 2.08,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 776,
+        "classified": 776,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2540,
+        "classified": 2540,
+        "unclassified": null,
+        "shed": 1660,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4642,
+        "classified": 4642,
+        "unclassified": null,
+        "shed": 3053,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 47.08,
+    "resource_cpu_pct": 2.05,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 780,
+        "classified": 780,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2549,
+        "classified": 2549,
+        "unclassified": null,
+        "shed": 1669,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4652,
+        "classified": 4652,
+        "unclassified": null,
+        "shed": 3063,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 48.08,
+    "resource_cpu_pct": 1.75,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 782,
+        "classified": 782,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2555,
+        "classified": 2555,
+        "unclassified": null,
+        "shed": 1675,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4667,
+        "classified": 4667,
+        "unclassified": null,
+        "shed": 3078,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 49.08,
+    "resource_cpu_pct": 1.53,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 786,
+        "classified": 786,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2562,
+        "classified": 2562,
+        "unclassified": null,
+        "shed": 1682,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4679,
+        "classified": 4679,
+        "unclassified": null,
+        "shed": 3090,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 50.08,
+    "resource_cpu_pct": 2.01,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 788,
+        "classified": 788,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2568,
+        "classified": 2568,
+        "unclassified": null,
+        "shed": 1688,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4694,
+        "classified": 4694,
+        "unclassified": null,
+        "shed": 3105,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 51.08,
+    "resource_cpu_pct": 1.97,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 789,
+        "classified": 789,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2574,
+        "classified": 2574,
+        "unclassified": null,
+        "shed": 1694,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4710,
+        "classified": 4710,
+        "unclassified": null,
+        "shed": 3121,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 52.09,
+    "resource_cpu_pct": 2.16,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 794,
+        "classified": 794,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2581,
+        "classified": 2581,
+        "unclassified": null,
+        "shed": 1701,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4721,
+        "classified": 4721,
+        "unclassified": null,
+        "shed": 3132,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 53.09,
+    "resource_cpu_pct": 1.91,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 799,
+        "classified": 799,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2587,
+        "classified": 2587,
+        "unclassified": null,
+        "shed": 1707,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4733,
+        "classified": 4733,
+        "unclassified": null,
+        "shed": 3144,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 54.09,
+    "resource_cpu_pct": 1.92,
+    "in_flight": 1,
+    "shared_dependency": {
+      "busy": 1,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 802,
+        "classified": 802,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2595,
+        "classified": 2595,
+        "unclassified": null,
+        "shed": 1715,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4745,
+        "classified": 4745,
+        "unclassified": null,
+        "shed": 3156,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 55.09,
+    "resource_cpu_pct": 1.96,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 804,
+        "classified": 804,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2601,
+        "classified": 2601,
+        "unclassified": null,
+        "shed": 1721,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4760,
+        "classified": 4760,
+        "unclassified": null,
+        "shed": 3171,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 56.09,
+    "resource_cpu_pct": 1.91,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 806,
+        "classified": 806,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2610,
+        "classified": 2610,
+        "unclassified": null,
+        "shed": 1730,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4772,
+        "classified": 4772,
+        "unclassified": null,
+        "shed": 3183,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 57.09,
+    "resource_cpu_pct": 1.59,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 806,
+        "classified": 806,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2622,
+        "classified": 2622,
+        "unclassified": null,
+        "shed": 1742,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4783,
+        "classified": 4783,
+        "unclassified": null,
+        "shed": 3194,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 58.09,
+    "resource_cpu_pct": 1.77,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 807,
+        "classified": 807,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16982.48829499971,
+        "sample_count": 664,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2631,
+        "classified": 2631,
+        "unclassified": null,
+        "shed": 1751,
+        "p95_ms": 18076.921256999412,
+        "sample_count": 880,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4796,
+        "classified": 4796,
+        "unclassified": null,
+        "shed": 3207,
+        "p95_ms": 17953.00697300081,
+        "sample_count": 1589,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 59.1,
+    "resource_cpu_pct": 1.61,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 808,
+        "classified": 808,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16897.603494000577,
+        "sample_count": 682,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2633,
+        "classified": 2633,
+        "unclassified": null,
+        "shed": 1753,
+        "p95_ms": 18419.44937399967,
+        "sample_count": 491,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4816,
+        "classified": 4816,
+        "unclassified": null,
+        "shed": 3227,
+        "p95_ms": 18349.904198999866,
+        "sample_count": 922,
+        "protected_by_p95": true
+      }
+    }
+  },
+  {
+    "elapsed_seconds": 60.1,
+    "resource_cpu_pct": 1.18,
+    "in_flight": 0,
+    "shared_dependency": {
+      "busy": 0,
+      "waiting": 0,
+      "capacity": 2,
+      "work_ms": 100.0
+    },
+    "routes": {
+      "essential": {
+        "attempted": 809,
+        "classified": 809,
+        "unclassified": null,
+        "shed": null,
+        "p95_ms": 16897.603494000577,
+        "sample_count": 682,
+        "protected_by_p95": true
+      },
+      "standard": {
+        "attempted": 2638,
+        "classified": 2638,
+        "unclassified": null,
+        "shed": 1758,
+        "p95_ms": 18419.44937399967,
+        "sample_count": 491,
+        "protected_by_p95": true
+      },
+      "deferrable": {
+        "attempted": 4833,
+        "classified": 4833,
+        "unclassified": null,
+        "shed": 3244,
+        "p95_ms": 18349.904198999866,
+        "sample_count": 922,
+        "protected_by_p95": true
+      }
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "target": "http://127.0.0.1:8081",
+  "configured_rate_per_second": 23.0,
+  "duration_seconds": 300.0,
+  "weights": "essential:10,standard:30,deferrable:60",
+  "max_workers": 2048,
+  "seed": 7,
+  "completed_responses": 6900,
+  "client_schedule_drops": 0,
+  "routes": {
+    "essential": {
+      "responses": 665,
+      "served": 665,
+      "shed_429": 0,
+      "other_errors": 0,
+      "latency_budget_ms": 250,
+      "within_budget_successes": 345,
+      "late_successes": 320,
+      "within_budget_rate_pct": 51.88,
+      "p95_served_ms": 16985.01,
+      "other_error_reasons": []
+    },
+    "standard": {
+      "responses": 2188,
+      "served": 880,
+      "shed_429": 1308,
+      "other_errors": 0,
+      "latency_budget_ms": 400,
+      "within_budget_successes": 18,
+      "late_successes": 862,
+      "within_budget_rate_pct": 0.82,
+      "p95_served_ms": 18079.44,
+      "other_error_reasons": []
+    },
+    "deferrable": {
+      "responses": 4047,
+      "served": 1589,
+      "shed_429": 2458,
+      "other_errors": 0,
+      "latency_budget_ms": 900,
+      "within_budget_successes": 79,
+      "late_successes": 1510,
+      "within_budget_rate_pct": 1.95,
+      "p95_served_ms": 17955.33,
+      "other_error_reasons": []
+    }
+  },
+  "service_monitor": {
+    "samples": 300,
+    "max_service_cpu_pct": 3.58,
+    "max_in_flight": 373,
+    "essential_protection_activated_seconds": 120.2,
+    "samples_file": "p95-gateway-monitor.json"
+  }
+}

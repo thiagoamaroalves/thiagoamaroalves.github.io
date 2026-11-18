@@ -39,8 +39,8 @@ const alternates = paired ? {
 } : undefined;
 const category = categoryLabel(entry.data.category, language);
 const copy = language === 'pt'
-  ? { back: isPost ? 'Voltar aos artigos' : 'Voltar às notas', related: 'Leituras relacionadas', tags: 'Tags' }
-  : { back: isPost ? 'Back to articles' : 'Back to notes', related: 'Related reading', tags: 'Tags' };
+  ? { back: isPost ? 'Voltar aos posts' : 'Voltar às notas', related: 'Leituras relacionadas', tags: 'Tags' }
+  : { back: isPost ? 'Back to posts' : 'Back to notes', related: 'Related reading', tags: 'Tags' };
 const archivePath = isPost ? (language === 'pt' ? '/artigos/' : '/en/writing/') : (language === 'pt' ? '/notas/' : '/en/notes/');
 ---
 

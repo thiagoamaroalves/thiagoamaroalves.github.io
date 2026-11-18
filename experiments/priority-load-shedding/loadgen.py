@@ -17,6 +17,7 @@ from typing import Any
 
 
 ROUTES = ("essential", "standard", "deferrable")
+ROUTE_BUDGETS_MS = {"essential": 250, "standard": 400, "deferrable": 900}
 
 
 def parse_weights(raw: str) -> tuple[list[str], list[int]]:
@@ -107,12 +108,27 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         route_results = [item for item in results if item["route"] == route]
         statuses = Counter(str(item["status"]) for item in route_results)
         served_latencies = [item["duration_ms"] for item in route_results if item["status"] == 200]
+        error_reasons = Counter(
+            item["message"]
+            for item in route_results
+            if item["status"] not in {200, 429} and item["message"]
+        )
+        budget_ms = ROUTE_BUDGETS_MS[route]
+        within_budget = sum(
+            1 for item in route_results
+            if item["status"] == 200 and item["duration_ms"] <= budget_ms
+        )
         per_route[route] = {
             "responses": len(route_results),
             "served": statuses.get("200", 0),
             "shed_429": statuses.get("429", 0),
             "other_errors": sum(count for status, count in statuses.items() if status not in {"200", "429"}),
+            "latency_budget_ms": budget_ms,
+            "within_budget_successes": within_budget,
+            "late_successes": statuses.get("200", 0) - within_budget,
+            "within_budget_rate_pct": round(100 * within_budget / len(route_results), 2) if route_results else None,
             "p95_served_ms": percentile(served_latencies, 0.95),
+            "other_error_reasons": error_reasons.most_common(5),
         }
 
     return {

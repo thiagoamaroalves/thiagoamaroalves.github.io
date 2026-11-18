@@ -1,0 +1,55 @@
+{
+  "target": "http://127.0.0.1:8080",
+  "configured_rate_per_second": 180.0,
+  "duration_seconds": 60.0,
+  "weights": "essential:10,standard:30,deferrable:60",
+  "max_workers": 2048,
+  "seed": 7,
+  "completed_responses": 10800,
+  "client_schedule_drops": 0,
+  "routes": {
+    "essential": {
+      "responses": 1054,
+      "served": 1054,
+      "shed_429": 0,
+      "other_errors": 0,
+      "latency_budget_ms": 250,
+      "within_budget_successes": 21,
+      "late_successes": 1033,
+      "within_budget_rate_pct": 1.99,
+      "p95_served_ms": 3470.16,
+      "other_error_reasons": []
+    },
+    "standard": {
+      "responses": 3313,
+      "served": 3313,
+      "shed_429": 0,
+      "other_errors": 0,
+      "latency_budget_ms": 400,
+      "within_budget_successes": 147,
+      "late_successes": 3166,
+      "within_budget_rate_pct": 4.44,
+      "p95_served_ms": 3558.72,
+      "other_error_reasons": []
+    },
+    "deferrable": {
+      "responses": 6433,
+      "served": 6433,
+      "shed_429": 0,
+      "other_errors": 0,
+      "latency_budget_ms": 900,
+      "within_budget_successes": 1157,
+      "late_successes": 5276,
+      "within_budget_rate_pct": 17.99,
+      "p95_served_ms": 3551.37,
+      "other_error_reasons": []
+    }
+  },
+  "service_monitor": {
+    "samples": 29,
+    "max_service_cpu_pct": 99.91,
+    "max_in_flight": 95,
+    "essential_protection_activated_seconds": null,
+    "samples_file": "cpu-direct-monitor.json"
+  }
+}

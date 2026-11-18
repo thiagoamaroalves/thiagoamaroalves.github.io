@@ -10,8 +10,8 @@ interface Props {
 
 const { post, language } = Astro.props;
 const labels = language === 'pt'
-  ? { section: 'Artigo em destaque', figure: 'Fluxo de commit · PostgreSQL WAL', featured: 'Seleção editorial', emptyTitle: 'Nenhum artigo em destaque', emptyCopy: 'Quando um artigo publicado for selecionado, ele aparecerá aqui com seus metadados originais.', read: 'Ler artigo', noTags: 'Sem tags' }
-  : { section: 'Featured article', figure: 'Commit flow · PostgreSQL WAL', featured: 'Editorial selection', emptyTitle: 'No featured article yet', emptyCopy: 'A published article will appear here once it has been selected for the editorial feature.', read: 'Read article', noTags: 'No tags' };
+  ? { section: 'Post em destaque', figure: 'Fluxo de commit · PostgreSQL WAL', featured: 'Seleção editorial', emptyTitle: 'Nenhum post em destaque', emptyCopy: 'Quando um post for selecionado, ele aparecerá aqui com seus metadados originais.', read: 'Ler post', noTags: 'Sem tags' }
+  : { section: 'Featured post', figure: 'Commit flow · PostgreSQL WAL', featured: 'Editorial selection', emptyTitle: 'No featured post yet', emptyCopy: 'A post will appear here once it has been selected for the editorial feature.', read: 'Read post', noTags: 'No tags' };
 ---
 
 <section class="section featured-section wrap" aria-labelledby="featured-heading">
@@ -33,7 +33,7 @@ const labels = language === 'pt'
           <div class="article-meta"><span>{categoryLabel(post.data.category, language)}</span><span>{formatDate(post.data.pubDate, language)}</span><span>{post.data.readingTime}</span></div>
           <h3><a href={postPath(post)}>{post.data.title}</a></h3>
           <p class="featured-summary">{post.data.description}</p>
-          <div class="tag-list" aria-label={language === 'pt' ? 'Tags do artigo' : 'Article tags'}>
+          <div class="tag-list" aria-label={language === 'pt' ? 'Tags do post' : 'Post tags'}>
             {post.data.tags.map((tag) => <span>{tag}</span>)}
           </div>
           <a class="inline-link" href={postPath(post)}>{labels.read}<span aria-hidden="true">↗</span></a>

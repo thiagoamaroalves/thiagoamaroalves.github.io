@@ -8,7 +8,7 @@ tags:
   - availability
   - load-shedding
   - resilience
-readingTime: "7 min read"
+readingTime: "9 min read"
 featured: true
 translationKey: priority-aware-load-shedding
 ---
@@ -68,13 +68,15 @@ When the service sheds a recommendation request, the page can leave the panel ou
 
 ## What happened in the VM
 
-I tested the policy with a small Python service, three request classes, and a simulated shared dependency. The load generator ran on a separate CPU core. In the runs reported here, it sent every request on schedule. The p95 figures use successful responses only; rejection counts track shed requests separately. [Experiment setup and JSON summaries](https://github.com/thiagoamaroalves/thiagoamaroalves.github.io/blob/main/experiments/priority-load-shedding/RESULTS.md)
+I changed the mockup to compare two paths. In the control, requests go straight to the service without `X-Request-Priority`; the route path labels workload for measurement, but the admission policy sees each request as unclassified. In the treatment, a local gateway overwrites any client-supplied priority and assigns one before forwarding. The p95 runs use the same seed and Essential/Standard/Deferrable mix. The gateway uses the request path as a stand-in for journey context; a production classifier would need to distinguish different journeys that share an endpoint.
 
-For the CPU-pressure test, I sent 140 requests per second for 60 seconds in each mode, for 8,400 scheduled requests per run. With shedding disabled, the service handled them all. One CPU snapshot taken during the run read 89.51%, and every route stayed within its p95 budget. With shedding enabled, the service handled all 825 Essential requests and rejected 482 Standard and 2,478 Deferrable requests. The CPU snapshot for that run read 83.04%, and the resource-based rejection counters showed that the configured load tiers had kicked in. Essential p95 went from 18.68 ms to 13.34 ms. With one synthetic run per mode, I'd treat that difference as an early signal.
+For CPU pressure, each run offered 180 requests per second for 60 seconds. Without classification, the service returned all 10,800 responses, but only 21 of 1,054 Essential responses arrived within the 250 ms budget; Essential p95 was 3.47 seconds and service CPU peaked at 99.91%. Through the gateway, 1,009 of 1,053 Essential responses (95.82%) stayed within budget, with a 243.86 ms p95. The service shed 514 Standard and 3,031 Deferrable requests as CPU pressure rose. The gateway run had one client scheduling miss; its 429 responses were the intended shedding, with no other request errors. This is one synthetic run per path.
 
-In the second test, the simulated dependency had two slots and took 100 ms to serve a request. I sent 21 requests per second against a capacity of about 20. Without shedding, the service handled all 3,780 requests over three minutes while CPU stayed below 2%. Essential p95 still reached 9.47 seconds, well above its 250 ms budget.
+For latency pressure, a shared dependency had two slots and took 100 ms per call. At 23 requests per second for five minutes, CPU stayed below 3.4%. Without the priority header, the service hit its 512-request in-flight limit and rejected 40 of 665 Essential attempts; only 9 finished within 250 ms, and served p95 reached 25.74 seconds. The p95 detector saw the breach after about 120 seconds, but the admission policy could not select lower-priority work because the requests had no priority rank.
 
-With the p95 policy enabled, the first check saw 97 Essential samples, just short of `N=100`. Protection kicked in at about three minutes, after two consecutive eligible checks showed a breach. Across the four-minute run, the service handled all 499 Essential requests and shed 490 Standard and 1,655 Deferrable requests. Essential p95 was 5.22 seconds across the whole run, including slow responses from before the policy kicked in. That summary shows how the service prioritized requests under contention, but leaves the time to latency recovery open.
+Through the gateway, all 665 Essential requests were served, while 1,308 Standard and 2,458 Deferrable requests were shed. The five-minute Essential p95 was still 16.99 seconds, and 345 of 665 responses (51.88%) were within budget because that whole-run measure includes slow responses from before protection activated. In a separate 60-second sample after activation, all 144 Essential responses stayed within budget and p95 was 102.83 ms. The rolling five-minute p95 remained high because its window still contained the earlier slow responses. The separate sample describes post-activation behavior; it does not replace the full-window SLO.
+
+My first gateway p95 attempt had a 30-second upstream timeout and returned two 502 errors on Standard requests. I aligned it with the load generator's 90-second timeout and repeated the pair; that repeat had no schedule drops or other errors. These are single VM experiments, not production measurements. [Experiment setup, results, and raw JSON summaries](https://github.com/thiagoamaroalves/thiagoamaroalves.github.io/blob/main/experiments/priority-load-shedding/RESULTS.md#gateway-classification-comparison)
 
 ## Bring traffic back in stages
 

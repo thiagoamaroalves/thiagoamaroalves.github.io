@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title,
-  description = 'Artigos, experimentos e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos.',
+  description = 'Posts, experimentos e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos.',
   language = 'pt',
   canonicalPath = Astro.url.pathname,
   portuguesePath,
@@ -30,13 +30,13 @@ const ptHref = portuguesePath ?? (language === 'pt' ? Astro.url.pathname : '/');
 const enHref = englishPath ?? (language === 'en' ? Astro.url.pathname : '/en/');
 const nav = language === 'pt'
   ? [
-      { label: 'Artigos', href: '/artigos/' },
+      { label: 'Posts', href: '/artigos/' },
       { label: 'Notas', href: '/notas/' },
       { label: 'Tópicos', href: '/#topicos' },
       { label: 'Sobre', href: '/sobre/' },
     ]
   : [
-      { label: 'Articles', href: '/en/writing/' },
+      { label: 'Posts', href: '/en/writing/' },
       { label: 'Notes', href: '/en/notes/' },
       { label: 'Topics', href: '/en/#topics' },
       { label: 'About', href: '/en/about/' },

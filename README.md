@@ -11,7 +11,7 @@ npm run dev
 
 Create a production build with `npm run build` and preview it with `npm run preview`.
 
-## Publish an article
+## Publish a post
 
 Add a Markdown file under `src/content/posts/` with a lowercase kebab case filename. Include `title`, `description`, `pubDate`, `language`, `category`, `tags`, and `readingTime`. `featured` is optional and defaults to `false`.
 
@@ -21,8 +21,8 @@ Example frontmatter:
 
 ```yaml
 ---
-title: A reviewed article title
-description: A concise summary of the article.
+title: A reviewed post title
+description: A concise summary of the post.
 pubDate: 2026-11-18
 language: pt
 category: Architecture
@@ -33,19 +33,19 @@ featured: false
 ---
 ```
 
-Only files in `src/content/posts/` are published as articles. Keep private or unfinished writing elsewhere, such as `drafts/`.
+Only files in `src/content/posts/` are published as posts. Keep private or unfinished writing elsewhere, such as `drafts/`.
 
 ## Publish a note
 
-Add a Markdown file under `src/content/notes/`. Notes use the same metadata and language rules as articles. Their categories are Databases, Architecture, Benchmark, Distributed Systems, and Performance. The notes collection can remain empty; the site shows a real empty state until a note is published.
+Add a Markdown file under `src/content/notes/`. Notes use the same metadata and language rules as posts. Their categories are Databases, Architecture, Benchmark, Distributed Systems, and Performance. The notes collection can remain empty; the site shows a real empty state until a note is published.
 
 ## Language and URL decisions
 
 - Portuguese is served at `/`, `/artigos/`, `/notas/`, and `/sobre/`.
 - English is served at `/en/`, `/en/writing/`, `/en/notes/`, and `/en/about/`.
-- Existing English `/writing/`, `/about/`, and `/writing/:slug/` URLs remain available as canonical aliases to their `/en/` pages. Existing article URLs are preserved when English posts are present.
+- Existing English `/writing/`, `/about/`, and `/writing/:slug/` URLs remain available as canonical aliases to their `/en/` pages. Existing post URLs are preserved when English posts are present.
 - English posts without a reviewed Portuguese counterpart remain English. The language switch sends readers to the Portuguese home page and does not label a translation as available.
-- To associate reviewed translations, set the same `translationKey` on both language entries. Only associated pairs receive article-level `hreflang` links.
+- To associate reviewed translations, set the same `translationKey` on both language entries. Only associated pairs receive post-level `hreflang` links.
 - UI copy is localized in Astro components. Published Markdown is never translated automatically.
 - Topic pages and search results are generated from published collections. Search filters the current language's already-rendered entries in the browser.
 - `/rss.xml` is the Portuguese feed and `/en/rss.xml` is the English feed. `sitemap.xml` lists canonical routes.

@@ -14,8 +14,8 @@ const entries = [...posts, ...notes]
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const path = language === 'pt' ? '/buscar/' : '/en/search/';
 const copy = language === 'pt'
-  ? { title: 'Buscar', eyebrow: 'Pesquisa no arquivo', intro: 'Pesquise títulos, descrições, categorias e tags de artigos e notas publicados.', field: 'Termo de busca', placeholder: 'Ex.: consistência, PostgreSQL, latência', submit: 'Buscar', empty: 'Nenhuma publicação corresponde a esta busca.', noContent: 'Ainda não há publicações neste idioma.', count: 'resultados' }
-  : { title: 'Search', eyebrow: 'Search the archive', intro: 'Search titles, descriptions, categories, and tags of published articles and notes.', field: 'Search term', placeholder: 'e.g. consistency, PostgreSQL, latency', submit: 'Search', empty: 'No publication matches this search.', noContent: 'There are no publications in this language yet.', count: 'results' };
+  ? { title: 'Buscar', eyebrow: 'Pesquisa no arquivo', intro: 'Pesquise títulos, descrições, categorias e tags de posts e notas publicados.', field: 'Termo de busca', placeholder: 'Ex.: consistência, PostgreSQL, latência', submit: 'Buscar', empty: 'Nenhuma publicação corresponde a esta busca.', noContent: 'Ainda não há publicações neste idioma.', count: 'resultados' }
+  : { title: 'Search', eyebrow: 'Search the archive', intro: 'Search titles, descriptions, categories, and tags of published posts and notes.', field: 'Search term', placeholder: 'e.g. consistency, PostgreSQL, latency', submit: 'Search', empty: 'No publication matches this search.', noContent: 'There are no publications in this language yet.', count: 'results' };
 ---
 
 <BaseLayout

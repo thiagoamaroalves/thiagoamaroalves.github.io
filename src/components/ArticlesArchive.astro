@@ -16,8 +16,8 @@ const posts = (await getCollection('posts'))
 const categories = [...new Set(posts.map((post) => post.data.category))];
 const path = language === 'pt' ? '/artigos/' : '/en/writing/';
 const copy = language === 'pt'
-  ? { title: 'Artigos', eyebrow: 'Arquivo editorial', intro: 'Ensaios e artigos sobre arquitetura de software, bancos de dados, sistemas distribuídos e performance.', emptyTitle: 'Ainda não há artigos publicados', empty: 'Quando houver artigos revisados para publicação, eles aparecerão neste arquivo. Rascunhos permanecem privados.', home: 'Voltar ao início', group: 'Tópico' }
-  : { title: 'Articles', eyebrow: 'Editorial archive', intro: 'Essays and articles on software architecture, databases, distributed systems, and performance.', emptyTitle: 'No articles have been published yet', empty: 'Reviewed articles will appear in this archive once they are ready for publication. Drafts remain private.', home: 'Back to home', group: 'Topic' };
+  ? { title: 'Posts', eyebrow: 'Posts técnicos', intro: 'Posts sobre arquitetura de software, bancos de dados, sistemas distribuídos e performance.', emptyTitle: 'Ainda não há posts publicados', empty: 'Os posts aparecerão neste arquivo quando estiverem prontos para leitura. Rascunhos permanecem privados.', home: 'Voltar ao início', group: 'Tópico' }
+  : { title: 'Posts', eyebrow: 'Technical writing', intro: 'Posts on software architecture, databases, distributed systems, and performance.', emptyTitle: 'No posts have been published yet', empty: 'Posts will appear in this archive when they are ready to read. Drafts remain private.', home: 'Back to home', group: 'Topic' };
 ---
 
 <BaseLayout

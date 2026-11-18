@@ -1,0 +1,390 @@
+{
+  "question": "Does a trusted priority signal let the service protect Essential requests under overload?",
+  "control": "Requests reach the service directly without a priority header; all work is treated equally.",
+  "treatment": "A local gateway overwrites any client priority header and assigns one from the workload route.",
+  "weights": "essential:10,standard:30,deferrable:60",
+  "seed": 7,
+  "max_workers": 2048,
+  "cases": {
+    "p95_direct": {
+      "path": "direct to service; no priority header",
+      "mode": "p95",
+      "configured_rate_per_second": 23,
+      "duration_seconds": 300,
+      "load_summary": {
+        "target": "http://127.0.0.1:8080",
+        "configured_rate_per_second": 23.0,
+        "duration_seconds": 300.0,
+        "weights": "essential:10,standard:30,deferrable:60",
+        "max_workers": 2048,
+        "seed": 7,
+        "completed_responses": 6900,
+        "client_schedule_drops": 0,
+        "routes": {
+          "essential": {
+            "responses": 665,
+            "served": 625,
+            "shed_429": 40,
+            "other_errors": 0,
+            "latency_budget_ms": 250,
+            "within_budget_successes": 9,
+            "late_successes": 616,
+            "within_budget_rate_pct": 1.35,
+            "p95_served_ms": 25739.85,
+            "other_error_reasons": []
+          },
+          "standard": {
+            "responses": 2188,
+            "served": 2062,
+            "shed_429": 126,
+            "other_errors": 0,
+            "latency_budget_ms": 400,
+            "within_budget_successes": 25,
+            "late_successes": 2037,
+            "within_budget_rate_pct": 1.14,
+            "p95_served_ms": 25746.26,
+            "other_error_reasons": []
+          },
+          "deferrable": {
+            "responses": 4047,
+            "served": 3789,
+            "shed_429": 258,
+            "other_errors": 0,
+            "latency_budget_ms": 900,
+            "within_budget_successes": 84,
+            "late_successes": 3705,
+            "within_budget_rate_pct": 2.08,
+            "p95_served_ms": 25746.78,
+            "other_error_reasons": []
+          }
+        },
+        "service_monitor": {
+          "samples": 326,
+          "max_service_cpu_pct": 3.37,
+          "max_in_flight": 512,
+          "essential_protection_activated_seconds": 120.2,
+          "samples_file": "p95-direct-monitor.json"
+        }
+      },
+      "service_metrics": {
+        "mode": "p95",
+        "resource_signal": "service process CPU as percentage of one-core budget",
+        "resource_cpu_pct": 0.02,
+        "in_flight": 0,
+        "max_in_flight": 512,
+        "shared_dependency": {
+          "busy": 0,
+          "waiting": 0,
+          "capacity": 2,
+          "work_ms": 100.0
+        },
+        "load_threshold_pct": 80.0,
+        "severe_load_threshold_pct": 90.0,
+        "p95_window_seconds": 300,
+        "p95_evaluation_seconds": 60,
+        "minimum_samples": 100,
+        "last_p95_evaluation_epoch": 1795037057.1627588,
+        "routes": {
+          "essential": {
+            "priority_rank": 0,
+            "p95_ms": 25734.957205999308,
+            "budget_ms": 250.0,
+            "sample_count": 582,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 665,
+            "unclassified": 665,
+            "admitted": 625,
+            "completed": 625,
+            "shed": 40,
+            "shed:service": 40
+          },
+          "standard": {
+            "priority_rank": 1,
+            "p95_ms": 25734.899471000972,
+            "budget_ms": 400.0,
+            "sample_count": 1891,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 2188,
+            "unclassified": 2188,
+            "admitted": 2062,
+            "completed": 2062,
+            "shed": 126,
+            "shed:service": 126
+          },
+          "deferrable": {
+            "priority_rank": 2,
+            "p95_ms": 25735.961100999702,
+            "budget_ms": 900.0,
+            "sample_count": 3485,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 4047,
+            "unclassified": 4047,
+            "admitted": 3789,
+            "completed": 3789,
+            "shed": 258,
+            "shed:service": 258
+          }
+        }
+      }
+    },
+    "p95_gateway": {
+      "path": "through local priority gateway",
+      "mode": "p95",
+      "configured_rate_per_second": 23,
+      "duration_seconds": 300,
+      "load_summary": {
+        "target": "http://127.0.0.1:8081",
+        "configured_rate_per_second": 23.0,
+        "duration_seconds": 300.0,
+        "weights": "essential:10,standard:30,deferrable:60",
+        "max_workers": 2048,
+        "seed": 7,
+        "completed_responses": 6900,
+        "client_schedule_drops": 0,
+        "routes": {
+          "essential": {
+            "responses": 665,
+            "served": 665,
+            "shed_429": 0,
+            "other_errors": 0,
+            "latency_budget_ms": 250,
+            "within_budget_successes": 345,
+            "late_successes": 320,
+            "within_budget_rate_pct": 51.88,
+            "p95_served_ms": 16985.01,
+            "other_error_reasons": []
+          },
+          "standard": {
+            "responses": 2188,
+            "served": 880,
+            "shed_429": 1308,
+            "other_errors": 0,
+            "latency_budget_ms": 400,
+            "within_budget_successes": 18,
+            "late_successes": 862,
+            "within_budget_rate_pct": 0.82,
+            "p95_served_ms": 18079.44,
+            "other_error_reasons": []
+          },
+          "deferrable": {
+            "responses": 4047,
+            "served": 1589,
+            "shed_429": 2458,
+            "other_errors": 0,
+            "latency_budget_ms": 900,
+            "within_budget_successes": 79,
+            "late_successes": 1510,
+            "within_budget_rate_pct": 1.95,
+            "p95_served_ms": 17955.33,
+            "other_error_reasons": []
+          }
+        },
+        "service_monitor": {
+          "samples": 300,
+          "max_service_cpu_pct": 3.58,
+          "max_in_flight": 373,
+          "essential_protection_activated_seconds": 120.2,
+          "samples_file": "p95-gateway-monitor.json"
+        }
+      },
+      "service_metrics": {
+        "mode": "p95",
+        "resource_signal": "service process CPU as percentage of one-core budget",
+        "resource_cpu_pct": 0.81,
+        "in_flight": 0,
+        "max_in_flight": 512,
+        "shared_dependency": {
+          "busy": 0,
+          "waiting": 0,
+          "capacity": 2,
+          "work_ms": 100.0
+        },
+        "load_threshold_pct": 80.0,
+        "severe_load_threshold_pct": 90.0,
+        "p95_window_seconds": 300,
+        "p95_evaluation_seconds": 60,
+        "minimum_samples": 100,
+        "last_p95_evaluation_epoch": 1795037383.9989974,
+        "routes": {
+          "essential": {
+            "priority_rank": 0,
+            "p95_ms": 16982.48829499971,
+            "budget_ms": 250.0,
+            "sample_count": 664,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 665,
+            "classified": 665,
+            "admitted": 665,
+            "completed": 665
+          },
+          "standard": {
+            "priority_rank": 1,
+            "p95_ms": 18076.921256999412,
+            "budget_ms": 400.0,
+            "sample_count": 880,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 2188,
+            "classified": 2188,
+            "admitted": 880,
+            "completed": 880,
+            "shed": 1308,
+            "shed:limited": 1308
+          },
+          "deferrable": {
+            "priority_rank": 2,
+            "p95_ms": 17953.00697300081,
+            "budget_ms": 900.0,
+            "sample_count": 1589,
+            "sample_status": "sufficient",
+            "breach_checks": 5,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 4047,
+            "classified": 4047,
+            "admitted": 1589,
+            "completed": 1589,
+            "shed": 2458,
+            "shed:limited": 2458
+          }
+        }
+      },
+      "post_activation": {
+        "target": "http://127.0.0.1:8081",
+        "configured_rate_per_second": 23.0,
+        "duration_seconds": 60.0,
+        "weights": "essential:10,standard:30,deferrable:60",
+        "max_workers": 2048,
+        "seed": 7,
+        "completed_responses": 1380,
+        "client_schedule_drops": 0,
+        "routes": {
+          "essential": {
+            "responses": 144,
+            "served": 144,
+            "shed_429": 0,
+            "other_errors": 0,
+            "latency_budget_ms": 250,
+            "within_budget_successes": 144,
+            "late_successes": 0,
+            "within_budget_rate_pct": 100.0,
+            "p95_served_ms": 102.83,
+            "other_error_reasons": []
+          },
+          "standard": {
+            "responses": 450,
+            "served": 0,
+            "shed_429": 450,
+            "other_errors": 0,
+            "latency_budget_ms": 400,
+            "within_budget_successes": 0,
+            "late_successes": 0,
+            "within_budget_rate_pct": 0.0,
+            "p95_served_ms": null,
+            "other_error_reasons": []
+          },
+          "deferrable": {
+            "responses": 786,
+            "served": 0,
+            "shed_429": 786,
+            "other_errors": 0,
+            "latency_budget_ms": 900,
+            "within_budget_successes": 0,
+            "late_successes": 0,
+            "within_budget_rate_pct": 0.0,
+            "p95_served_ms": null,
+            "other_error_reasons": []
+          }
+        },
+        "service_monitor": {
+          "samples": 61,
+          "max_service_cpu_pct": 2.22,
+          "max_in_flight": 2,
+          "essential_protection_activated_seconds": 0.0,
+          "samples_file": "p95-gateway-post-activation-monitor.json"
+        }
+      },
+      "post_activation_service_metrics": {
+        "mode": "p95",
+        "resource_signal": "service process CPU as percentage of one-core budget",
+        "resource_cpu_pct": 0.03,
+        "in_flight": 0,
+        "max_in_flight": 512,
+        "shared_dependency": {
+          "busy": 0,
+          "waiting": 0,
+          "capacity": 2,
+          "work_ms": 100.0
+        },
+        "load_threshold_pct": 80.0,
+        "severe_load_threshold_pct": 90.0,
+        "p95_window_seconds": 300,
+        "p95_evaluation_seconds": 60,
+        "minimum_samples": 100,
+        "last_p95_evaluation_epoch": 1795037443.999853,
+        "routes": {
+          "essential": {
+            "priority_rank": 0,
+            "p95_ms": 16897.603494000577,
+            "budget_ms": 250.0,
+            "sample_count": 682,
+            "sample_status": "sufficient",
+            "breach_checks": 6,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 809,
+            "classified": 809,
+            "admitted": 809,
+            "completed": 809
+          },
+          "standard": {
+            "priority_rank": 1,
+            "p95_ms": 18419.44937399967,
+            "budget_ms": 400.0,
+            "sample_count": 491,
+            "sample_status": "sufficient",
+            "breach_checks": 6,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 2638,
+            "classified": 2638,
+            "admitted": 880,
+            "completed": 880,
+            "shed": 1758,
+            "shed:limited": 1758
+          },
+          "deferrable": {
+            "priority_rank": 2,
+            "p95_ms": 18349.904198999866,
+            "budget_ms": 900.0,
+            "sample_count": 922,
+            "sample_status": "sufficient",
+            "breach_checks": 6,
+            "healthy_checks": 0,
+            "protected_by_p95": true,
+            "attempted": 4833,
+            "classified": 4833,
+            "admitted": 1589,
+            "completed": 1589,
+            "shed": 3244,
+            "shed:limited": 3244
+          }
+        }
+      }
+    }
+  }
+}

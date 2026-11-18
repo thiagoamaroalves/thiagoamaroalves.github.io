@@ -38,6 +38,7 @@ if MIN_SAMPLES < 1:
     raise SystemExit("Set MIN_SAMPLES for this experiment; there is no universal default")
 
 PORT = env_int("PORT", 8080)
+HOST = os.environ.get("HOST", "127.0.0.1")
 MAX_IN_FLIGHT = env_int("MAX_IN_FLIGHT", 256)
 DEPENDENCY_CONCURRENCY = env_int("DEPENDENCY_CONCURRENCY", 8)
 DEPENDENCY_WORK_MS = env_float("DEPENDENCY_WORK_MS", 40)
@@ -113,24 +114,26 @@ class State:
         rank = max(1, math.ceil(percentile * len(ordered)))
         return ordered[rank - 1]
 
-    def attempt(self, route_id: str) -> None:
+    def attempt(self, route_id: str, priority_id: str | None) -> None:
         with self.lock:
             self.counters[route_id]["attempted"] += 1
+            classification = "classified" if priority_id in ROUTES else "unclassified"
+            self.counters[route_id][classification] += 1
 
-    def try_admit(self, route_id: str) -> str | None:
-        route = ROUTES[route_id]
-        rank = route["rank"]
+    def try_admit(self, route_id: str, priority_id: str | None) -> str | None:
+        priority = ROUTES.get(priority_id) if priority_id else None
+        rank = priority["rank"] if priority else None
         with self.lock:
             cpu_pct = self.resource_cpu_pct
             active = sorted(self.active_breach, key=lambda item: ROUTES[item]["rank"])
 
-        if MODE in {"load", "combined"}:
+        if rank is not None and MODE in {"load", "combined"}:
             if cpu_pct >= SEVERE_LOAD_THRESHOLD_PCT and rank >= 1:
                 return f"resource utilization {cpu_pct:.1f}% reached the {SEVERE_LOAD_THRESHOLD_PCT:.0f}% tier"
             if cpu_pct >= LOAD_THRESHOLD_PCT and rank >= 2:
                 return f"resource utilization {cpu_pct:.1f}% reached the {LOAD_THRESHOLD_PCT:.0f}% tier"
 
-        if MODE in {"p95", "combined"} and active:
+        if rank is not None and MODE in {"p95", "combined"} and active:
             protected_route = active[0]
             protected_rank = ROUTES[protected_route]["rank"]
             if rank > protected_rank:
@@ -294,9 +297,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(404, {"error": "unknown route", "routes": list(ROUTES)})
             return
 
+        priority_id = self.headers.get("X-Request-Priority")
+        if priority_id not in ROUTES:
+            priority_id = None
+
         started = time.perf_counter()
-        state.attempt(route_id)
-        reason = state.try_admit(route_id)
+        state.attempt(route_id, priority_id)
+        reason = state.try_admit(route_id, priority_id)
         if reason:
             state.record_shed(route_id, reason)
             self.send_json(429, {"route": route_id, "status": "shed", "reason": reason})
@@ -332,6 +339,12 @@ class Handler(BaseHTTPRequestHandler):
                 pass
 
 
+class LabHTTPServer(ThreadingHTTPServer):
+    # Keep overload decisions inside the service policy, rather than rejecting
+    # TCP connections at the base server's very small accept backlog.
+    request_queue_size = 2048
+
+
 def configure_cpu_budget() -> None:
     if not hasattr(os, "sched_getaffinity") or os.environ.get("PIN_ONE_CORE", "1") != "1":
         return
@@ -344,7 +357,7 @@ def main() -> None:
     configure_cpu_budget()
     threading.Thread(target=cpu_monitor, daemon=True, name="cpu-monitor").start()
     threading.Thread(target=p95_controller, daemon=True, name="p95-controller").start()
-    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
+    server = LabHTTPServer((HOST, PORT), Handler)
     server.daemon_threads = True
     print(
         f"service listening on :{PORT}; mode={MODE}; min_samples={MIN_SAMPLES}; "

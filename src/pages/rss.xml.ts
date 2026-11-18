@@ -30,7 +30,7 @@ export async function GET() {
 <rss version="2.0"><channel>
   <title>Thiago Alves — Engineering Notes</title>
   <link>${siteUrl}</link>
-  <description>Artigos e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos.</description>
+  <description>Posts e notas sobre arquitetura de software, bancos de dados e sistemas distribuídos.</description>
   <language>pt-BR</language>${items}
 </channel></rss>`;
 

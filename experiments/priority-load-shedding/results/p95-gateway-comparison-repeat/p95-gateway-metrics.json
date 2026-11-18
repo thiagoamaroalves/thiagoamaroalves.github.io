@@ -1,0 +1,67 @@
+{
+  "mode": "p95",
+  "resource_signal": "service process CPU as percentage of one-core budget",
+  "resource_cpu_pct": 0.81,
+  "in_flight": 0,
+  "max_in_flight": 512,
+  "shared_dependency": {
+    "busy": 0,
+    "waiting": 0,
+    "capacity": 2,
+    "work_ms": 100.0
+  },
+  "load_threshold_pct": 80.0,
+  "severe_load_threshold_pct": 90.0,
+  "p95_window_seconds": 300,
+  "p95_evaluation_seconds": 60,
+  "minimum_samples": 100,
+  "last_p95_evaluation_epoch": 1795037383.9989974,
+  "routes": {
+    "essential": {
+      "priority_rank": 0,
+      "p95_ms": 16982.48829499971,
+      "budget_ms": 250.0,
+      "sample_count": 664,
+      "sample_status": "sufficient",
+      "breach_checks": 5,
+      "healthy_checks": 0,
+      "protected_by_p95": true,
+      "attempted": 665,
+      "classified": 665,
+      "admitted": 665,
+      "completed": 665
+    },
+    "standard": {
+      "priority_rank": 1,
+      "p95_ms": 18076.921256999412,
+      "budget_ms": 400.0,
+      "sample_count": 880,
+      "sample_status": "sufficient",
+      "breach_checks": 5,
+      "healthy_checks": 0,
+      "protected_by_p95": true,
+      "attempted": 2188,
+      "classified": 2188,
+      "admitted": 880,
+      "completed": 880,
+      "shed": 1308,
+      "shed:limited": 1308
+    },
+    "deferrable": {
+      "priority_rank": 2,
+      "p95_ms": 17953.00697300081,
+      "budget_ms": 900.0,
+      "sample_count": 1589,
+      "sample_status": "sufficient",
+      "breach_checks": 5,
+      "healthy_checks": 0,
+      "protected_by_p95": true,
+      "attempted": 4047,
+      "classified": 4047,
+      "admitted": 1589,
+      "completed": 1589,
+      "shed": 2458,
+      "shed:limited": 2458
+    }
+  }
+}
