@@ -7,7 +7,7 @@ Can a gateway combine service utilization with route-specific p95 budgets, limit
 ## Confirmed design decisions
 
 - Essential, Standard, and Deferrable are illustrative route classes ordered by priority.
-- Reaching the 80% utilization guardrail limits Deferrable first. The 90% escalation point is still an illustrative value.
+- Reaching the 80% utilization guardrail limits Deferrable first. The 90% escalation point is a configurable mockup example, not a general recommendation for production systems.
 - A route-specific p95 breach can activate priority protection even below 80% utilization. In particular, an Essential route breach limits lower-priority traffic.
 - Priority is a stable policy based on request importance; p95 is a degradation signal, not a way to promote a route. Protect the highest-priority breached route by limiting lower-priority traffic. If the lowest-priority route is the one breaching, limit or degrade that route itself.
 - Cross-route shedding is useful only when the affected routes compete for a constrained resource. A route-specific dependency problem should be handled locally; the prototype's shared-resource assumption is illustrative and does not prove that shedding improves latency.
@@ -37,6 +37,5 @@ These are outputs of the prototype's explicit rules, not measured performance im
 ## Still to decide
 
 1. What workload-specific values should set `x`, the maximum backoff, `y`, and circuit-breaker entry conditions?
-2. Should a 90% load escalation limit Standard traffic, or should escalation use a different signal?
 
 All names, latency budgets, measured p95 values, traffic shares, and recovery thresholds in the mockup are illustrative. Validate them with a representative workload before treating them as operational guidance.
