@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="810" viewBox="0 0 1200 810" role="img" aria-labelledby="vm-title vm-desc">
+  <title id="vm-title">Trusted priority changes which requests survive overload</title>
+  <desc id="vm-desc">The upper panels compare a direct service with unclassified requests to a trusted gateway that labels priority before the service applies admission. The lower panels show Essential requests within budget: 1.99 percent without priority versus 95.82 percent during CPU pressure, and 9 of 665 during a shared dependency overload versus 144 of 144 in the separate post-activation sample through the gateway. The full five-minute p95 remains elevated because it includes earlier slow requests.</desc>
+  <defs>
+    <pattern id="vm-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".06" stroke-width=".7" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="810" fill="#FAF8F4" />
+  <rect width="1200" height="810" fill="url(#vm-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing="1">
+    <text x="48" y="43" font-size="12">03 / PAIRED VM COMPARISON</text>
+    <text x="48" y="81" font-family="Inter, 'Segoe UI', sans-serif" font-size="27" font-weight="600" letter-spacing="0" fill="#161616">The same load. A different admission decision.</text>
+    <text x="48" y="109" font-family="Inter, 'Segoe UI', sans-serif" font-size="15" letter-spacing="0" fill="#5A5A57">A trusted priority signal lets the service trade lower-tier traffic for checkout headroom.</text>
+  </g>
+
+  <rect x="48" y="132" width="532" height="244" fill="#FFFDF9" stroke="#D8D2C8" />
+  <rect x="620" y="132" width="532" height="244" fill="#FFFDF9" stroke="#D8D2C8" />
+  <path d="M48 178H580M620 178H1152" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="161">A / DIRECT · NO PRIORITY HEADER</text>
+    <text x="644" y="161">B / TRUSTED GATEWAY · PRIORITY HEADER</text>
+  </g>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <rect x="72" y="203" width="142" height="28" rx="4" fill="#DBF1DB" stroke="#9FCBA9" />
+    <text x="84" y="222">★ Essential</text>
+    <rect x="72" y="243" width="142" height="28" rx="4" fill="#E7EDF5" stroke="#B7C4D4" />
+    <text x="84" y="262">● Standard</text>
+    <rect x="72" y="283" width="142" height="28" rx="4" fill="#F6E5C9" stroke="#E3C89A" />
+    <text x="84" y="302">⚙ Deferrable</text>
+  </g>
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+    <path d="M214 217H256" /><path d="M214 257H256" /><path d="M214 297H256" />
+  </g>
+  <path d="M250 212l7 5-7 5M250 252l7 5-7 5M250 292l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="264" y="203" width="137" height="108" rx="6" fill="#E7EDF5" stroke="#9CACBF" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="332" y="242" font-size="19" font-weight="600">Service</text>
+    <text x="332" y="267" font-size="12" fill="#5A5A57">no trusted rank</text>
+    <text x="332" y="289" font-size="11" fill="#5A5A57">512 in-flight cap</text>
+  </g>
+  <path d="M401 257H428" stroke="#1F3A5F" stroke-width="1.6" />
+  <path d="M422 252l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="438" y="211" width="118" height="42" rx="4" fill="#FCE5E2" stroke="#E6A49C" />
+  <rect x="438" y="261" width="118" height="42" rx="4" fill="#F2EFE8" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" text-anchor="middle" fill="#1F3A5F">
+    <text x="497" y="229" font-size="11">200 · LATE</text>
+    <text x="497" y="244" font-size="9">or 429 at cap</text>
+    <text x="497" y="279" font-size="10">NO SELECTIVE</text>
+    <text x="497" y="293" font-size="10">ADMISSION</text>
+  </g>
+  <text x="72" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#5A5A57">Route is visible to metrics; admission sees every request as unclassified.</text>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <rect x="644" y="203" width="142" height="28" rx="4" fill="#DBF1DB" stroke="#9FCBA9" />
+    <text x="656" y="222">★ Essential</text>
+    <rect x="644" y="243" width="142" height="28" rx="4" fill="#E7EDF5" stroke="#B7C4D4" />
+    <text x="656" y="262">● Standard</text>
+    <rect x="644" y="283" width="142" height="28" rx="4" fill="#F6E5C9" stroke="#E3C89A" />
+    <text x="656" y="302">⚙ Deferrable</text>
+  </g>
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+    <path d="M786 217H802" /><path d="M786 257H802" /><path d="M786 297H802" />
+  </g>
+  <path d="M796 212l7 5-7 5M796 252l7 5-7 5M796 292l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="810" y="203" width="119" height="108" rx="6" fill="#F2EAF8" stroke="#B7A3C9" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="869" y="242" font-size="15" font-weight="600">Gateway</text>
+    <text x="869" y="264" font-size="11" fill="#5A5A57">sets trusted</text>
+    <text x="869" y="281" font-size="11" fill="#5A5A57">priority</text>
+  </g>
+  <path d="M929 257H953" stroke="#1F3A5F" stroke-width="1.6" />
+  <path d="M947 252l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="960" y="203" width="166" height="108" rx="6" fill="#E7EDF5" stroke="#9CACBF" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="1043" y="242" font-size="19" font-weight="600">Service</text>
+    <text x="1043" y="267" font-size="12" fill="#5A5A57">applies policy</text>
+    <text x="1043" y="289" font-size="11" fill="#5A5A57">using local capacity</text>
+  </g>
+  <text x="644" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#2B6A43">Essential passes</text>
+  <text x="772" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#A35A24">· Standard and Deferrable are shed first</text>
+
+  <rect x="48" y="400" width="532" height="254" fill="#FFFDF9" stroke="#D8D2C8" />
+  <rect x="620" y="400" width="532" height="254" fill="#FFFDF9" stroke="#D8D2C8" />
+  <path d="M48 444H580M620 444H1152" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="428">01 / CPU PRESSURE · 180 req/s FOR 60 s</text>
+    <text x="644" y="428">02 / SHARED DEPENDENCY · 23 req/s</text>
+  </g>
+
+  <text x="72" y="470" font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#5A5A57">Essential responses within 250 ms</text>
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <text x="72" y="502">Direct · no priority</text>
+    <text x="548" y="502" text-anchor="end" font-weight="600">1.99%</text>
+    <text x="72" y="551">Trusted gateway</text>
+    <text x="548" y="551" text-anchor="end" font-weight="600" fill="#2B6A43">95.82%</text>
+  </g>
+  <rect x="72" y="511" width="456" height="12" fill="#F2EFE8" />
+  <rect x="72" y="511" width="9" height="12" fill="#C96C5D" />
+  <rect x="72" y="560" width="456" height="12" fill="#F2EFE8" />
+  <rect x="72" y="560" width="437" height="12" fill="#78B28A" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="11" fill="#5A5A57">
+    <text x="72" y="604">Peak CPU: 99.91% direct → 95.67% with gateway</text>
+    <text x="72" y="627">Gateway shed 514 Standard + 3,031 Deferrable requests</text>
+  </g>
+
+  <text x="644" y="470" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#5A5A57">2 dependency slots · 100 ms each · service CPU &lt; 3.4%</text>
+  <path d="M884 486V634" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" text-anchor="middle">
+    <text x="761" y="502" font-size="10">DIRECT · FULL RUN</text>
+    <text x="1016" y="502" font-size="10">GATEWAY · AFTER ACTIVATION</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="761" y="540" font-size="25" font-weight="600">9 / 665</text>
+    <text x="1016" y="540" font-size="25" font-weight="600" fill="#2B6A43">144 / 144</text>
+    <text x="761" y="561" font-size="12" fill="#5A5A57">within 250 ms</text>
+    <text x="1016" y="561" font-size="12" fill="#5A5A57">within 250 ms</text>
+    <text x="761" y="594" font-size="12" fill="#A3473D">40 Essential rejected</text>
+    <text x="1016" y="594" font-size="12" fill="#2B6A43">0 Essential rejected</text>
+    <text x="761" y="620" font-size="14" font-weight="600">p95 25.74 s</text>
+    <text x="1016" y="620" font-size="14" font-weight="600">p95 102.83 ms*</text>
+  </g>
+  <text x="1016" y="640" font-family="Inter, 'Segoe UI', sans-serif" font-size="10" fill="#5A5A57" text-anchor="middle">* Separate 60-second sample</text>
+
+  <rect x="48" y="680" width="532" height="88" fill="#E7EDF5" stroke="#B7C4D4" />
+  <rect x="620" y="680" width="532" height="88" fill="#F2EAF8" stroke="#C9B7D6" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing=".7">
+    <text x="72" y="704" font-size="10">ROLLING FIVE-MINUTE ESSENTIAL P95</text>
+    <text x="644" y="704" font-size="10">THE CAPACITY TRADE-OFF</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="72" y="739" font-size="21" font-weight="600">16.99 s</text>
+    <text x="158" y="739" font-size="12" fill="#5A5A57">still includes slow responses from before activation</text>
+    <text x="644" y="736" font-size="16" font-weight="600">The gateway adds no capacity.</text>
+    <text x="644" y="755" font-size="13" fill="#5A5A57">It lets the service choose which work to shed.</text>
+  </g>
+</svg>

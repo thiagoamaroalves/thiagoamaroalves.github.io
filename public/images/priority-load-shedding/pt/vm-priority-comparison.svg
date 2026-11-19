@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="810" viewBox="0 0 1200 810" role="img" aria-labelledby="vm-title vm-desc">
+  <title id="vm-title">A prioridade confiável muda quais requisições sobrevivem à sobrecarga</title>
+  <desc id="vm-desc">Os painéis superiores comparam um serviço que recebe requisições sem classificação e um gateway confiável que define a prioridade antes do controle de admissão. Os painéis inferiores mostram as respostas Essenciais dentro do limite: 1,99% sem prioridade contra 95,82% sob pressão de CPU; e 9 de 665 durante a sobrecarga da dependência contra 144 de 144 na amostra separada após a ativação pelo gateway. O p95 completo de cinco minutos permanece alto porque inclui respostas lentas anteriores.</desc>
+  <defs>
+    <pattern id="vm-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#1F3A5F" stroke-opacity=".06" stroke-width=".7" />
+    </pattern>
+  </defs>
+  <rect width="1200" height="810" fill="#FAF8F4" />
+  <rect width="1200" height="810" fill="url(#vm-grid)" />
+
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing="1">
+    <text x="48" y="43" font-size="12">03 / COMPARAÇÃO NA VM</text>
+    <text x="48" y="81" font-family="Inter, 'Segoe UI', sans-serif" font-size="27" font-weight="600" letter-spacing="0" fill="#161616">Mesma carga. Outra decisão de admissão.</text>
+    <text x="48" y="109" font-family="Inter, 'Segoe UI', sans-serif" font-size="15" letter-spacing="0" fill="#5A5A57">A prioridade confiável permite preservar o checkout ao reduzir outras rotas.</text>
+  </g>
+
+  <rect x="48" y="132" width="532" height="244" fill="#FFFDF9" stroke="#D8D2C8" />
+  <rect x="620" y="132" width="532" height="244" fill="#FFFDF9" stroke="#D8D2C8" />
+  <path d="M48 178H580M620 178H1152" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="161">A / DIRETO · SEM CABEÇALHO DE PRIORIDADE</text>
+    <text x="644" y="161">B / GATEWAY CONFIÁVEL · CABEÇALHO DE PRIORIDADE</text>
+  </g>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <rect x="72" y="203" width="142" height="28" rx="4" fill="#DBF1DB" stroke="#9FCBA9" />
+    <text x="84" y="222">★ Essencial</text>
+    <rect x="72" y="243" width="142" height="28" rx="4" fill="#E7EDF5" stroke="#B7C4D4" />
+    <text x="84" y="262">● Padrão</text>
+    <rect x="72" y="283" width="142" height="28" rx="4" fill="#F6E5C9" stroke="#E3C89A" />
+    <text x="84" y="302">⚙ Adiável</text>
+  </g>
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+    <path d="M214 217H256" /><path d="M214 257H256" /><path d="M214 297H256" />
+  </g>
+  <path d="M250 212l7 5-7 5M250 252l7 5-7 5M250 292l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="264" y="203" width="137" height="108" rx="6" fill="#E7EDF5" stroke="#9CACBF" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="332" y="242" font-size="19" font-weight="600">Serviço</text>
+    <text x="332" y="267" font-size="12" fill="#5A5A57">sem prioridade confiável</text>
+    <text x="332" y="289" font-size="11" fill="#5A5A57">limite simultâneo 512</text>
+  </g>
+  <path d="M401 257H428" stroke="#1F3A5F" stroke-width="1.6" />
+  <path d="M422 252l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="438" y="211" width="118" height="42" rx="4" fill="#FCE5E2" stroke="#E6A49C" />
+  <rect x="438" y="261" width="118" height="42" rx="4" fill="#F2EFE8" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" text-anchor="middle" fill="#1F3A5F">
+    <text x="497" y="229" font-size="11">200 · LENTA</text>
+    <text x="497" y="244" font-size="9">ou 429 no limite</text>
+    <text x="497" y="279" font-size="10">SEM ESCOLHA</text>
+    <text x="497" y="293" font-size="10">POR PRIORIDADE</text>
+  </g>
+  <text x="72" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#5A5A57">A rota aparece nas métricas; a admissão vê tudo como não classificado.</text>
+
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <rect x="644" y="203" width="142" height="28" rx="4" fill="#DBF1DB" stroke="#9FCBA9" />
+    <text x="656" y="222">★ Essencial</text>
+    <rect x="644" y="243" width="142" height="28" rx="4" fill="#E7EDF5" stroke="#B7C4D4" />
+    <text x="656" y="262">● Padrão</text>
+    <rect x="644" y="283" width="142" height="28" rx="4" fill="#F6E5C9" stroke="#E3C89A" />
+    <text x="656" y="302">⚙ Adiável</text>
+  </g>
+  <g fill="none" stroke="#1F3A5F" stroke-width="1.6">
+    <path d="M786 217H802" /><path d="M786 257H802" /><path d="M786 297H802" />
+  </g>
+  <path d="M796 212l7 5-7 5M796 252l7 5-7 5M796 292l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="810" y="203" width="119" height="108" rx="6" fill="#F2EAF8" stroke="#B7A3C9" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="869" y="242" font-size="15" font-weight="600">Gateway</text>
+    <text x="869" y="264" font-size="11" fill="#5A5A57">define prioridade</text>
+    <text x="869" y="281" font-size="11" fill="#5A5A57">confiável</text>
+  </g>
+  <path d="M929 257H953" stroke="#1F3A5F" stroke-width="1.6" />
+  <path d="M947 252l7 5-7 5" fill="none" stroke="#1F3A5F" stroke-width="1.6" />
+  <rect x="960" y="203" width="166" height="108" rx="6" fill="#E7EDF5" stroke="#9CACBF" stroke-width="1.4" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="1043" y="242" font-size="19" font-weight="600">Serviço</text>
+    <text x="1043" y="267" font-size="12" fill="#5A5A57">aplica a política</text>
+    <text x="1043" y="289" font-size="11" fill="#5A5A57">com sinais locais</text>
+  </g>
+  <text x="644" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#2B6A43">Essenciais passam</text>
+  <text x="774" y="345" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#A35A24">· Rotas Padrão e Adiável são limitadas primeiro</text>
+
+  <rect x="48" y="400" width="532" height="254" fill="#FFFDF9" stroke="#D8D2C8" />
+  <rect x="620" y="400" width="532" height="254" fill="#FFFDF9" stroke="#D8D2C8" />
+  <path d="M48 444H580M620 444H1152" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" letter-spacing=".8" fill="#1F3A5F">
+    <text x="72" y="428">01 / PRESSÃO DE CPU · 180 req/s POR 60 s</text>
+    <text x="644" y="428">02 / DEPENDÊNCIA COMPARTILHADA · 23 req/s</text>
+  </g>
+
+  <text x="72" y="470" font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#5A5A57">Respostas Essenciais em até 250 ms</text>
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="13" fill="#161616">
+    <text x="72" y="502">Direto · sem prioridade</text>
+    <text x="548" y="502" text-anchor="end" font-weight="600">1,99%</text>
+    <text x="72" y="551">Gateway confiável</text>
+    <text x="548" y="551" text-anchor="end" font-weight="600" fill="#2B6A43">95,82%</text>
+  </g>
+  <rect x="72" y="511" width="456" height="12" fill="#F2EFE8" />
+  <rect x="72" y="511" width="9" height="12" fill="#C96C5D" />
+  <rect x="72" y="560" width="456" height="12" fill="#F2EFE8" />
+  <rect x="72" y="560" width="437" height="12" fill="#78B28A" />
+  <g font-family="Inter, 'Segoe UI', sans-serif" font-size="11" fill="#5A5A57">
+    <text x="72" y="604">CPU máxima: 99,91% direto → 95,67% com gateway</text>
+    <text x="72" y="627">Gateway limitou 514 Padrão + 3.031 Adiáveis</text>
+  </g>
+
+  <text x="644" y="470" font-family="Inter, 'Segoe UI', sans-serif" font-size="12" fill="#5A5A57">2 slots · 100 ms cada · CPU do serviço &lt; 3,4%</text>
+  <path d="M884 486V634" stroke="#D8D2C8" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" text-anchor="middle">
+    <text x="761" y="502" font-size="10">DIRETO · EXECUÇÃO COMPLETA</text>
+    <text x="1016" y="502" font-size="10">GATEWAY · APÓS ATIVAÇÃO</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" text-anchor="middle" fill="#161616">
+    <text x="761" y="540" font-size="25" font-weight="600">9 / 665</text>
+    <text x="1016" y="540" font-size="25" font-weight="600" fill="#2B6A43">144 / 144</text>
+    <text x="761" y="561" font-size="12" fill="#5A5A57">dentro de 250 ms</text>
+    <text x="1016" y="561" font-size="12" fill="#5A5A57">dentro de 250 ms</text>
+    <text x="761" y="594" font-size="12" fill="#A3473D">40 Essenciais rejeitadas</text>
+    <text x="1016" y="594" font-size="12" fill="#2B6A43">0 Essenciais rejeitadas</text>
+    <text x="761" y="620" font-size="14" font-weight="600">p95 25,74 s</text>
+    <text x="1016" y="620" font-size="14" font-weight="600">p95 102,83 ms*</text>
+  </g>
+  <text x="1016" y="640" font-family="Inter, 'Segoe UI', sans-serif" font-size="10" fill="#5A5A57" text-anchor="middle">* Amostra separada de 60 s</text>
+
+  <rect x="48" y="680" width="532" height="88" fill="#E7EDF5" stroke="#B7C4D4" />
+  <rect x="620" y="680" width="532" height="88" fill="#F2EAF8" stroke="#C9B7D6" />
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" fill="#1F3A5F" letter-spacing=".7">
+    <text x="72" y="704" font-size="10">P95 ESSENCIAL MÓVEL DE CINCO MINUTOS</text>
+    <text x="644" y="704" font-size="10">A TROCA DE CAPACIDADE</text>
+  </g>
+  <g font-family="Inter, 'Segoe UI', sans-serif" fill="#161616">
+    <text x="72" y="739" font-size="21" font-weight="600">16,99 s</text>
+    <text x="158" y="739" font-size="12" fill="#5A5A57">inclui respostas lentas anteriores à ativação</text>
+    <text x="644" y="736" font-size="16" font-weight="600">O gateway não aumenta a capacidade.</text>
+    <text x="644" y="755" font-size="13" fill="#5A5A57">Ele permite escolher o que o serviço deve reduzir.</text>
+  </g>
+</svg>
