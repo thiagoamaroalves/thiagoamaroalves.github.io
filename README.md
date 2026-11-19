@@ -39,6 +39,10 @@ Only files in `src/content/posts/` are published as posts. Keep private or unfin
 
 Add a Markdown file under `src/content/notes/`. Notes use the same metadata and language rules as posts. Their categories are Databases, Architecture, Benchmark, Distributed Systems, and Performance. The notes collection can remain empty; the site shows a real empty state until a note is published.
 
+## Post images and diagrams
+
+Follow the [visual style guide](docs/visual-style-guide.md) for post diagrams and illustrations. Keep English and Portuguese assets paired in `public/images/`, using the same layout, dimensions, and palette in both versions.
+
 ## Language and URL decisions
 
 - Portuguese is served at `/`, `/artigos/`, `/notas/`, and `/sobre/`.
